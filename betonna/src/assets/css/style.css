@@ -1,0 +1,9 @@
+@font-face {
+    font-family: expoarabic;
+    src: url(../Expo_Arabic/Expo_Arabic_Light/Expo_Arabic_Light.ttf);
+}
+
+body {
+    font-family: expoarabic;
+    overflow-x: hidden;
+}
