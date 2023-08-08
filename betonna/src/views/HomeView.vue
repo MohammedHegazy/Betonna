@@ -13,12 +13,7 @@
           class="row d-flex justify-content-start align-items-center text-start"
         >
           <div class="col">
-            <h4 style="width: 70%; font-weight: 800">
-              "Welcome in Betonna, the ideal destination for selling and renting
-              real estate in Iraq. Explore our wide range of diverse options and
-              get a chance to find your dream home. We are here to fulfill your
-              real estate desires."
-            </h4>
+            <h4 style="width: 70%; font-weight: 800">"{{ Text1 }}"</h4>
           </div>
         </div>
         <form action="/">
@@ -50,7 +45,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-3 col-md-6">
+            <div class="col-md-3">
               <button class="nav-list form-home1" style="pointer-events: none">
                 <Icon
                   icon="zondicons:location"
@@ -61,7 +56,7 @@
                 Iraq
               </button>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-md-6">
               <div class="dropdown">
                 <button
                   class="form-home1 form-home2"
@@ -130,7 +125,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-2 col-md-4">
+            <div class="col-md-3">
               <div class="dropdown">
                 <button
                   class="form-home1 form-home2"
@@ -197,7 +192,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xl-2 col-md-4">
+            <div class="col-md-3">
               <div class="dropdown">
                 <button
                   class="form-home1 form-home2"
@@ -218,14 +213,15 @@
                 </button>
                 <ul class="dropdown-menu" style="width: 700px">
                   <div class="dropdown-item">
-                    <div class="row">
+                    <div class="row row-cols-auto">
                       <div
                         class="col-4 d-flex justify-content-center align-items-center"
+                        style="border-right: 5px solid #ffffff"
                       >
                         <button
                           type="button"
                           class="realest_type p-3"
-                          :style="{ color: color1 }"
+                          :style="{ color: color1, width: '100%' }"
                           @click="changetype(1)"
                         >
                           <Icon
@@ -238,11 +234,15 @@
                       </div>
                       <div
                         class="col-4 d-flex justify-content-center align-items-center"
+                        style=""
                       >
                         <button
                           type="button"
                           class="realest_type p-3"
-                          :style="{ color: color2 }"
+                          :style="{
+                            color: color2,
+                            width: '100%',
+                          }"
                           @click="changetype(2)"
                         >
                           <Icon icon="fa6-solid:shop" width="20" height="20" />
@@ -255,7 +255,11 @@
                         <button
                           type="button"
                           class="realest_type p-3"
-                          :style="{ borderRight: 'none', color: color3 }"
+                          :style="{
+                            borderRight: 'none',
+                            color: color3,
+                            width: '100%',
+                          }"
                           @click="changetype(3)"
                         >
                           <Icon
@@ -276,19 +280,18 @@
                         v-for="item_type in types"
                         v-bind:key="item_type.id"
                       >
-                        <div class="card">
-                          <div class="card-text d-flex justify-content-center">
-                            <button
-                              type="button"
-                              class="realest_type"
-                              style="
-                                border: none;
-                                width: 100%;
-                                height: 100%;
-                                border-radius: 5px;
-                              "
-                              @click="choosen_type = item_type.name"
-                            >
+                        <div class="card" style="height: 90px; width: 90%">
+                          <button
+                            type="button"
+                            class="realest_type d-flex justify-content-center align-items-center"
+                            style="
+                              border: none;
+                              border-radius: 5px;
+                              height: 100%;
+                            "
+                            @click="choosen_type = item_type.name"
+                          >
+                            <div>
                               <div class="card-img-top">
                                 <Icon
                                   :icon="item_type.icon"
@@ -296,9 +299,11 @@
                                   height="24"
                                 />
                               </div>
-                              <div class="card-text">{{ item_type.name }}</div>
-                            </button>
-                          </div>
+                              <div class="card-text text-center">
+                                {{ item_type.name }}
+                              </div>
+                            </div>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -306,7 +311,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xl-2 col-md-4">
+            <div class="col-md-3">
               <div class="dropdown">
                 <button
                   class="form-home1 form-home2"
@@ -330,12 +335,17 @@
                     <div class="row">
                       <div class="col-6">Minimum_price</div>
                       <div class="col-6">Maximum_price</div>
-                      <div class="col-5">
+                    </div>
+                  </div>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-5 number-wrapper2">
                         <input
                           type="number"
                           class="list-inp"
                           min="0"
                           v-model="minimum_price"
+                          style="background-color: #dddddd"
                         /><Icon
                           icon="mdi:dollar"
                           color="#585858"
@@ -354,12 +364,13 @@
                           width="25"
                         ></Icon>
                       </div>
-                      <div class="col-5">
+                      <div class="col-5 number-wrapper2">
                         <input
                           type="number"
                           class="list-inp"
                           min="0"
                           v-model="maximum_price"
+                          style="background-color: #dddddd"
                         /><Icon
                           icon="mdi:dollar"
                           color="#585858"
@@ -377,7 +388,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-2 col-md-4">
+            <div class="col-md-3">
               <div class="dropdown">
                 <button
                   class="form-home1 form-home2"
@@ -390,10 +401,13 @@
                   More options
                   <Icon :icon="icon5" color="#585858" width="25" height="25" />
                 </button>
-                <ul class="dropdown-menu price-drop">
+                <ul
+                  class="dropdown-menu price-drop"
+                  style="background-color: #efefef; width: 300px"
+                >
                   <li>
                     <div class="row d-flex justify-content-center">
-                      <div class="col-11 my-2">
+                      <div class="col-11 my-2 number-wrapper">
                         <input
                           type="number"
                           class="list-inp"
@@ -410,7 +424,7 @@
                           "
                         />
                       </div>
-                      <div class="col-11 my-2">
+                      <div class="col-11 my-2 number-wrapper">
                         <input
                           type="number"
                           class="list-inp"
@@ -427,7 +441,7 @@
                           "
                         />
                       </div>
-                      <div class="col-11 my-2">
+                      <div class="col-11 my-2 number-wrapper">
                         <input
                           type="number"
                           class="list-inp"
@@ -449,7 +463,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xl-4 col-md-8">
+            <div class="col-md-6">
               <button type="submit" class="home-btn">SEARCH</button>
             </div>
           </div>
@@ -507,6 +521,8 @@ export default {
           icon: "game-icons:ground-sprout",
         },
       ],
+      Text1:
+        "مرحبًا بك في Betoona، الوجهة الأمثل لبيع وايجار العقارات في العراق. استكشف مجموعتنا الواسعة من الخيارات المتنوعة، واحصل على فرصة للعثور على منزل أحلامك. نحن هنا لتحقيق رغباتك العقارية.",
     };
   },
   components: {
@@ -775,8 +791,8 @@ export default {
 .list-inp {
   width: 100%;
   height: 40px;
-  border-radius: 2px;
-  background-color: #dddddd;
+  border-radius: 10px;
+  background-color: white;
   border: none;
   padding-left: 10px;
 }
@@ -794,7 +810,7 @@ export default {
 .realest_type {
   height: 100%;
   border: none;
-  border-right: solid 1px #dddddd;
+  border-right: 2px solid #dddddd;
   background-color: white;
   transition: 0.5s ease-out;
 }
@@ -802,6 +818,70 @@ export default {
 .realest_type:hover {
   color: #e57c23;
   transition: 0.5s ease-in;
+}
+
+div .dropdown-item:hover {
+  background-color: white;
+}
+
+.dropdown-item .row:hover {
+  background-color: white;
+}
+
+.number-wrapper {
+  position: relative;
+}
+
+.number-wrapper:after,
+.number-wrapper:before {
+  position: absolute;
+  right: 14px;
+  width: 1.6em;
+  height: 1em;
+  font-size: 10px;
+  pointer-events: none;
+  background: #fff;
+}
+
+.number-wrapper:after {
+  color: #585858;
+  content: "\2B9D";
+  margin-top: 10px;
+}
+
+.number-wrapper:before {
+  color: #585858;
+  content: "\2B9F";
+  margin-bottom: 15px;
+  bottom: -0.5em;
+}
+
+.number-wrapper2 {
+  position: relative;
+}
+
+.number-wrapper2:after,
+.number-wrapper2:before {
+  position: absolute;
+  right: 14px;
+  width: 1.6em;
+  height: 1em;
+  font-size: 10px;
+  pointer-events: none;
+  background: #dddddd;
+}
+
+.number-wrapper2:after {
+  color: #585858;
+  content: "\2B9D";
+  margin-top: 10px;
+}
+
+.number-wrapper2:before {
+  color: #585858;
+  content: "\2B9F";
+  margin-bottom: 15px;
+  bottom: -0.5em;
 }
 
 @media screen and (max-width: 700px) {
