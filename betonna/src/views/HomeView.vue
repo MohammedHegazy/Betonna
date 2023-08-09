@@ -403,14 +403,12 @@
                   More options
                   <Icon :icon="icon5" color="#585858" width="25" height="25" />
                 </button>
-                <ul
-                  class="dropdown-menu price-drop"
-                  style="background-color: #efefef; width: 300px"
-                >
+                <ul class="dropdown-menu price-drop" style="width: 300px">
                   <li>
                     <div class="row d-flex justify-content-center">
-                      <div class="col-11 my-2 number-wrapper">
+                      <div class="col-11 my-2 number-wrapper2">
                         <input
+                          style="background-color: #dddddd"
                           type="number"
                           class="list-inp"
                           min="0"
@@ -426,8 +424,9 @@
                           "
                         />
                       </div>
-                      <div class="col-11 my-2 number-wrapper">
+                      <div class="col-11 my-2 number-wrapper2">
                         <input
+                          style="background-color: #dddddd"
                           type="number"
                           class="list-inp"
                           min="0"
@@ -443,8 +442,9 @@
                           "
                         />
                       </div>
-                      <div class="col-11 my-2 number-wrapper">
+                      <div class="col-11 my-2 number-wrapper2">
                         <input
+                          style="background-color: #dddddd"
                           type="number"
                           class="list-inp"
                           min="0"
@@ -844,34 +844,6 @@ div .dropdown-item:hover {
 
 .dropdown-item .row:hover {
   background-color: white;
-}
-
-.number-wrapper {
-  position: relative;
-}
-
-.number-wrapper:after,
-.number-wrapper:before {
-  position: absolute;
-  right: 14px;
-  width: 1.6em;
-  height: 1em;
-  font-size: 10px;
-  pointer-events: none;
-  background: #fff;
-}
-
-.number-wrapper:after {
-  color: #585858;
-  content: "\2B9D";
-  margin-top: 10px;
-}
-
-.number-wrapper:before {
-  color: #585858;
-  content: "\2B9F";
-  margin-bottom: 15px;
-  bottom: -0.5em;
 }
 
 .number-wrapper2 {

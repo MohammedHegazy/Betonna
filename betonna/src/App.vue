@@ -7,7 +7,10 @@
       style="background-color: black; height: 100px"
     >
       <div class="d-flex justify-content-center align-items-center me-5">
-        <router-link to="/">
+        <router-link
+          to="/"
+          class="d-flex justify-content-center align-items-center mb-1"
+        >
           <img src="@/assets/Png.png" alt="LOGO" class="nav-logo" />
         </router-link>
       </div>
