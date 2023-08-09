@@ -623,7 +623,7 @@
                   </div>
                   <div class="col-8">
                     <span
-                      class="mx-2 radio-item"
+                      class="mx-2 radio-item radio-item-swiper"
                       v-for="(element, index) in latest_offers"
                       v-bind:key="index"
                       ><input
@@ -1208,6 +1208,31 @@ div .dropdown-item:hover {
   100% {
     transform: translateX(-100px);
   }
+}
+
+.radio-item-swiper input[type="radio"]:before {
+  position: relative;
+  margin: 4px -25px -4px 0;
+  display: inline-block;
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #cccccc;
+  content: "";
+}
+
+.radio-item-swiper input[type="radio"]:checked:after {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  display: inline-block;
+  visibility: visible;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: #e57c23;
+  content: "";
 }
 
 @media screen and (max-width: 700px) {
