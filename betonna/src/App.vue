@@ -176,6 +176,7 @@ body {
   text-align: center;
   color: #2c3e50;
   font-family: var(--font);
+  background-color: #eeeeee;
 }
 
 nav {

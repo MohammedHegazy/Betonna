@@ -472,11 +472,184 @@
         </form>
       </div>
     </div>
+    <div class="latest-offers">
+      <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
+        Latest offers
+      </p>
+      <!-- slider -->
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="container portfolio-details">
+          <section>
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div
+                  class="swiper-slide d-flex justify-content-center mixed-array-demo"
+                >
+                  <div class="d-flex el-01">
+                    <div
+                      v-for="latest_offer in latest_offers[current_page]"
+                      v-bind:key="latest_offer.id"
+                      class="card mb-5 mx-3"
+                      style="height: 480px; border-radius: 10px; width: 325px"
+                    >
+                      <img
+                        :src="latest_offer.src"
+                        class="card-top-img"
+                        style="border-radius: 10px; width: 100%; height: 229px"
+                      />
+                      <div class="card-title">
+                        <div class="row">
+                          <div
+                            class="col-6 mt-3"
+                            style="font-size: 20px; font-weight: 600"
+                          >
+                            {{ latest_offer.name }}
+                          </div>
+                          <div
+                            class="col-6 mt-3"
+                            style="color: #e57c23; font-size: 20px"
+                          >
+                            {{ latest_offer.price }}
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="card-text text-start ms-3 mt-2"
+                        style="color: #585858"
+                      >
+                        <Icon
+                          icon="material-symbols:location-on-rounded"
+                          height="24"
+                          width="24"
+                        />{{ latest_offer.location }}
+                      </div>
+                      <div
+                        class="card-text text-start ms-3 mt-2"
+                        style="color: #585858"
+                      >
+                        <div class="row mt-4">
+                          <div class="col-9">
+                            <div class="row">
+                              <div class="col-6">
+                                <p style="font-size: 12px">
+                                  <Icon
+                                    icon="ic:sharp-space-dashboard"
+                                    height="18"
+                                    width="18"
+                                  />
+                                  {{ latest_offer.space }}
+                                </p>
+                              </div>
+                              <div class="col-6">
+                                <p style="font-size: 12px">
+                                  <Icon
+                                    icon="bx:current-location"
+                                    height="18"
+                                    width="18"
+                                  />
+                                  {{ latest_offer.type }}
+                                </p>
+                              </div>
+                              <div class="col-6">
+                                <p style="font-size: 12px">
+                                  <Icon icon="mdi:bed" height="18" width="18" />
+                                  Bedrooms: {{ latest_offer.beedrooms }}
+                                </p>
+                              </div>
+                              <div class="col-6">
+                                <p style="font-size: 12px">
+                                  <Icon
+                                    icon="fa6-solid:bath"
+                                    height="18"
+                                    width="18"
+                                  />
+                                  Bathrooms: {{ latest_offer.bathrooms }}
+                                </p>
+                              </div>
+                              <div class="col-6"></div>
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            <img
+                              src="../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"
+                              class="card-img"
+                              style="height: 45px; width: 55.5px"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="card-text d-flex justify-content-center align-items-center"
+                      >
+                        <router-link
+                          to="/"
+                          class="btn d-flex justify-content-center align-items-center"
+                          style="
+                            width: 180px;
+                            height: 51px;
+                            border-radius: 5px;
+                            font-weight: 300;
+                            background-color: #e57c23;
+                            color: white;
+                          "
+                          >More information</router-link
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination mb-5">
+                <div class="row">
+                  <div class="col-2">
+                    <router-link
+                      to="/"
+                      style="color: black; text-decoration: underline #e57c23"
+                      ><Icon
+                        icon="material-symbols:arrow-back-rounded"
+                        class="mx-2"
+                        height="18"
+                        width="18"
+                        style="
+                          color: #e57c23;
+                          background-color: white;
+                          border-radius: 50%;
+                          border: solid 1px #e57c23;
+                        "
+                      />
+                      All offers</router-link
+                    >
+                  </div>
+                  <div class="col-8">
+                    <span
+                      class="mx-2 radio-item"
+                      v-for="(element, index) in latest_offers"
+                      v-bind:key="index"
+                      ><input
+                        v-if="element != latest_offers.max_pages"
+                        type="radio"
+                        name="pagi"
+                        :value="index"
+                        :checked="index == 1 ? true : false"
+                        v-model="current_page"
+                        @click="slide()"
+                    /></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { Icon } from "@iconify/vue";
+import anime from "animejs";
+
 export default {
   name: "HomeView",
   data() {
@@ -526,12 +699,147 @@ export default {
       Text1:
         "Welcome to Betonna, the ideal destination for selling and renting real estate in Iraq. Explore our wide range of diverse options, and get a chance to get your dream home. We are here to fulfill your real estate desires.",
       flag: 0,
+      latest_offers: {
+        1: {
+          1: {
+            id: 1,
+            name: "Exterior flat1",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          2: {
+            id: 2,
+            name: "Exterior flat2",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          3: {
+            id: 3,
+            name: "Exterior flat3",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          4: {
+            id: 4,
+            name: "Exterior flat4",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+        },
+        2: {
+          5: {
+            id: 5,
+            name: "Exterior flat5",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          6: {
+            id: 6,
+            name: "Exterior flat6",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          7: {
+            id: 7,
+            name: "Exterior flat7",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          8: {
+            id: 8,
+            name: "Exterior flat8",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+        },
+        3: {
+          9: {
+            id: 9,
+            name: "Exterior flat9",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          10: {
+            id: 10,
+            name: "Exterior flat10",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+        },
+        max_pages: 3,
+      },
+      current_page: 1,
     };
   },
   components: {
     Icon,
   },
   methods: {
+    slide() {
+      var el = document.querySelector(".mixed-array-demo  .el-01");
+
+      anime({
+        targets: [el, ".mixed-array-demo  .el-01", ".mixed-array-demo  .el-01"],
+        translateX: "-200%",
+      });
+      setTimeout(() => {
+        anime({
+          targets: [el, ".mixed-array-demo  .el-01"],
+          translateX: "0%",
+          easing: "easeInOutQuad",
+        });
+      }, 500);
+    },
     show_hide_dropdown() {
       const element = document.getElementById("type_drop");
       if (this.flag == 0) {
@@ -765,6 +1073,9 @@ export default {
       }
     },
   },
+  mounted() {
+    console.log(this.latest_offers);
+  },
 };
 </script>
 
@@ -872,6 +1183,30 @@ div .dropdown-item:hover {
   content: "\2B9F";
   margin-bottom: 15px;
   bottom: -0.5em;
+}
+
+.card-img {
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(99, 99, 99, 0.6);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(99, 99, 99, 0.6);
+  box-shadow: 0px 0px 10px 0px rgba(99, 99, 99, 0.6);
+}
+
+.card {
+  background-color: white;
+}
+
+.slide-left {
+  animation: slide-left 0.5s ease-in-out;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
 }
 
 @media screen and (max-width: 700px) {
