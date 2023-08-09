@@ -830,7 +830,8 @@ export default {
 
       anime({
         targets: [el, ".mixed-array-demo  .el-01", ".mixed-array-demo  .el-01"],
-        translateX: "-200%",
+        translateX: "-400%",
+        easing: "easeInOutQuad",
       });
       setTimeout(() => {
         anime({
