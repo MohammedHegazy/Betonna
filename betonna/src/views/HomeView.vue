@@ -830,16 +830,16 @@ export default {
 
       anime({
         targets: [el, ".mixed-array-demo  .el-01", ".mixed-array-demo  .el-01"],
-        translateX: "-400%",
+        keyframes: [
+          { translateX: "-200%" },
+          { translateY: "-500%" },
+          { translateX: "200%" },
+          { translateY: "0%" },
+          { translateX: "0%" },
+        ],
+        duration: 1000,
         easing: "easeInOutQuad",
       });
-      setTimeout(() => {
-        anime({
-          targets: [el, ".mixed-array-demo  .el-01"],
-          translateX: "0%",
-          easing: "easeInOutQuad",
-        });
-      }, 500);
     },
     show_hide_dropdown() {
       const element = document.getElementById("type_drop");
