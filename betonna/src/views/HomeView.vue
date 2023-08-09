@@ -199,8 +199,10 @@
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  @click="changic1(3)"
-                  @blur="changic1(3)"
+                  @click="
+                    changic1(3);
+                    show_hide_dropdown();
+                  "
                 >
                   <Icon
                     icon="mdi:home-search"
@@ -211,7 +213,7 @@
                   {{ choosen_type }}
                   <Icon :icon="icon3" color="#585858" width="25" height="25" />
                 </button>
-                <ul class="dropdown-menu" style="width: 700px">
+                <ul class="dropdown-menu" id="type_drop" style="width: 700px">
                   <div class="dropdown-item">
                     <div class="row row-cols-auto">
                       <div
@@ -523,12 +525,28 @@ export default {
       ],
       Text1:
         "مرحبًا بك في Betoona، الوجهة الأمثل لبيع وايجار العقارات في العراق. استكشف مجموعتنا الواسعة من الخيارات المتنوعة، واحصل على فرصة للعثور على منزل أحلامك. نحن هنا لتحقيق رغباتك العقارية.",
+      flag: 0,
     };
   },
   components: {
     Icon,
   },
   methods: {
+    show_hide_dropdown() {
+      const element = document.getElementById("type_drop");
+      if (this.flag == 0) {
+        element.removeAttribute("class");
+        element.setAttribute(
+          "class",
+          "dropdown-menu position-absolute d-inline-block"
+        );
+        this.flag = 1;
+      } else {
+        element.removeAttribute("class");
+        element.setAttribute("class", "dropdown-menu position-absolute d-none");
+        this.flag = 0;
+      }
+    },
     changic1(x) {
       switch (x) {
         case 1:
