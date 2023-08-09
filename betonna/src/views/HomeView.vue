@@ -524,7 +524,7 @@ export default {
         },
       ],
       Text1:
-        "مرحبًا بك في Betoona، الوجهة الأمثل لبيع وايجار العقارات في العراق. استكشف مجموعتنا الواسعة من الخيارات المتنوعة، واحصل على فرصة للعثور على منزل أحلامك. نحن هنا لتحقيق رغباتك العقارية.",
+        "Welcome to Betonna, the ideal destination for selling and renting real estate in Iraq. Explore our wide range of diverse options, and get a chance to get your dream home. We are here to fulfill your real estate desires.",
       flag: 0,
     };
   },
