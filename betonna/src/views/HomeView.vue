@@ -600,7 +600,7 @@
                   </div>
                 </div>
               </div>
-              <div class="swiper-pagination mb-5">
+              <div class="mb-5">
                 <div class="row">
                   <div class="col-2">
                     <router-link
@@ -633,13 +633,326 @@
                         :value="index"
                         :checked="index == 1 ? true : false"
                         v-model="current_page"
-                        @click="slide()"
+                        @click="slide(1)"
                     /></span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
+        </div>
+      </div>
+    </div>
+    <div class="special_citys">
+      <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
+        Special Citys
+      </p>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="container portfolio-details">
+          <section>
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div
+                  class="swiper-slide d-flex justify-content-center mixed-array-demo"
+                >
+                  <div class="d-flex el-02" style="width: max-content">
+                    <div
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        height: 281px;
+                      "
+                    >
+                      <button
+                        class="d-flex justify-content-center align-items-center"
+                        type="button"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_back(1)"
+                      >
+                        <Icon
+                          icon="ep:arrow-left-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      v-for="special_city in special_citys[current_page_2]"
+                      v-bind:key="special_city.id"
+                      class="card mb-5 mx-3"
+                      style="
+                        height: fit-content;
+                        border-radius: 30px;
+                        width: fit-content;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: linear-gradient(
+                          rgba(0, 0, 0, 0.62),
+                          #2c2b2b
+                        );
+                        border: none;
+                      "
+                    >
+                      <div class="card-img-top">
+                        <img
+                          :src="special_city.src"
+                          class="card-top-img card-img"
+                          style="
+                            border-radius: 30px;
+                            width: 342px;
+                            height: 281px;
+                            opacity: 0.3;
+                          "
+                        />
+                      </div>
+                      <label
+                        style="position: absolute; z-index: 2; color: white"
+                      >
+                        <div style="font-size: 30px">
+                          {{ special_city.name }}
+                        </div>
+                        <div style="font-size: 25px" class="mb-3">
+                          {{ special_city.real_estates }} real estate
+                        </div>
+                        <div
+                          class="card-text d-flex justify-content-center align-items-center"
+                        >
+                          <router-link
+                            to="/"
+                            class="btn d-flex justify-content-center align-items-center"
+                            style="
+                              width: 180px;
+                              height: 51px;
+                              border-radius: 5px;
+                              font-weight: 300;
+                              background-color: #e57c23;
+                              color: white;
+                            "
+                            >More information</router-link
+                          >
+                        </div>
+                      </label>
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        height: 281px;
+                        width: 1496px;
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="d-flex justify-content-center align-items-center"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_for(1)"
+                      >
+                        <Icon
+                          icon="ep:arrow-right-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-5">
+                <div class="row">
+                  <div class="col-12">
+                    <span
+                      class="mx-2 radio-item radio-item-swiper"
+                      v-for="(element, index) in special_citys"
+                      v-bind:key="index"
+                      ><input
+                        v-if="element != special_citys.max_pages"
+                        type="radio"
+                        name="pagi_city"
+                        :id="'id' + index"
+                        :value="index"
+                        :checked="index == 1 ? true : false"
+                        v-model="current_page_2"
+                        @click="slide(2)"
+                    /></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="best-services">
+      <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
+        Best services
+      </p>
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="d-flex jutify-content-center align-items-center">
+          <div
+            class="swiper-slide d-flex justify-content-center mixed-array-demo"
+          >
+            <div class="d-flex el-03" style="width: 1280px">
+              <div
+                style="
+                  position: absolute;
+                  display: flex;
+                  justify-content: start;
+                  align-items: center;
+                  height: 281px;
+                "
+              >
+                <button
+                  class="d-flex justify-content-center align-items-center"
+                  type="button"
+                  style="
+                    background-color: rgba(255, 255, 255, 0.86);
+                    height: 50px;
+                    width: 50px;
+                    z-index: 2;
+                    border-radius: 50%;
+                    border: none;
+                    -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                  "
+                  @click="swap_btn_back(2)"
+                >
+                  <Icon
+                    icon="ep:arrow-left-bold"
+                    height="24"
+                    width="24"
+                    color="#E57C23"
+                  />
+                </button>
+              </div>
+              <div
+                class="card mb-5 mx-3"
+                style="
+                  border-radius: 30px;
+                  width: fit-content;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background: white;
+                  border: none;
+                "
+                v-for="service in services[current_page_3]"
+                v-bind:key="service.id"
+              >
+                <img
+                  :src="service.src"
+                  alt=""
+                  class="card-top-img"
+                  style="width: 288px; height: 180px; border-radius: 30px"
+                />
+                <div class="my-4" style="font-size: 24px; font-weight: medium">
+                  {{ service.name }}
+                </div>
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  display: flex;
+                  justify-content: end;
+                  align-items: center;
+                  height: 281px;
+                  width: 1280px;
+                "
+              >
+                <button
+                  type="button"
+                  class="d-flex justify-content-center align-items-center"
+                  style="
+                    background-color: rgba(255, 255, 255, 0.86);
+                    height: 50px;
+                    width: 50px;
+                    z-index: 2;
+                    border-radius: 50%;
+                    border: none;
+                    -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                  "
+                  @click="swap_btn_for(2)"
+                >
+                  <Icon
+                    icon="ep:arrow-right-bold"
+                    height="24"
+                    width="24"
+                    color="#E57C23"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <div class="row">
+          <div class="col-2">
+            <router-link
+              to="/"
+              style="color: black; text-decoration: underline #e57c23"
+              ><Icon
+                icon="material-symbols:arrow-back-rounded"
+                class="mx-2"
+                height="18"
+                width="18"
+                style="
+                  color: #e57c23;
+                  background-color: white;
+                  border-radius: 50%;
+                  border: solid 1px #e57c23;
+                "
+              />
+              See All</router-link
+            >
+          </div>
+          <div class="col-8">
+            <span
+              class="mx-2 radio-item radio-item-swiper"
+              v-for="(element, index) in services"
+              v-bind:key="index"
+              ><input
+                v-if="element != services.max_pages"
+                type="radio"
+                name="services"
+                :id="'id2' + index"
+                :value="index"
+                :checked="index == 1 ? true : false"
+                v-model="current_page_3"
+                @click="slide(3)"
+            /></span>
+          </div>
         </div>
       </div>
     </div>
@@ -818,28 +1131,239 @@ export default {
         },
         max_pages: 3,
       },
+      special_citys: {
+        1: {
+          1: {
+            id: 1,
+            name: "Baghdad",
+            real_estates: "398",
+            src: require("../assets/images/Citys/ezgif.com-webp-to-jpg.jpg"),
+          },
+          2: {
+            id: 2,
+            name: "Arbeel",
+            real_estates: "1,287",
+            src: require("../assets/images/Citys/Arbeel.jpg"),
+          },
+          3: {
+            id: 3,
+            name: "Albosra",
+            real_estates: "1.539",
+            src: require("../assets/images/Citys/124081.jpg"),
+          },
+          4: {
+            id: 4,
+            name: "Alsulaimanieh",
+            real_estates: "398",
+            src: require("../assets/images/Citys/Alsulaimanieh.jpg"),
+          },
+        },
+        2: {
+          5: {
+            id: 5,
+            name: "Duhok",
+            real_estates: "398",
+            src: require("../assets/images/Citys/Duhok.jpg"),
+          },
+          6: {
+            id: 6,
+            name: "Mosul",
+            real_estates: "1.287",
+            src: require("../assets/images/Citys/Mosul.jpg"),
+          },
+          7: {
+            id: 7,
+            name: "Najaf",
+            real_estates: "25.3",
+            src: require("../assets/images/Citys/Najaf.jpg"),
+          },
+          8: {
+            id: 8,
+            name: "Karbala",
+            real_estates: "1.359",
+            src: require("../assets/images/Citys/Karbala.jpg"),
+          },
+        },
+        max_pages: 2,
+      },
+      services: {
+        1: {
+          1: {
+            id: 1,
+            name: "Transportation services",
+            src: require("../assets/images/Services/Transportation services.jpg"),
+          },
+          2: {
+            id: 2,
+            name: "Air conditioning system",
+            src: require("../assets/images/Services/Air conditioning system.jpg"),
+          },
+          3: {
+            id: 3,
+            name: "Cleaning services",
+            src: require("../assets/images/Services/Cleaning services.jpg"),
+          },
+          4: {
+            id: 4,
+            name: "Lawyers",
+            src: require("../assets/images/Services/Lawyers.png"),
+          },
+        },
+        2: {
+          5: {
+            id: 5,
+            name: "Contracting",
+            src: require("../assets/images/Services/Contracting.jpg"),
+          },
+        },
+        max_pages: 2,
+      },
       current_page: 1,
+      current_page_2: 1,
+      current_page_3: 1,
     };
   },
   components: {
     Icon,
   },
   methods: {
-    slide() {
-      var el = document.querySelector(".mixed-array-demo  .el-01");
+    swap_btn_for(id) {
+      if (id == 1) {
+        if (this.current_page_2 == this.special_citys.max_pages) {
+          this.current_page_2 = 1;
+          const ele = document.getElementById("id" + this.current_page_2);
+          const ele2 = document.getElementById(
+            "id" + this.special_citys.max_pages
+          );
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(2);
+        } else {
+          const ele2 = document.getElementById(
+            "id" + this.special_citys.max_pages
+          );
+          this.current_page_2++;
+          const ele = document.getElementById("id" + this.current_page_2);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(2);
+        }
+      }
+      if (id == 2) {
+        if (this.current_page_3 == this.services.max_pages) {
+          this.current_page_3 = 1;
+          const ele = document.getElementById("id2" + this.current_page_3);
+          const ele2 = document.getElementById("id2" + this.services.max_pages);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(3);
+        } else {
+          const ele2 = document.getElementById("id2" + this.services.max_pages);
+          this.current_page_3++;
+          const ele = document.getElementById("id2" + this.current_page_3);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(3);
+        }
+      }
+    },
+    swap_btn_back(id) {
+      if (id == 1) {
+        if (this.current_page_2 == 1) {
+          this.current_page_2 = this.special_citys.max_pages;
+          const ele = document.getElementById("id" + this.current_page_2);
+          const ele2 = document.getElementById("id" + 1);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(2);
+        } else {
+          const ele2 = document.getElementById(
+            "id" + this.special_citys.max_pages
+          );
+          this.current_page_2--;
+          const ele = document.getElementById("id" + this.current_page_2);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(2);
+        }
+      }
+      if (id == 2) {
+        if (this.current_page_3 == 1) {
+          this.current_page_3 = this.services.max_pages;
+          const ele = document.getElementById("id2" + this.current_page_3);
+          const ele2 = document.getElementById("id2" + 1);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(3);
+        } else {
+          const ele2 = document.getElementById("id2" + this.services.max_pages);
+          this.current_page_3--;
+          const ele = document.getElementById("id2" + this.current_page_3);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(3);
+        }
+      }
+    },
+    slide(id) {
+      if (id == 1) {
+        var el = document.querySelector(".mixed-array-demo  .el-01");
 
-      anime({
-        targets: [el, ".mixed-array-demo  .el-01", ".mixed-array-demo  .el-01"],
-        keyframes: [
-          { translateX: "-200%" },
-          { translateY: "-500%" },
-          { translateX: "200%" },
-          { translateY: "0%" },
-          { translateX: "0%" },
-        ],
-        duration: 1000,
-        easing: "easeInOutQuad",
-      });
+        anime({
+          targets: [
+            el,
+            ".mixed-array-demo  .el-01",
+            ".mixed-array-demo  .el-01",
+          ],
+          keyframes: [
+            { translateX: "-200%" },
+            { translateY: "-500%" },
+            { translateX: "200%" },
+            { translateY: "0%" },
+            { translateX: "0%" },
+          ],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      } else if (id == 2) {
+        var el2 = document.querySelector(".mixed-array-demo  .el-02");
+
+        anime({
+          targets: [
+            el2,
+            ".mixed-array-demo  .el-02",
+            ".mixed-array-demo  .el-02",
+          ],
+          keyframes: [
+            { translateX: "-200%" },
+            { translateY: "-500%" },
+            { translateX: "200%" },
+            { translateY: "0%" },
+            { translateX: "0%" },
+          ],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      } else if (id == 3) {
+        var el3 = document.querySelector(".mixed-array-demo  .el-03");
+
+        anime({
+          targets: [
+            el3,
+            ".mixed-array-demo  .el-03",
+            ".mixed-array-demo  .el-03",
+          ],
+          keyframes: [
+            { translateX: "-200%" },
+            { translateY: "-500%" },
+            { translateX: "200%" },
+            { translateY: "0%" },
+            { translateX: "0%" },
+          ],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      }
     },
     show_hide_dropdown() {
       const element = document.getElementById("type_drop");
