@@ -177,6 +177,7 @@ body {
   color: #2c3e50;
   font-family: var(--font);
   background-color: #eeeeee;
+  width: 100dvw;
 }
 
 nav {

@@ -210,7 +210,7 @@
                     width="25"
                     height="25"
                   />
-                  {{ choosen_type }}
+                  Type
                   <Icon :icon="icon3" color="#585858" width="25" height="25" />
                 </button>
                 <ul class="dropdown-menu" id="type_drop" style="width: 700px">
@@ -279,19 +279,21 @@
                     <div class="row">
                       <div
                         class="col-4 my-3"
-                        v-for="item_type in types"
+                        v-for="(item_type, index) in types[page]"
                         v-bind:key="item_type.id"
                       >
                         <div class="card" style="height: 90px; width: 90%">
                           <button
                             type="button"
+                            :id="item_type.name + item_type.id"
                             class="realest_type d-flex justify-content-center align-items-center"
-                            style="
-                              border: none;
-                              border-radius: 5px;
-                              height: 100%;
-                            "
-                            @click="choosen_type = item_type.name"
+                            :style="{
+                              border: 'none',
+                              borderRadius: '5px',
+                              height: '100%',
+                              color: item_type.color,
+                            }"
+                            @click="choose_type(index, item_type.name)"
                           >
                             <div>
                               <div class="card-img-top">
@@ -465,7 +467,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="margin-bottom: 150px">
               <button type="submit" class="home-btn">SEARCH</button>
             </div>
           </div>
@@ -481,7 +483,45 @@
         <div class="container portfolio-details">
           <section>
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div
+                class="swiper-wrapper align-items-center"
+                style="width: 1343px"
+              >
+                <div
+                  class="parent"
+                  style="
+                    position: absolute;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    height: 480px;
+                    right: 75px;
+                  "
+                >
+                  <button
+                    type="button"
+                    class="d-flex justify-content-center align-items-center"
+                    style="
+                      background-color: rgba(255, 255, 255, 0.86);
+                      height: 50px;
+                      width: 50px;
+                      z-index: 2;
+                      border-radius: 50%;
+                      border: none;
+                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    "
+                    @click="swap_btn_back(3)"
+                  >
+                    <Icon
+                      icon="ep:arrow-left-bold"
+                      height="24"
+                      width="24"
+                      color="#E57C23"
+                    />
+                  </button>
+                </div>
                 <div
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
@@ -490,12 +530,20 @@
                       v-for="latest_offer in latest_offers[current_page]"
                       v-bind:key="latest_offer.id"
                       class="card mb-5 mx-3"
-                      style="height: 480px; border-radius: 10px; width: 325px"
+                      style="
+                        height: 480px;
+                        border-radius: 10px;
+                        width: fit-content;
+                      "
                     >
                       <img
                         :src="latest_offer.src"
                         class="card-top-img"
-                        style="border-radius: 10px; width: 100%; height: 229px"
+                        style="
+                          border-radius: 10px;
+                          width: fit-content;
+                          height: 170px;
+                        "
                       />
                       <div class="card-title">
                         <div class="row">
@@ -534,8 +582,8 @@
                                 <p style="font-size: 12px">
                                   <Icon
                                     icon="ic:sharp-space-dashboard"
-                                    height="18"
-                                    width="18"
+                                    height="15"
+                                    width="15"
                                   />
                                   {{ latest_offer.space }}
                                 </p>
@@ -544,15 +592,15 @@
                                 <p style="font-size: 12px">
                                   <Icon
                                     icon="bx:current-location"
-                                    height="18"
-                                    width="18"
+                                    height="15"
+                                    width="15"
                                   />
                                   {{ latest_offer.type }}
                                 </p>
                               </div>
                               <div class="col-6">
                                 <p style="font-size: 12px">
-                                  <Icon icon="mdi:bed" height="18" width="18" />
+                                  <Icon icon="mdi:bed" height="15" width="15" />
                                   Bedrooms: {{ latest_offer.beedrooms }}
                                 </p>
                               </div>
@@ -560,8 +608,8 @@
                                 <p style="font-size: 12px">
                                   <Icon
                                     icon="fa6-solid:bath"
-                                    height="18"
-                                    width="18"
+                                    height="15"
+                                    width="15"
                                   />
                                   Bathrooms: {{ latest_offer.bathrooms }}
                                 </p>
@@ -569,11 +617,11 @@
                               <div class="col-6"></div>
                             </div>
                           </div>
-                          <div class="col-3">
+                          <div class="col-2 d-flex justify-content-center">
                             <img
                               src="../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"
                               class="card-img"
-                              style="height: 45px; width: 55.5px"
+                              style="height: 50px; width: 69px"
                               alt=""
                             />
                           </div>
@@ -597,6 +645,42 @@
                         >
                       </div>
                     </div>
+                  </div>
+                  <div
+                    class="parent"
+                    style="
+                      position: absolute;
+                      display: flex;
+                      justify-content: end;
+                      align-items: center;
+                      height: 480px;
+                      width: 1343px;
+                      left: 140px;
+                    "
+                  >
+                    <button
+                      type="button"
+                      class="d-flex justify-content-center align-items-center"
+                      style="
+                        background-color: rgba(255, 255, 255, 0.86);
+                        height: 50px;
+                        width: 50px;
+                        z-index: 2;
+                        border-radius: 50%;
+                        border: none;
+                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      "
+                      @click="swap_btn_for(3)"
+                    >
+                      <Icon
+                        icon="ep:arrow-right-bold"
+                        height="24"
+                        width="24"
+                        color="#E57C23"
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -630,6 +714,7 @@
                         v-if="element != latest_offers.max_pages"
                         type="radio"
                         name="pagi"
+                        :id="'id3' + index"
                         :value="index"
                         :checked="index == 1 ? true : false"
                         v-model="current_page"
@@ -651,45 +736,49 @@
         <div class="container portfolio-details">
           <section>
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div
+                class="swiper-wrapper align-items-center"
+                style="width: 1343px"
+              >
+                <div
+                  class="parent"
+                  style="
+                    position: absolute;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    height: 281px;
+                    right: 75px;
+                  "
+                >
+                  <button
+                    type="button"
+                    class="d-flex justify-content-center align-items-center"
+                    style="
+                      background-color: rgba(255, 255, 255, 0.86);
+                      height: 50px;
+                      width: 50px;
+                      z-index: 2;
+                      border-radius: 50%;
+                      border: none;
+                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    "
+                    @click="swap_btn_back(1)"
+                  >
+                    <Icon
+                      icon="ep:arrow-left-bold"
+                      height="24"
+                      width="24"
+                      color="#E57C23"
+                    />
+                  </button>
+                </div>
                 <div
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
-                  <div class="d-flex el-02" style="width: max-content">
-                    <div
-                      style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                        height: 281px;
-                      "
-                    >
-                      <button
-                        class="d-flex justify-content-center align-items-center"
-                        type="button"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
-                        @click="swap_btn_back(1)"
-                      >
-                        <Icon
-                          icon="ep:arrow-left-bold"
-                          height="24"
-                          width="24"
-                          color="#E57C23"
-                        />
-                      </button>
-                    </div>
+                  <div class="d-flex el-02">
                     <div
                       v-for="special_city in special_citys[current_page_2]"
                       v-bind:key="special_city.id"
@@ -714,8 +803,8 @@
                           class="card-top-img card-img"
                           style="
                             border-radius: 30px;
-                            width: 342px;
-                            height: 281px;
+                            width: 303px;
+                            height: 250px;
                             opacity: 0.3;
                           "
                         />
@@ -748,41 +837,41 @@
                         </div>
                       </label>
                     </div>
-                    <div
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      display: flex;
+                      justify-content: end;
+                      align-items: center;
+                      height: 281px;
+                      width: 1343px;
+                      left: 140px;
+                    "
+                  >
+                    <button
+                      type="button"
+                      class="d-flex justify-content-center align-items-center"
                       style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: end;
-                        align-items: center;
-                        height: 281px;
-                        width: 1496px;
+                        background-color: rgba(255, 255, 255, 0.86);
+                        height: 50px;
+                        width: 50px;
+                        z-index: 2;
+                        border-radius: 50%;
+                        border: none;
+                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
                       "
+                      @click="swap_btn_for(1)"
                     >
-                      <button
-                        type="button"
-                        class="d-flex justify-content-center align-items-center"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
-                        @click="swap_btn_for(1)"
-                      >
-                        <Icon
-                          icon="ep:arrow-right-bold"
-                          height="24"
-                          width="24"
-                          color="#E57C23"
-                        />
-                      </button>
-                    </div>
+                      <Icon
+                        icon="ep:arrow-right-bold"
+                        height="24"
+                        width="24"
+                        color="#E57C23"
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -815,105 +904,119 @@
       <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
         Best services
       </p>
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="d-flex jutify-content-center align-items-center">
-          <div
-            class="swiper-slide d-flex justify-content-center mixed-array-demo"
-          >
-            <div class="d-flex el-03" style="width: 1280px">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="container portfolio-details">
+          <section>
+            <div class="portfolio-details-slider swiper">
               <div
-                style="
-                  position: absolute;
-                  display: flex;
-                  justify-content: start;
-                  align-items: center;
-                  height: 281px;
-                "
+                class="swiper-wrapper align-items-center"
+                style="width: 1343px"
               >
-                <button
-                  class="d-flex justify-content-center align-items-center"
-                  type="button"
+                <div
+                  class="parent"
                   style="
-                    background-color: rgba(255, 255, 255, 0.86);
-                    height: 50px;
-                    width: 50px;
-                    z-index: 2;
-                    border-radius: 50%;
-                    border: none;
-                    -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    position: absolute;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    height: 281px;
+                    right: 75px;
                   "
-                  @click="swap_btn_back(2)"
                 >
-                  <Icon
-                    icon="ep:arrow-left-bold"
-                    height="24"
-                    width="24"
-                    color="#E57C23"
-                  />
-                </button>
-              </div>
-              <div
-                class="card mb-5 mx-3"
-                style="
-                  border-radius: 30px;
-                  width: fit-content;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  background: white;
-                  border: none;
-                "
-                v-for="service in services[current_page_3]"
-                v-bind:key="service.id"
-              >
-                <img
-                  :src="service.src"
-                  alt=""
-                  class="card-top-img"
-                  style="width: 288px; height: 180px; border-radius: 30px"
-                />
-                <div class="my-4" style="font-size: 24px; font-weight: medium">
-                  {{ service.name }}
+                  <button
+                    type="button"
+                    class="d-flex justify-content-center align-items-center"
+                    style="
+                      background-color: rgba(255, 255, 255, 0.86);
+                      height: 50px;
+                      width: 50px;
+                      z-index: 2;
+                      border-radius: 50%;
+                      border: none;
+                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                    "
+                    @click="swap_btn_back(2)"
+                  >
+                    <Icon
+                      icon="ep:arrow-left-bold"
+                      height="24"
+                      width="24"
+                      color="#E57C23"
+                    />
+                  </button>
+                </div>
+                <div
+                  class="swiper-slide d-flex justify-content-center mixed-array-demo"
+                >
+                  <div class="d-flex el-03">
+                    <div
+                      class="card mb-5 mx-3"
+                      style="
+                        border-radius: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: white;
+                        border: none;
+                        width: fit-content;
+                      "
+                      v-for="service in services[current_page_3]"
+                      v-bind:key="service.id"
+                    >
+                      <img
+                        :src="service.src"
+                        alt=""
+                        class="card-top-img"
+                        style="width: 303px; height: 200px; border-radius: 30px"
+                      />
+                      <div
+                        class="my-4"
+                        style="font-size: 24px; font-weight: medium"
+                      >
+                        {{ service.name }}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="parent"
+                    style="
+                      position: absolute;
+                      display: flex;
+                      justify-content: end;
+                      align-items: center;
+                      height: 281px;
+                    "
+                  >
+                    <button
+                      type="button"
+                      class="d-flex justify-content-center align-items-center"
+                      style="
+                        background-color: rgba(255, 255, 255, 0.86);
+                        height: 50px;
+                        width: 50px;
+                        z-index: 2;
+                        border-radius: 50%;
+                        border: none;
+                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      "
+                      @click="swap_btn_for(2)"
+                    >
+                      <Icon
+                        icon="ep:arrow-right-bold"
+                        height="24"
+                        width="24"
+                        color="#E57C23"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div
-                style="
-                  position: absolute;
-                  display: flex;
-                  justify-content: end;
-                  align-items: center;
-                  height: 281px;
-                  width: 1280px;
-                "
-              >
-                <button
-                  type="button"
-                  class="d-flex justify-content-center align-items-center"
-                  style="
-                    background-color: rgba(255, 255, 255, 0.86);
-                    height: 50px;
-                    width: 50px;
-                    z-index: 2;
-                    border-radius: 50%;
-                    border: none;
-                    -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                  "
-                  @click="swap_btn_for(2)"
-                >
-                  <Icon
-                    icon="ep:arrow-right-bold"
-                    height="24"
-                    width="24"
-                    color="#E57C23"
-                  />
-                </button>
-              </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
       <div class="mb-5">
@@ -991,24 +1094,99 @@ export default {
       space: "",
       rooms: "",
       baths: "",
-      choosen_type: "Type",
-      types: [
-        {
-          id: 1,
-          name: "Agricultural Land",
-          icon: "mdi:beach",
+      choosen_type: [],
+      types: {
+        1: {
+          1: {
+            id: 1,
+            name: "Agricultural Land",
+            icon: "mdi:beach",
+            color: "black",
+          },
+          2: {
+            id: 2,
+            name: "Agricultural House",
+            icon: "simple-icons:homeassistant",
+            color: "black",
+          },
+          3: {
+            id: 3,
+            name: "Farm",
+            icon: "game-icons:ground-sprout",
+            color: "black",
+          },
         },
-        {
-          id: 2,
-          name: "Agricultural House",
-          icon: "simple-icons:homeassistant",
+        2: {
+          1: {
+            id: 1,
+            name: "Office",
+            icon: "ph:office-chair-fill",
+          },
+          2: {
+            id: 2,
+            name: "Hotel",
+            icon: "ri:hotel-line",
+          },
+          3: {
+            id: 3,
+            name: "Commercial appartment",
+            icon: "ic:baseline-apartment",
+          },
+          4: {
+            id: 4,
+            name: "Commercial land",
+            icon: "emojione-monotone:umbrella-on-ground",
+          },
+          5: {
+            id: 5,
+            name: "Commercial house",
+            icon: "game-icons:house",
+          },
+          6: {
+            id: 6,
+            name: "Commercial building",
+            icon: "fa6-solid:building",
+          },
+          7: {
+            id: 7,
+            name: "Commercial warehouse",
+            icon: "nimbus:store",
+          },
+          8: {
+            id: 8,
+            name: "Commercial Shop",
+            icon: "solar:shop-2-bold",
+          },
+          9: {
+            id: 9,
+            name: "Commercial Floor",
+            icon: "mdi:floor-plan",
+          },
         },
-        {
-          id: 3,
-          name: "Farm",
-          icon: "game-icons:ground-sprout",
+        3: {
+          1: {
+            id: 1,
+            name: "Villa",
+            icon: "material-symbols:villa-rounded",
+          },
+          2: {
+            id: 2,
+            name: "Home",
+            icon: "ic:round-house",
+          },
+          3: {
+            id: 3,
+            name: "Appartment",
+            icon: "fluent-emoji-high-contrast:department-store",
+          },
+          4: {
+            id: 4,
+            name: "Residential land",
+            icon: "maki:residential-community",
+          },
         },
-      ],
+      },
+      page: 1,
       Text1:
         "Welcome to Betonna, the ideal destination for selling and renting real estate in Iraq. Explore our wide range of diverse options, and get a chance to get your dream home. We are here to fulfill your real estate desires.",
       flag: 0,
@@ -1128,6 +1306,28 @@ export default {
             bathrooms: "2",
             src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
           },
+          11: {
+            id: 11,
+            name: "Exterior flat11",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
+          12: {
+            id: 12,
+            name: "Exterior flat12",
+            price: "60,000$",
+            location: "Arbeel, central park",
+            space: "156m2",
+            type: "sell",
+            beedrooms: "4",
+            bathrooms: "2",
+            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+          },
         },
         max_pages: 3,
       },
@@ -1215,6 +1415,21 @@ export default {
             name: "Contracting",
             src: require("../assets/images/Services/Contracting.jpg"),
           },
+          6: {
+            id: 6,
+            name: "Plumbing",
+            src: require("../assets/images/Services/plumbing.jpg"),
+          },
+          7: {
+            id: 7,
+            name: "Construction workers",
+            src: require("../assets/images/Services/construction workers.jpg"),
+          },
+          8: {
+            id: 8,
+            name: "Security services",
+            src: require("../assets/images/Services/Security services.jpg"),
+          },
         },
         max_pages: 2,
       },
@@ -1227,6 +1442,16 @@ export default {
     Icon,
   },
   methods: {
+    choose_type(id, name) {
+      const index = this.choosen_type.findIndex((med) => med.name === name);
+      if (index > -1) {
+        this.choosen_type.splice(index, 1);
+        this.types[this.page][id].color = "black";
+      } else {
+        this.choosen_type.push({ name });
+        this.types[this.page][id].color = "#e57c23";
+      }
+    },
     swap_btn_for(id) {
       if (id == 1) {
         if (this.current_page_2 == this.special_citys.max_pages) {
@@ -1264,6 +1489,27 @@ export default {
           ele.setAttribute("checked", true);
           ele2.removeAttribute("checked");
           this.slide(3);
+        }
+      }
+      if (id == 3) {
+        if (this.current_page == this.latest_offers.max_pages) {
+          this.current_page = 1;
+          const ele = document.getElementById("id3" + this.current_page);
+          const ele2 = document.getElementById(
+            "id3" + this.latest_offers.max_pages
+          );
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(1);
+        } else {
+          const ele2 = document.getElementById(
+            "id3" + this.latest_offers.max_pages
+          );
+          this.current_page++;
+          const ele = document.getElementById("id3" + this.current_page);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(1);
         }
       }
     },
@@ -1304,6 +1550,25 @@ export default {
           this.slide(3);
         }
       }
+      if (id == 3) {
+        if (this.current_page == 1) {
+          this.current_page = this.latest_offers.max_pages;
+          const ele = document.getElementById("id3" + this.current_page);
+          const ele2 = document.getElementById("id3" + 1);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(1);
+        } else {
+          const ele2 = document.getElementById(
+            "id3" + this.latest_offers.max_pages
+          );
+          this.current_page--;
+          const ele = document.getElementById("id3" + this.current_page);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(1);
+        }
+      }
     },
     slide(id) {
       if (id == 1) {
@@ -1317,7 +1582,7 @@ export default {
           ],
           keyframes: [
             { translateX: "-200%" },
-            { translateY: "-500%" },
+            { translateY: "-2000%" },
             { translateX: "200%" },
             { translateY: "0%" },
             { translateX: "0%" },
@@ -1336,7 +1601,7 @@ export default {
           ],
           keyframes: [
             { translateX: "-200%" },
-            { translateY: "-500%" },
+            { translateY: "-2000%" },
             { translateX: "200%" },
             { translateY: "0%" },
             { translateX: "0%" },
@@ -1355,7 +1620,7 @@ export default {
           ],
           keyframes: [
             { translateX: "-200%" },
-            { translateY: "-500%" },
+            { translateY: "-2000%" },
             { translateX: "200%" },
             { translateY: "0%" },
             { translateX: "0%" },
@@ -1495,111 +1760,38 @@ export default {
     changetype(x) {
       switch (x) {
         case 1:
-          this.types = [
-            {
-              id: 1,
-              name: "Agricultural Land",
-              icon: "mdi:beach",
-            },
-            {
-              id: 2,
-              name: "Agricultural House",
-              icon: "simple-icons:homeassistant",
-            },
-            {
-              id: 3,
-              name: "Farm",
-              icon: "game-icons:ground-sprout",
-            },
-          ];
+          this.page = x;
           this.color1 = "#e57c23";
           this.color2 = "black";
           this.color3 = "black";
           break;
         case 2:
-          this.types = [
-            {
-              id: 1,
-              name: "Office",
-              icon: "ph:office-chair-fill",
-            },
-            {
-              id: 2,
-              name: "Hotel",
-              icon: "ri:hotel-line",
-            },
-            {
-              id: 3,
-              name: "Commercial appartment",
-              icon: "ic:baseline-apartment",
-            },
-            {
-              id: 4,
-              name: "Commercial land",
-              icon: "emojione-monotone:umbrella-on-ground",
-            },
-            {
-              id: 5,
-              name: "Commercial house",
-              icon: "game-icons:house",
-            },
-            {
-              id: 6,
-              name: "Commercial building",
-              icon: "fa6-solid:building",
-            },
-            {
-              id: 7,
-              name: "Commercial warehouse",
-              icon: "nimbus:store",
-            },
-            {
-              id: 8,
-              name: "Commercial Shop",
-              icon: "solar:shop-2-bold",
-            },
-            {
-              id: 9,
-              name: "Commercial Floor",
-              icon: "mdi:floor-plan",
-            },
-          ];
+          this.page = x;
           this.color1 = "black";
           this.color2 = "#e57c23";
           this.color3 = "black";
           break;
         case 3:
-          this.types = [
-            {
-              id: 1,
-              name: "Villa",
-              icon: "material-symbols:villa-rounded",
-            },
-            {
-              id: 2,
-              name: "Home",
-              icon: "ic:round-house",
-            },
-            {
-              id: 3,
-              name: "Appartment",
-              icon: "fluent-emoji-high-contrast:department-store",
-            },
-            {
-              id: 4,
-              name: "Residential land",
-              icon: "maki:residential-community",
-            },
-          ];
+          this.page = x;
           this.color1 = "black";
           this.color2 = "black";
           this.color3 = "#e57c23";
           break;
       }
     },
+    swiper() {
+      this.swap_btn_for(1);
+      this.swap_btn_for(2);
+      this.swap_btn_for(3);
+      setTimeout(() => {
+        this.swiper();
+      }, 10000);
+    },
   },
   mounted() {
-    console.log(this.latest_offers);
+    setTimeout(() => {
+      this.swiper();
+    }, 10000);
   },
 };
 </script>
@@ -1757,6 +1949,14 @@ div .dropdown-item:hover {
   height: 20px;
   background: #e57c23;
   content: "";
+}
+
+.parent {
+  width: 1343px;
+}
+
+.child {
+  width: 303px;
 }
 
 @media screen and (max-width: 700px) {
