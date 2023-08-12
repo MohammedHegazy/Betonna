@@ -526,125 +526,20 @@
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
                   <div class="d-flex el-01">
-                    <div
+                    <RealestateCard
                       v-for="latest_offer in latest_offers[current_page]"
                       v-bind:key="latest_offer.id"
-                      class="card mb-5 mx-3"
-                      style="
-                        height: 480px;
-                        border-radius: 10px;
-                        width: fit-content;
-                      "
-                    >
-                      <img
-                        :src="latest_offer.src"
-                        class="card-top-img"
-                        style="
-                          border-radius: 10px;
-                          width: fit-content;
-                          height: 170px;
-                        "
-                      />
-                      <div class="card-title">
-                        <div class="row">
-                          <div
-                            class="col-6 mt-3"
-                            style="font-size: 20px; font-weight: 600"
-                          >
-                            {{ latest_offer.name }}
-                          </div>
-                          <div
-                            class="col-6 mt-3"
-                            style="color: #e57c23; font-size: 20px"
-                          >
-                            {{ latest_offer.price }}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="card-text text-start ms-3 mt-2"
-                        style="color: #585858"
-                      >
-                        <Icon
-                          icon="material-symbols:location-on-rounded"
-                          height="24"
-                          width="24"
-                        />{{ latest_offer.location }}
-                      </div>
-                      <div
-                        class="card-text text-start ms-3 mt-2"
-                        style="color: #585858"
-                      >
-                        <div class="row mt-4">
-                          <div class="col-9">
-                            <div class="row">
-                              <div class="col-6">
-                                <p style="font-size: 12px">
-                                  <Icon
-                                    icon="ic:sharp-space-dashboard"
-                                    height="15"
-                                    width="15"
-                                  />
-                                  {{ latest_offer.space }}
-                                </p>
-                              </div>
-                              <div class="col-6">
-                                <p style="font-size: 12px">
-                                  <Icon
-                                    icon="bx:current-location"
-                                    height="15"
-                                    width="15"
-                                  />
-                                  {{ latest_offer.type }}
-                                </p>
-                              </div>
-                              <div class="col-6">
-                                <p style="font-size: 12px">
-                                  <Icon icon="mdi:bed" height="15" width="15" />
-                                  Bedrooms: {{ latest_offer.beedrooms }}
-                                </p>
-                              </div>
-                              <div class="col-6">
-                                <p style="font-size: 12px">
-                                  <Icon
-                                    icon="fa6-solid:bath"
-                                    height="15"
-                                    width="15"
-                                  />
-                                  Bathrooms: {{ latest_offer.bathrooms }}
-                                </p>
-                              </div>
-                              <div class="col-6"></div>
-                            </div>
-                          </div>
-                          <div class="col-2 d-flex justify-content-center">
-                            <img
-                              src="../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"
-                              class="card-img"
-                              style="height: 50px; width: 69px"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="card-text d-flex justify-content-center align-items-center"
-                      >
-                        <router-link
-                          to="/"
-                          class="btn d-flex justify-content-center align-items-center"
-                          style="
-                            width: 180px;
-                            height: 51px;
-                            border-radius: 5px;
-                            font-weight: 300;
-                            background-color: #e57c23;
-                            color: white;
-                          "
-                          >More information</router-link
-                        >
-                      </div>
-                    </div>
+                      :id="latest_offer.id"
+                      :name="latest_offer.name"
+                      :price="latest_offer.price"
+                      :location="latest_offer.location"
+                      :space="latest_offer.space"
+                      :type="latest_offer.type"
+                      :bedrooms="latest_offer.beedrooms"
+                      :bathrooms="latest_offer.bathrooms"
+                      :src="latest_offer.src"
+                      :logo="latest_offer.logo"
+                    ></RealestateCard>
                   </div>
                   <div
                     class="parent"
@@ -705,7 +600,7 @@
                       All offers</router-link
                     >
                   </div>
-                  <div class="col-8">
+                  <div class="col-8 d-flex justify-content-center">
                     <span
                       class="mx-2 radio-item radio-item-swiper"
                       v-for="(element, index) in latest_offers"
@@ -779,64 +674,13 @@
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
                   <div class="d-flex el-02">
-                    <div
+                    <SpecialcitiesCard
                       v-for="special_city in special_citys[current_page_2]"
                       v-bind:key="special_city.id"
-                      class="card mb-5 mx-3"
-                      style="
-                        height: fit-content;
-                        border-radius: 30px;
-                        width: fit-content;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: linear-gradient(
-                          rgba(0, 0, 0, 0.62),
-                          #2c2b2b
-                        );
-                        border: none;
-                      "
-                    >
-                      <div class="card-img-top">
-                        <img
-                          :src="special_city.src"
-                          class="card-top-img card-img"
-                          style="
-                            border-radius: 30px;
-                            width: 303px;
-                            height: 250px;
-                            opacity: 0.3;
-                          "
-                        />
-                      </div>
-                      <label
-                        style="position: absolute; z-index: 2; color: white"
-                      >
-                        <div style="font-size: 30px">
-                          {{ special_city.name }}
-                        </div>
-                        <div style="font-size: 25px" class="mb-3">
-                          {{ special_city.real_estates }} real estate
-                        </div>
-                        <div
-                          class="card-text d-flex justify-content-center align-items-center"
-                        >
-                          <router-link
-                            to="/"
-                            class="btn d-flex justify-content-center align-items-center"
-                            style="
-                              width: 180px;
-                              height: 51px;
-                              border-radius: 5px;
-                              font-weight: 300;
-                              background-color: #e57c23;
-                              color: white;
-                            "
-                            >More information</router-link
-                          >
-                        </div>
-                      </label>
-                    </div>
+                      :id="special_city.id"
+                      :name="special_city.name"
+                      :src="special_city.src"
+                    ></SpecialcitiesCard>
                   </div>
                   <div
                     style="
@@ -900,7 +744,7 @@
         </div>
       </div>
     </div>
-    <div class="best-services">
+    <div class="best-services mb-5">
       <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
         Best services
       </p>
@@ -951,33 +795,13 @@
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
                   <div class="d-flex el-03">
-                    <div
-                      class="card mb-5 mx-3"
-                      style="
-                        border-radius: 30px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: white;
-                        border: none;
-                        width: fit-content;
-                      "
+                    <ServicesCard
                       v-for="service in services[current_page_3]"
                       v-bind:key="service.id"
-                    >
-                      <img
-                        :src="service.src"
-                        alt=""
-                        class="card-top-img"
-                        style="width: 303px; height: 200px; border-radius: 30px"
-                      />
-                      <div
-                        class="my-4"
-                        style="font-size: 24px; font-weight: medium"
-                      >
-                        {{ service.name }}
-                      </div>
-                    </div>
+                      :id="service.id"
+                      :name="service.name"
+                      :src="service.src"
+                    ></ServicesCard>
                   </div>
                   <div
                     class="parent"
@@ -987,6 +811,8 @@
                       justify-content: end;
                       align-items: center;
                       height: 281px;
+                      width: 1343px;
+                      left: 140px;
                     "
                   >
                     <button
@@ -1019,7 +845,7 @@
           </section>
         </div>
       </div>
-      <div class="mb-5">
+      <div class="mb-5" style="padding-bottom: 100px">
         <div class="row">
           <div class="col-2">
             <router-link
@@ -1040,7 +866,7 @@
               See All</router-link
             >
           </div>
-          <div class="col-8">
+          <div class="col-8 d-flex justify-content-center">
             <span
               class="mx-2 radio-item radio-item-swiper"
               v-for="(element, index) in services"
@@ -1059,12 +885,167 @@
         </div>
       </div>
     </div>
+    <div style="width: 100dvw; background-color: #ffffff">
+      <div class="special-realestates-companies pt-5">
+        <p
+          class="mt-5 text-start ms-5"
+          style="font-size: 25px; font-weight: 600; margin-bottom: 100px"
+        >
+          Distinguished real estate companies
+        </p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="container portfolio-details">
+            <section>
+              <div class="portfolio-details-slider swiper">
+                <div
+                  class="swiper-wrapper align-items-center"
+                  style="width: 1343px"
+                >
+                  <div
+                    class="parent"
+                    style="
+                      position: absolute;
+                      display: flex;
+                      justify-content: start;
+                      align-items: center;
+                      height: 220px;
+                      right: 75px;
+                    "
+                  >
+                    <button
+                      type="button"
+                      class="d-flex justify-content-center align-items-center"
+                      style="
+                        background-color: rgba(255, 255, 255, 0.86);
+                        height: 50px;
+                        width: 50px;
+                        z-index: 2;
+                        border-radius: 50%;
+                        border: none;
+                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                      "
+                      @click="swap_btn_back(2)"
+                    >
+                      <Icon
+                        icon="ep:arrow-left-bold"
+                        height="24"
+                        width="24"
+                        color="#E57C23"
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class="swiper-slide d-flex justify-content-center mixed-array-demo"
+                  >
+                    <div class="d-flex el-04 mb-5">
+                      <CompaniesCard
+                        v-for="company in Companies[current_page_4]"
+                        v-bind:key="company.id"
+                        :id="company.id"
+                        :img1="company.img1"
+                        :img2="company.img2"
+                        :icon="company.icon"
+                        :name="company.name"
+                        :phone="company.phone"
+                        :email="company.email"
+                      ></CompaniesCard>
+                    </div>
+                    <div
+                      class="parent"
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        height: 220px;
+                        width: 1343px;
+                        left: 140px;
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="d-flex justify-content-center align-items-center"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_for(2)"
+                      >
+                        <Icon
+                          icon="ep:arrow-right-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="mb-5">
+          <div class="row">
+            <div class="col-2">
+              <router-link
+                to="/"
+                style="color: black; text-decoration: underline #e57c23"
+                ><Icon
+                  icon="material-symbols:arrow-back-rounded"
+                  class="mx-2"
+                  height="18"
+                  width="18"
+                  style="
+                    color: #e57c23;
+                    background-color: white;
+                    border-radius: 50%;
+                    border: solid 1px #e57c23;
+                  "
+                />
+                See All</router-link
+              >
+            </div>
+            <div class="col-8 d-flex justify-content-center">
+              <span
+                class="mx-2 radio-item radio-item-swiper"
+                v-for="(element, index) in Companies"
+                v-bind:key="index"
+                ><input
+                  v-if="element != Companies.max_pages"
+                  type="radio"
+                  name="distinguished-real-estate-companies"
+                  :id="'id2' + index"
+                  :value="index"
+                  :checked="index == 1 ? true : false"
+                  v-model="current_page_4"
+                  @click="slide(3)"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { Icon } from "@iconify/vue";
 import anime from "animejs";
+import RealestateCard from "@/components/RealestateCard.vue";
+import SpecialcitiesCard from "@/components/SpecialcitiesCard.vue";
+import ServicesCard from "@/components/ServicesCard.vue";
+import CompaniesCard from "@/components/CompaniesCard.vue";
 
 export default {
   name: "HomeView",
@@ -1201,7 +1182,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           2: {
             id: 2,
@@ -1212,7 +1194,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           3: {
             id: 3,
@@ -1223,7 +1206,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           4: {
             id: 4,
@@ -1234,7 +1218,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
         },
         2: {
@@ -1247,7 +1232,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           6: {
             id: 6,
@@ -1258,7 +1244,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           7: {
             id: 7,
@@ -1269,7 +1256,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           8: {
             id: 8,
@@ -1280,7 +1268,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
         },
         3: {
@@ -1293,7 +1282,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           10: {
             id: 10,
@@ -1304,7 +1294,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           11: {
             id: 11,
@@ -1315,7 +1306,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
           12: {
             id: 12,
@@ -1326,7 +1318,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
-            src: require("../assets/images/antonovich-design-thumb20226jT4labATjDg.jpg"),
+            src: require("../assets/images/Exterior flat/Exterior.jpg"),
+            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
         },
         max_pages: 3,
@@ -1433,13 +1426,135 @@ export default {
         },
         max_pages: 2,
       },
+      Companies: {
+        1: {
+          1: {
+            id: 1,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          2: {
+            id: 2,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          3: {
+            id: 3,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          4: {
+            id: 4,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        2: {
+          5: {
+            id: 5,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          6: {
+            id: 6,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          7: {
+            id: 7,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          8: {
+            id: 8,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        3: {
+          9: {
+            id: 9,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          10: {
+            id: 10,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          11: {
+            id: 11,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          12: {
+            id: 12,
+            img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            img2: require("../assets/images/مدالية_الذهبية.png"),
+            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+            name: "Tamim General Contracting Company",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        max_pages: 3,
+      },
       current_page: 1,
       current_page_2: 1,
       current_page_3: 1,
+      current_page_4: 1,
     };
   },
   components: {
     Icon,
+    RealestateCard,
+    SpecialcitiesCard,
+    ServicesCard,
+    CompaniesCard,
   },
   methods: {
     choose_type(id, name) {
