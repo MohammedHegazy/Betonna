@@ -27,7 +27,7 @@
         <div style="font-size: 25px" class="mb-3">
           {{ real_estates }} real estate
         </div>
-        <div class="card-text d-flex justify-content-center align-items-center">
+        <div class="card-text hidden">
           <router-link
             to="/"
             class="btn d-flex justify-content-center align-items-center"
@@ -58,3 +58,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.card .hidden {
+  transition: 0.5s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -10;
+}
+
+.card:hover .hidden {
+  transition: 0.5s ease-out;
+  opacity: 1;
+  z-index: 2;
+}
+</style>

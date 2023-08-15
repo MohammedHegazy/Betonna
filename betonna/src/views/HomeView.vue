@@ -480,7 +480,7 @@
       </p>
       <!-- slider -->
       <div class="d-flex justify-content-center align-items-center">
-        <div class="container portfolio-details">
+        <div class="container portfolio-details d-flex justify-content-center">
           <section>
             <div class="portfolio-details-slider swiper">
               <div
@@ -495,7 +495,7 @@
                     justify-content: start;
                     align-items: center;
                     height: 480px;
-                    right: 75px;
+                    right: 100px;
                   "
                 >
                   <button
@@ -525,7 +525,7 @@
                 <div
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
-                  <div class="d-flex el-01">
+                  <div class="d-flex el-01" style="z-index: 1">
                     <RealestateCard
                       v-for="latest_offer in latest_offers[current_page]"
                       v-bind:key="latest_offer.id"
@@ -550,7 +550,7 @@
                       align-items: center;
                       height: 480px;
                       width: 1343px;
-                      left: 140px;
+                      left: 115px;
                     "
                   >
                     <button
@@ -600,19 +600,23 @@
                       All offers</router-link
                     >
                   </div>
-                  <div class="col-8 d-flex justify-content-center">
+                  <div
+                    class="col-8 d-flex justify-content-center"
+                    style="height: 80px"
+                  >
                     <span
                       class="mx-2 radio-item radio-item-swiper"
                       v-for="(element, index) in latest_offers"
                       v-bind:key="index"
+                      :id="index == 2 ? 'id222' : 'id111'"
                       ><input
-                        v-if="element != latest_offers.max_pages"
                         type="radio"
                         name="pagi"
                         :id="'id3' + index"
                         :value="index"
                         :checked="index == 1 ? true : false"
                         v-model="current_page"
+                        v-if="element != latest_offers.max_pages"
                         @click="slide(1)"
                     /></span>
                   </div>
@@ -628,7 +632,7 @@
         Special Citys
       </p>
       <div class="d-flex justify-content-center align-items-center">
-        <div class="container portfolio-details">
+        <div class="container portfolio-details d-flex justify-content-center">
           <section>
             <div class="portfolio-details-slider swiper">
               <div
@@ -643,7 +647,7 @@
                     justify-content: start;
                     align-items: center;
                     height: 281px;
-                    right: 75px;
+                    right: 100px;
                   "
                 >
                   <button
@@ -673,7 +677,7 @@
                 <div
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
-                  <div class="d-flex el-02">
+                  <div class="d-flex el-02" style="z-index: 1">
                     <SpecialcitiesCard
                       v-for="special_city in special_citys[current_page_2]"
                       v-bind:key="special_city.id"
@@ -690,7 +694,7 @@
                       align-items: center;
                       height: 281px;
                       width: 1343px;
-                      left: 140px;
+                      left: 115px;
                     "
                   >
                     <button
@@ -744,12 +748,12 @@
         </div>
       </div>
     </div>
-    <div class="best-services mb-5">
+    <div class="best-services">
       <p class="mt-5 text-start ms-5" style="font-size: 25px; font-weight: 600">
         Best services
       </p>
       <div class="d-flex justify-content-center align-items-center">
-        <div class="container portfolio-details">
+        <div class="container d-flex justify-content-center portfolio-details">
           <section>
             <div class="portfolio-details-slider swiper">
               <div
@@ -764,7 +768,7 @@
                     justify-content: start;
                     align-items: center;
                     height: 281px;
-                    right: 75px;
+                    right: 100px;
                   "
                 >
                   <button
@@ -794,7 +798,7 @@
                 <div
                   class="swiper-slide d-flex justify-content-center mixed-array-demo"
                 >
-                  <div class="d-flex el-03">
+                  <div class="d-flex el-03" style="z-index: 1">
                     <ServicesCard
                       v-for="service in services[current_page_3]"
                       v-bind:key="service.id"
@@ -812,7 +816,7 @@
                       align-items: center;
                       height: 281px;
                       width: 1343px;
-                      left: 140px;
+                      left: 115px;
                     "
                   >
                     <button
@@ -894,7 +898,9 @@
           Distinguished real estate companies
         </p>
         <div class="d-flex justify-content-center align-items-center">
-          <div class="container portfolio-details">
+          <div
+            class="container d-flex justify-content-center portfolio-details"
+          >
             <section>
               <div class="portfolio-details-slider swiper">
                 <div
@@ -902,66 +908,17 @@
                   style="width: 1343px"
                 >
                   <div
-                    class="parent"
-                    style="
-                      position: absolute;
-                      display: flex;
-                      justify-content: start;
-                      align-items: center;
-                      height: 220px;
-                      right: 75px;
-                    "
-                  >
-                    <button
-                      type="button"
-                      class="d-flex justify-content-center align-items-center"
-                      style="
-                        background-color: rgba(255, 255, 255, 0.86);
-                        height: 50px;
-                        width: 50px;
-                        z-index: 2;
-                        border-radius: 50%;
-                        border: none;
-                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      "
-                      @click="swap_btn_back(2)"
-                    >
-                      <Icon
-                        icon="ep:arrow-left-bold"
-                        height="24"
-                        width="24"
-                        color="#E57C23"
-                      />
-                    </button>
-                  </div>
-                  <div
                     class="swiper-slide d-flex justify-content-center mixed-array-demo"
                   >
-                    <div class="d-flex el-04 mb-5">
-                      <CompaniesCard
-                        v-for="company in Companies[current_page_4]"
-                        v-bind:key="company.id"
-                        :id="company.id"
-                        :img1="company.img1"
-                        :img2="company.img2"
-                        :icon="company.icon"
-                        :name="company.name"
-                        :phone="company.phone"
-                        :email="company.email"
-                      ></CompaniesCard>
-                    </div>
                     <div
                       class="parent"
                       style="
                         position: absolute;
                         display: flex;
-                        justify-content: end;
+                        justify-content: start;
                         align-items: center;
                         height: 220px;
-                        width: 1343px;
-                        left: 140px;
+                        right: 100px;
                       "
                     >
                       <button
@@ -979,7 +936,55 @@
                           -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
                           box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
                         "
-                        @click="swap_btn_for(2)"
+                        @click="swap_btn_back(4)"
+                      >
+                        <Icon
+                          icon="ep:arrow-left-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                    <div class="d-flex el-04 mb-5" style="z-index: 1">
+                      <CompaniesCard
+                        v-for="company in Companies[current_page_4]"
+                        v-bind:key="company.id"
+                        :id="company.id"
+                        :img1="company.img1"
+                        :name="company.name"
+                        :phone="company.phone"
+                        :email="company.email"
+                      ></CompaniesCard>
+                    </div>
+                    <div
+                      class="parent"
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        height: 220px;
+                        width: 1343px;
+                        left: 115px;
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="d-flex justify-content-center align-items-center"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_for(4)"
                       >
                         <Icon
                           icon="ep:arrow-right-bold"
@@ -1016,21 +1021,279 @@
                 See All</router-link
               >
             </div>
-            <div class="col-8 d-flex justify-content-center">
+            <div
+              class="col-8 d-flex justify-content-center"
+              style="height: 80px"
+            >
               <span
                 class="mx-2 radio-item radio-item-swiper"
                 v-for="(element, index) in Companies"
                 v-bind:key="index"
+                :id="index == 2 ? 'id223' : 'id111'"
                 ><input
                   v-if="element != Companies.max_pages"
                   type="radio"
                   name="distinguished-real-estate-companies"
-                  :id="'id2' + index"
+                  :id="'id4' + index"
                   :value="index"
                   :checked="index == 1 ? true : false"
                   v-model="current_page_4"
-                  @click="slide(3)"
+                  @click="slide(4)"
               /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="special-real-estate-agents">
+        <p
+          class="mt-5 text-start ms-5"
+          style="font-size: 25px; font-weight: 600; margin-bottom: 100px"
+        >
+          Distinguished real estate agents
+        </p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div
+            class="container d-flex justify-content-center portfolio-details"
+          >
+            <section>
+              <div class="portfolio-details-slider swiper">
+                <div
+                  class="swiper-wrapper align-items-center"
+                  style="width: 1343px"
+                >
+                  <div
+                    class="swiper-slide d-flex justify-content-center mixed-array-demo"
+                  >
+                    <div
+                      class="parent"
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        height: 220px;
+                        right: 100px;
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="d-flex justify-content-center align-items-center"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_back(5)"
+                      >
+                        <Icon
+                          icon="ep:arrow-left-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                    <div class="d-flex el-05 mb-5" style="z-index: 1">
+                      <CompaniesCard
+                        v-for="agent in Agents[current_page_5]"
+                        v-bind:key="agent.id"
+                        :id="agent.id"
+                        :img1="agent.img1"
+                        :name="agent.name"
+                        :phone="agent.phone"
+                        :email="agent.email"
+                      ></CompaniesCard>
+                    </div>
+                    <div
+                      class="parent"
+                      style="
+                        position: absolute;
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        height: 220px;
+                        width: 1343px;
+                        left: 115px;
+                      "
+                    >
+                      <button
+                        type="button"
+                        class="d-flex justify-content-center align-items-center"
+                        style="
+                          background-color: rgba(255, 255, 255, 0.86);
+                          height: 50px;
+                          width: 50px;
+                          z-index: 2;
+                          border-radius: 50%;
+                          border: none;
+                          -webkit-box-shadow: 0px 5px 4px 0px
+                            rgba(0, 0, 0, 0.25);
+                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+                        "
+                        @click="swap_btn_for(5)"
+                      >
+                        <Icon
+                          icon="ep:arrow-right-bold"
+                          height="24"
+                          width="24"
+                          color="#E57C23"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="mb-5">
+          <div class="row">
+            <div class="col-2">
+              <router-link
+                to="/"
+                style="color: black; text-decoration: underline #e57c23"
+                ><Icon
+                  icon="material-symbols:arrow-back-rounded"
+                  class="mx-2"
+                  height="18"
+                  width="18"
+                  style="
+                    color: #e57c23;
+                    background-color: white;
+                    border-radius: 50%;
+                    border: solid 1px #e57c23;
+                  "
+                />
+                See All</router-link
+              >
+            </div>
+            <div
+              class="col-8 d-flex justify-content-center"
+              style="height: 80px"
+            >
+              <span
+                class="mx-2 radio-item radio-item-swiper"
+                v-for="(element, index) in Agents"
+                v-bind:key="index"
+                :id="index == 2 ? 'id224' : 'id111'"
+                ><input
+                  v-if="element != Agents.max_pages"
+                  type="radio"
+                  name="distinguished-real-estate-agents"
+                  :id="'id5' + index"
+                  :value="index"
+                  :checked="index == 1 ? true : false"
+                  v-model="current_page_5"
+                  @click="slide(5)"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="if-you-want">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div
+          class="col-md-6 d-flex justify-content-center align-items-center"
+          style="color: white; font-weight: 600"
+        >
+          <div class="d-block" style="left">
+            <div
+              class="text-start d-flex justify-content-center align-items-center"
+              style="font-size: 45px; margin-bottom: 40px"
+            >
+              Do you want to sell or rent your property?
+            </div>
+            <div
+              class="text-start d-flex justify-content-center align-items-center"
+              style="font-size: 28px"
+            >
+              So, add your property now on our website with ease and benefit
+              from a unique experience for selling and renting real estate in
+              Iraq
+            </div>
+            <div
+              class="text-start d-flex justify-content-center align-items-center"
+              style="font-size: 28px; margin-left: 40px"
+            >
+              <router-link
+                to="/"
+                class="nav-special nav-btn d-flex justify-content-center align-items-center"
+                style="width: 192px; text-decoration: none; margin-top: 80px"
+                >Add your real estate</router-link
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+          <img src="../assets/images/Homepage/p1.png" />
+        </div>
+      </div>
+    </div>
+    <div class="download">
+      <div class="row">
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+          <img src="../assets/images/Homepage/p3.png" alt="" />
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="d-block">
+            <div
+              class="text-center d-flex justify-content-center align-items-center"
+              style="font-size: 45px; margin-bottom: 40px"
+            >
+              <span class="d-block">
+                Discover the world of real estate with the
+                <span style="color: #e57c23">Betoona app</span>
+              </span>
+            </div>
+            <div
+              class="text-center d-flex justify-content-center align-items-center"
+              style="font-size: 28px"
+            >
+              The leading application specialized in selling and renting real
+              estate in all cities of Iraq
+            </div>
+            <div
+              class="text-center d-flex justify-content-center align-items-center"
+            >
+              <span
+                style="
+                  width: fit-content;
+                  margin-top: 80px;
+                  font-size: 30px;
+                  font-weight: 900;
+                  border-radius: 5px;
+                  border: 2px solid #9d9d9d9d;
+                "
+              >
+                Download it now</span
+              >
+            </div>
+            <div
+              class="d-flex justify-content-center align-items-center"
+              style="font-size: 28px; margin-top: 30px"
+            >
+              <a
+                href=""
+                class="nav-special nav-btn d-flex justify-content-center align-items-center download"
+                style="width: 192px; text-decoration: none; margin-right: 20px"
+                ><img src="../assets/images/Homepage/p4.png" alt=""
+              /></a>
+              <a
+                href=""
+                class="nav-special nav-btn d-flex justify-content-center align-items-center download"
+                style="width: 192px; text-decoration: none; margin-left: 20px"
+                ><img src="../assets/images/Homepage/p5.png" alt=""
+              /></a>
             </div>
           </div>
         </div>
@@ -1431,36 +1694,28 @@ export default {
           1: {
             id: 1,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 1",
             phone: "+966456789789",
             email: "test@test.com",
           },
           2: {
             id: 2,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 2",
             phone: "+966456789789",
             email: "test@test.com",
           },
           3: {
             id: 3,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 3",
             phone: "+966456789789",
             email: "test@test.com",
           },
           4: {
             id: 4,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 4",
             phone: "+966456789789",
             email: "test@test.com",
           },
@@ -1469,36 +1724,28 @@ export default {
           5: {
             id: 5,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 5",
             phone: "+966456789789",
             email: "test@test.com",
           },
           6: {
             id: 6,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 6",
             phone: "+966456789789",
             email: "test@test.com",
           },
           7: {
             id: 7,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 7",
             phone: "+966456789789",
             email: "test@test.com",
           },
           8: {
             id: 8,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 8",
             phone: "+966456789789",
             email: "test@test.com",
           },
@@ -1507,36 +1754,121 @@ export default {
           9: {
             id: 9,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 9",
             phone: "+966456789789",
             email: "test@test.com",
           },
           10: {
             id: 10,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 10",
             phone: "+966456789789",
             email: "test@test.com",
           },
           11: {
             id: 11,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 11",
             phone: "+966456789789",
             email: "test@test.com",
           },
           12: {
             id: 12,
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-            img2: require("../assets/images/مدالية_الذهبية.png"),
-            icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
-            name: "Tamim General Contracting Company",
+            name: "Tamim General Contracting Company 12",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        max_pages: 3,
+      },
+      Agents: {
+        1: {
+          1: {
+            id: 1,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 1",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          2: {
+            id: 2,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 2",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          3: {
+            id: 3,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 3",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          4: {
+            id: 4,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 4",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        2: {
+          5: {
+            id: 5,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 5",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          6: {
+            id: 6,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 6",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          7: {
+            id: 7,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 7",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          8: {
+            id: 8,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 8",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+        },
+        3: {
+          9: {
+            id: 9,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 9",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          10: {
+            id: 10,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 10",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          11: {
+            id: 11,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 11",
+            phone: "+966456789789",
+            email: "test@test.com",
+          },
+          12: {
+            id: 12,
+            img1: require("../assets/images/profile.png"),
+            name: "Mohammed Ahmed 12",
             phone: "+966456789789",
             email: "test@test.com",
           },
@@ -1547,6 +1879,7 @@ export default {
       current_page_2: 1,
       current_page_3: 1,
       current_page_4: 1,
+      current_page_5: 1,
     };
   },
   components: {
@@ -1588,8 +1921,7 @@ export default {
           ele2.removeAttribute("checked");
           this.slide(2);
         }
-      }
-      if (id == 2) {
+      } else if (id == 2) {
         if (this.current_page_3 == this.services.max_pages) {
           this.current_page_3 = 1;
           const ele = document.getElementById("id2" + this.current_page_3);
@@ -1605,8 +1937,7 @@ export default {
           ele2.removeAttribute("checked");
           this.slide(3);
         }
-      }
-      if (id == 3) {
+      } else if (id == 3) {
         if (this.current_page == this.latest_offers.max_pages) {
           this.current_page = 1;
           const ele = document.getElementById("id3" + this.current_page);
@@ -1625,6 +1956,42 @@ export default {
           ele.setAttribute("checked", true);
           ele2.removeAttribute("checked");
           this.slide(1);
+        }
+      } else if (id == 4) {
+        if (this.current_page_4 == this.Companies.max_pages) {
+          this.current_page_4 = 1;
+          const ele = document.getElementById("id4" + this.current_page_4);
+          const ele2 = document.getElementById(
+            "id4" + this.Companies.max_pages
+          );
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(4);
+        } else {
+          const ele2 = document.getElementById(
+            "id4" + this.Companies.max_pages
+          );
+          this.current_page_4++;
+          const ele = document.getElementById("id4" + this.current_page_4);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(4);
+        }
+      } else if (id == 5) {
+        if (this.current_page_5 == this.Agents.max_pages) {
+          this.current_page_5 = 1;
+          const ele = document.getElementById("id5" + this.current_page_5);
+          const ele2 = document.getElementById("id5" + this.Agents.max_pages);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(5);
+        } else {
+          const ele2 = document.getElementById("id5" + this.Agents.max_pages);
+          this.current_page_5++;
+          const ele = document.getElementById("id5" + this.current_page_5);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(5);
         }
       }
     },
@@ -1647,8 +2014,7 @@ export default {
           ele2.removeAttribute("checked");
           this.slide(2);
         }
-      }
-      if (id == 2) {
+      } else if (id == 2) {
         if (this.current_page_3 == 1) {
           this.current_page_3 = this.services.max_pages;
           const ele = document.getElementById("id2" + this.current_page_3);
@@ -1664,8 +2030,7 @@ export default {
           ele2.removeAttribute("checked");
           this.slide(3);
         }
-      }
-      if (id == 3) {
+      } else if (id == 3) {
         if (this.current_page == 1) {
           this.current_page = this.latest_offers.max_pages;
           const ele = document.getElementById("id3" + this.current_page);
@@ -1682,6 +2047,40 @@ export default {
           ele.setAttribute("checked", true);
           ele2.removeAttribute("checked");
           this.slide(1);
+        }
+      } else if (id == 4) {
+        if (this.current_page_4 == 1) {
+          this.current_page_4 = this.Companies.max_pages;
+          const ele = document.getElementById("id4" + this.current_page_4);
+          const ele2 = document.getElementById("id4" + 1);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(4);
+        } else {
+          const ele2 = document.getElementById(
+            "id4" + this.Companies.max_pages
+          );
+          this.current_page_4--;
+          const ele = document.getElementById("id4" + this.current_page_4);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(4);
+        }
+      } else if (id == 5) {
+        if (this.current_page_5 == 1) {
+          this.current_page_5 = this.Agents.max_pages;
+          const ele = document.getElementById("id5" + this.current_page_5);
+          const ele2 = document.getElementById("id5" + 1);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(5);
+        } else {
+          const ele2 = document.getElementById("id5" + this.Agents.max_pages);
+          this.current_page_5--;
+          const ele = document.getElementById("id5" + this.current_page_5);
+          ele.setAttribute("checked", true);
+          ele2.removeAttribute("checked");
+          this.slide(5);
         }
       }
     },
@@ -1736,6 +2135,44 @@ export default {
           keyframes: [
             { translateX: "-200%" },
             { translateY: "-2000%" },
+            { translateX: "200%" },
+            { translateY: "0%" },
+            { translateX: "0%" },
+          ],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      } else if (id == 4) {
+        var el4 = document.querySelector(".mixed-array-demo  .el-04");
+
+        anime({
+          targets: [
+            el4,
+            ".mixed-array-demo  .el-04",
+            ".mixed-array-demo  .el-04",
+          ],
+          keyframes: [
+            { translateX: "-200%" },
+            { translateY: "-2300%" },
+            { translateX: "200%" },
+            { translateY: "0%" },
+            { translateX: "0%" },
+          ],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      } else if (id == 5) {
+        var el5 = document.querySelector(".mixed-array-demo  .el-05");
+
+        anime({
+          targets: [
+            el5,
+            ".mixed-array-demo  .el-05",
+            ".mixed-array-demo  .el-05",
+          ],
+          keyframes: [
+            { translateX: "-200%" },
+            { translateY: "-2300%" },
             { translateX: "200%" },
             { translateY: "0%" },
             { translateX: "0%" },
@@ -1894,19 +2331,14 @@ export default {
           break;
       }
     },
-    swiper() {
-      this.swap_btn_for(1);
-      this.swap_btn_for(2);
-      this.swap_btn_for(3);
-      setTimeout(() => {
-        this.swiper();
-      }, 10000);
-    },
   },
   mounted() {
-    setTimeout(() => {
-      this.swiper();
-    }, 10000);
+    const element = document.getElementById("id222");
+    element.style.marginTop = "20px";
+    const element2 = document.getElementById("id223");
+    element2.style.marginTop = "20px";
+    const element3 = document.getElementById("id224");
+    element3.style.marginTop = "20px";
   },
 };
 </script>
@@ -1916,6 +2348,15 @@ export default {
   height: 100%;
   width: 100%;
   background-image: url(../assets/images/Homepage/Png.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.if-you-want {
+  height: 100%;
+  width: 100%;
+  background-image: url(../assets/images/Homepage/p22.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -2078,5 +2519,11 @@ div .dropdown-item:hover {
   .price-drop {
     width: 300px;
   }
+}
+
+.download {
+  -webkit-box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);
 }
 </style>

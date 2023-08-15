@@ -118,6 +118,173 @@
   </span>
   <navbar></navbar>
   <router-view />
+  <div class="footer" style="background-color: #000000; color: white">
+    <div class="row d-flex justify-content-center align-items-start">
+      <div class="col-3">
+        <div class="d-block m-5">
+          <div>
+            <img :src="src" alt="" style="height: 80px; width: fit-content" />
+          </div>
+          <div class="my-4 text-start">
+            Our vision is for <span style="color: #e57c23">Betonna</span> to
+            become the perfect place to realize your real estate dreams in Iraq
+          </div>
+          <div class="my-4">
+            <button class="nav-special nav-btn">LOG IN</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-block m-5">
+          <div
+            class="text-start"
+            style="color: #e57c23; font-size: 25px; font-weight: 700"
+          >
+            Home
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> Home</router-link>
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> Real estates</router-link>
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> Projects</router-link>
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> Services</router-link>
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link">
+              Add real estate</router-link
+            >
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link">
+              real estate agents</router-link
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-block m-2 mt-5">
+          <div
+            class="text-start"
+            style="color: #e57c23; font-size: 25px; font-weight: 700"
+          >
+            About Website
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> About us</router-link>
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link">
+              Service policy</router-link
+            >
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link">
+              Terms and Conditions</router-link
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-block m-2 mt-5">
+          <div
+            class="text-start"
+            style="color: #e57c23; font-size: 25px; font-weight: 700"
+          >
+            Support
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link">
+              Technical support</router-link
+            >
+          </div>
+          <div class="text-start footer-item">
+            <router-link to="/" class="footer-link"> Contact us</router-link>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-block m-2 mt-5">
+          <div
+            class="text-start"
+            style="color: #e57c23; font-size: 25px; font-weight: 700"
+          >
+            Social media
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="fb"
+                alt=""
+                style="background-color: #e57c23; border-radius: 50%"
+              />
+              Facebook</a
+            >
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="twitter"
+                alt=""
+                style="background-color: #e57c23; border-radius: 50%"
+              />
+              Twitter</a
+            >
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="snap"
+                alt=""
+                style="background-color: #e57c23; border-radius: 25%"
+              />
+              Snapchat</a
+            >
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="insta"
+                alt=""
+                style="background-color: white; border-radius: 25%"
+              />
+              Instagram</a
+            >
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="Tiktok"
+                alt=""
+                style="background-color: white; border-radius: 25%"
+              />
+              Tik Tok</a
+            >
+          </div>
+          <div class="text-start footer-item">
+            <a href="" class="footer-link"
+              ><img
+                class="social"
+                :src="linkd"
+                alt=""
+                style="background-color: white; border-radius: 25%"
+              />
+              Linkedin</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -132,6 +299,13 @@ export default {
       lan: "English",
       imgsrc: require("@/assets/images/flags/USA.png"),
       currency: "$USD",
+      src: require("@/assets/logo2.png"),
+      fb: require("@/assets/images/Social media/fb.png"),
+      insta: require("@/assets/images/Social media/Instagram.png"),
+      linkd: require("@/assets/images/Social media/Linkdin.png"),
+      snap: require("@/assets/images/Social media/Snapchat.png"),
+      Tiktok: require("@/assets/images/Social media/TikTok.png"),
+      twitter: require("@/assets/images/Social media/twitter.png"),
     };
   },
   methods: {
@@ -174,7 +348,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
   font-family: var(--font);
   background-color: #eeeeee;
   width: 100dvw;
@@ -234,5 +408,21 @@ nav {
   line-height: 25px;
   margin: 0;
   padding: 0;
+}
+
+.footer-item {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+.social {
+  height: 24px;
+  width: 24px;
+  padding: 2px;
 }
 </style>
