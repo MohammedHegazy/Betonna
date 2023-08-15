@@ -9,9 +9,10 @@
         height: 225px;
       "
     >
-      <div class="fav d-flex justify-content-end p-3">
+      <div class="fav d-flex justify-content-end p-3" @click="change_icon()">
         <Icon
-          icon="streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+          :icon="icon"
+          class="icon"
           height="24"
           width="24"
           style="pointer-events: all"
@@ -114,6 +115,7 @@ export default {
   data() {
     return {
       new_id: 0,
+      icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
     };
   },
   components: {
@@ -171,6 +173,17 @@ export default {
         element.style.color = "white";
       }
     },
+    async change_icon() {
+      if (
+        this.icon ==
+        "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+      ) {
+        this.icon = "noto:heart-suit";
+      } else {
+        this.icon =
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+      }
+    },
   },
   props: {
     id: Number,
@@ -216,5 +229,14 @@ export default {
 }
 .call_email:hover {
   padding-bottom: 20px;
+}
+
+.icon {
+  transition: 0.5s ease-out;
+}
+
+.icon:hover {
+  height: 30px;
+  width: 30px;
 }
 </style>
