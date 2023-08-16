@@ -12,15 +12,17 @@
         width: fit-content;
       "
     >
-      <img
-        :src="src"
-        alt=""
-        class="card-top-img"
-        style="width: 303px; height: 200px; border-radius: 30px"
-      />
-      <div class="my-4" style="font-size: 24px; font-weight: medium">
-        {{ name }}
-      </div>
+      <router-link to="/" class="service-link">
+        <img
+          :src="src"
+          alt=""
+          class="card-top-img"
+          style="width: 266.66px; height: 176px; border-radius: 30px"
+        />
+        <div class="my-4" style="font-size: 24px; font-weight: medium">
+          {{ name }}
+        </div></router-link
+      >
     </div>
   </div>
 </template>
@@ -35,3 +37,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.services-card {
+  .service-link {
+    color: black;
+    text-decoration: none;
+    transition: ease-in-out 0.5s;
+  }
+}
+.services-card:hover {
+  .service-link {
+    color: #e57c23;
+  }
+}
+</style>

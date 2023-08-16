@@ -2,12 +2,12 @@
   <div class="realestate-card">
     <div
       class="card mb-5 mx-3"
-      style="height: 480px; border-radius: 10px; width: fit-content"
+      style="height: 480px; border-radius: 10px; width: 268px"
     >
       <img
         :src="this.src"
         class="card-top-img"
-        style="border-radius: 10px; width: fit-content; height: 170px"
+        style="border-radius: 10px; width: fit-content; height: 150px"
       />
       <div class="card-title">
         <div class="row">
@@ -65,7 +65,7 @@
             <img
               :src="this.logo"
               class="card-img"
-              style="height: 50px; width: 69px"
+              style="height: 40px; width: fit-content"
               alt=""
             />
           </div>

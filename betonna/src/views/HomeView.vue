@@ -485,7 +485,7 @@
             <div class="portfolio-details-slider swiper">
               <div
                 class="swiper-wrapper align-items-center"
-                style="width: 1343px"
+                style="width: fit-content"
               >
                 <div
                   class="parent"
@@ -495,7 +495,7 @@
                     justify-content: start;
                     align-items: center;
                     height: 480px;
-                    right: 100px;
+                    right: 20px;
                   "
                 >
                   <button
@@ -550,7 +550,7 @@
                       align-items: center;
                       height: 480px;
                       width: 1343px;
-                      left: 115px;
+                      left: 40px;
                     "
                   >
                     <button
@@ -608,7 +608,15 @@
                       class="mx-2 radio-item radio-item-swiper"
                       v-for="(element, index) in latest_offers"
                       v-bind:key="index"
-                      :id="index == 2 ? 'id222' : 'id111'"
+                      :id="
+                        index == 2
+                          ? 'id222'
+                          : index == 1
+                          ? 'id111'
+                          : index == 3
+                          ? 'id333'
+                          : 'false'
+                      "
                       ><input
                         type="radio"
                         name="pagi"
@@ -646,8 +654,8 @@
                     display: flex;
                     justify-content: start;
                     align-items: center;
-                    height: 281px;
-                    right: 100px;
+                    height: 220px;
+                    right: 20px;
                   "
                 >
                   <button
@@ -692,9 +700,9 @@
                       display: flex;
                       justify-content: end;
                       align-items: center;
-                      height: 281px;
+                      height: 220px;
                       width: 1343px;
-                      left: 115px;
+                      left: 40px;
                     "
                   >
                     <button
@@ -767,8 +775,8 @@
                     display: flex;
                     justify-content: start;
                     align-items: center;
-                    height: 281px;
-                    right: 100px;
+                    height: 260px;
+                    right: 20px;
                   "
                 >
                   <button
@@ -814,9 +822,9 @@
                       display: flex;
                       justify-content: end;
                       align-items: center;
-                      height: 281px;
+                      height: 260px;
                       width: 1343px;
-                      left: 115px;
+                      left: 40px;
                     "
                   >
                     <button
@@ -917,8 +925,8 @@
                         display: flex;
                         justify-content: start;
                         align-items: center;
-                        height: 220px;
-                        right: 100px;
+                        height: 198px;
+                        right: 20px;
                       "
                     >
                       <button
@@ -964,9 +972,9 @@
                         display: flex;
                         justify-content: end;
                         align-items: center;
-                        height: 220px;
+                        height: 198px;
                         width: 1343px;
-                        left: 115px;
+                        left: 40px;
                       "
                     >
                       <button
@@ -1029,7 +1037,15 @@
                 class="mx-2 radio-item radio-item-swiper"
                 v-for="(element, index) in Companies"
                 v-bind:key="index"
-                :id="index == 2 ? 'id223' : 'id111'"
+                :id="
+                  index == 2
+                    ? 'id223'
+                    : index == 1
+                    ? 'id112'
+                    : index == 3
+                    ? 'id334'
+                    : 'false'
+                "
                 ><input
                   v-if="element != Companies.max_pages"
                   type="radio"
@@ -1071,8 +1087,8 @@
                         display: flex;
                         justify-content: start;
                         align-items: center;
-                        height: 220px;
-                        right: 100px;
+                        height: 198px;
+                        right: 20px;
                       "
                     >
                       <button
@@ -1118,9 +1134,9 @@
                         display: flex;
                         justify-content: end;
                         align-items: center;
-                        height: 220px;
+                        height: 198px;
                         width: 1343px;
-                        left: 115px;
+                        left: 40px;
                       "
                     >
                       <button
@@ -1183,7 +1199,15 @@
                 class="mx-2 radio-item radio-item-swiper"
                 v-for="(element, index) in Agents"
                 v-bind:key="index"
-                :id="index == 2 ? 'id224' : 'id111'"
+                :id="
+                  index == 2
+                    ? 'id224'
+                    : index == 1
+                    ? 'id113'
+                    : index == 3
+                    ? 'id335'
+                    : 'false'
+                "
                 ><input
                   v-if="element != Agents.max_pages"
                   type="radio"
@@ -1272,7 +1296,6 @@
                   font-size: 30px;
                   font-weight: 900;
                   border-radius: 5px;
-                  border: 2px solid #9d9d9d9d;
                 "
               >
                 Download it now</span
@@ -2333,12 +2356,33 @@ export default {
     },
   },
   mounted() {
-    const element = document.getElementById("id222");
-    element.style.marginTop = "20px";
-    const element2 = document.getElementById("id223");
-    element2.style.marginTop = "20px";
-    const element3 = document.getElementById("id224");
-    element3.style.marginTop = "20px";
+    // 1
+    var element = document.getElementById("id222");
+    element.style.marginTop = "30px";
+    // 2
+    element = document.getElementById("id111");
+    element.style.marginTop = "-15px";
+    // 3
+    element = document.getElementById("id333");
+    element.style.marginTop = "-15px";
+    // 4
+    element = document.getElementById("id223");
+    element.style.marginTop = "30px";
+    // 5
+    element = document.getElementById("id112");
+    element.style.marginTop = "-15px";
+    // 6
+    element = document.getElementById("id334");
+    element.style.marginTop = "-15px";
+    // 7
+    element = document.getElementById("id224");
+    element.style.marginTop = "30px";
+    // 8
+    element = document.getElementById("id113");
+    element.style.marginTop = "-15px";
+    // 9
+    element = document.getElementById("id335");
+    element.style.marginTop = "-15px";
   },
 };
 </script>

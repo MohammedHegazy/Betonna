@@ -418,6 +418,11 @@ nav {
 .footer-link {
   color: white;
   text-decoration: none;
+  transition: 0.5s ease-out;
+}
+
+.footer-link:hover {
+  color: #e57c23;
 }
 
 .social {

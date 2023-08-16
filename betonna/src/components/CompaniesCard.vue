@@ -5,8 +5,8 @@
       style="
         border-radius: 10px;
         border: 1px #e57c23 inset;
-        width: 303px;
-        height: 225px;
+        width: 266.66px;
+        height: 198px;
       "
     >
       <div class="fav d-flex justify-content-end p-3" @click="change_icon()">
@@ -28,7 +28,7 @@
             border-radius: 50%;
             border: 0.3px #e57c23 inset;
             position: absolute;
-            bottom: 180px;
+            bottom: 150px;
           "
           alt=""
         />
@@ -41,18 +41,18 @@
               width: 24px;
               z-index: 2;
               position: absolute;
-              right: 110px;
-              bottom: 180px;
+              right: 100px;
+              bottom: 150px;
             "
           />
         </div>
       </div>
-      <div class="card-title" style="font-size: 27px">
+      <div class="card-title" style="font-size: 20px; font-weight: 700">
         {{ this.name }}
       </div>
       <div class="card-link">
         <div class="row">
-          <div class="col-6 ps-5">
+          <div class="col-6 call" style="padding-left: 45px">
             <button
               class="call_email"
               @click.stop="show_hide('phone', this.new_id)"
@@ -65,7 +65,7 @@
               />Call
             </button>
             <div
-              class="container"
+              class="container mt-5"
               style="display: none"
               :id="'phone' + this.new_id"
             >
@@ -74,12 +74,13 @@
                 class="call_email"
                 :id="'ph_btn' + this.new_id"
                 @click.stop="copy('phone')"
+                @blur.stop="show_hide('phone', this.new_id)"
               >
                 Copy
               </button>
             </div>
           </div>
-          <div class="col-6 pb-4 pe-5">
+          <div class="col-6 call">
             <button
               class="call_email"
               @click.stop="show_hide('email', this.new_id)"
@@ -91,12 +92,17 @@
                 width="24"
               />Email
             </button>
-            <div class="container" style="display: none" :id="'email' + new_id">
+            <div
+              class="container mt-5"
+              style="display: none"
+              :id="'email' + new_id"
+            >
               Email: {{ this.email }}
               <button
                 class="call_email"
                 :id="'em_btn' + this.new_id"
                 @click.stop="copy('email')"
+                @blur.stop="show_hide('email', this.new_id)"
               >
                 Copy
               </button>
@@ -201,8 +207,8 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 200px;
-  margin-top: 10px;
   position: absolute;
+  bottom: -60px;
   z-index: 3;
   border-radius: 10px;
   background-color: #ffffff;
@@ -218,7 +224,7 @@ export default {
   border-radius: 10px;
   background-color: #ffffff;
   border: none;
-  width: 100px;
+  width: 90px;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
@@ -227,8 +233,15 @@ export default {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
   transition: 0.5s ease-in;
 }
+.call {
+  height: 70px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .call_email:hover {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .icon {
