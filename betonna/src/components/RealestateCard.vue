@@ -4,10 +4,26 @@
       class="card mb-5 mx-3"
       style="height: 420px; border-radius: 10px; width: 290px"
     >
+      <div class="fav">
+        <Icon
+          :icon="icon"
+          class="icon"
+          height="24"
+          width="24"
+          color="black"
+          style="pointer-events: all"
+          @click="change_icon()"
+        />
+      </div>
       <img
         :src="this.src"
         class="card-top-img"
-        style="border-radius: 10px; width: 290px; height: fit-content"
+        style="
+          border-radius: 10px;
+          width: 290px;
+          height: fit-content;
+          z-index: 0;
+        "
       />
       <div class="card-title">
         <div class="row" style="font-size: 20px; font-weight: 600">
@@ -97,6 +113,11 @@
 import { Icon } from "@iconify/vue";
 export default {
   name: "realestate-card",
+  data() {
+    return {
+      icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+    };
+  },
   components: {
     Icon,
   },
@@ -112,5 +133,41 @@ export default {
     src: String,
     logo: String,
   },
+  methods: {
+    async change_icon() {
+      if (
+        this.icon ==
+        "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+      ) {
+        this.icon = "noto:heart-suit";
+      } else {
+        this.icon =
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+      }
+    },
+  },
 };
 </script>
+
+<style scoped>
+.fav {
+  display: flex;
+  justify-content: end;
+}
+.icon {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  padding: 5px;
+  z-index: 5;
+  transition: 0.5s ease-out;
+}
+
+.icon:hover {
+  height: 35px;
+  width: 35px;
+}
+</style>
