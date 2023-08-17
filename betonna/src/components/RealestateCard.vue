@@ -15,6 +15,9 @@
           @click="change_icon()"
         />
       </div>
+      <div class="new">
+        <p class="my_new">New</p>
+      </div>
       <img
         :src="this.src"
         class="card-top-img"
@@ -169,5 +172,15 @@ export default {
 .icon:hover {
   height: 35px;
   width: 35px;
+}
+
+.my_new {
+  position: absolute;
+  z-index: 5;
+  color: white;
+  background-color: #e57c23;
+  width: 100px;
+  margin: 5px;
+  border-radius: 10px;
 }
 </style>
