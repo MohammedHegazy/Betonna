@@ -199,10 +199,9 @@
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  @click="
-                    changic1(3);
-                    show_hide_dropdown();
-                  "
+                  id="dropbtn"
+                  @click="show_hide_dropdown()"
+                  @focusout="show_hide_dropdown()"
                 >
                   <Icon
                     icon="mdi:home-search"
@@ -213,7 +212,11 @@
                   Type
                   <Icon :icon="icon3" color="#585858" width="25" height="25" />
                 </button>
-                <ul class="dropdown-menu" id="type_drop" style="width: 700px">
+                <ul
+                  class="dropdown-menu position-absolute d-none"
+                  id="type_drop"
+                  style="width: 700px"
+                >
                   <div class="dropdown-item">
                     <div class="row row-cols-auto">
                       <div
@@ -223,8 +226,12 @@
                         <button
                           type="button"
                           class="realest_type p-3"
+                          id="type1"
                           :style="{ color: color1, width: '100%' }"
-                          @click="changetype(1)"
+                          @click="
+                            changetype(1);
+                            type_id = 'type1';
+                          "
                         >
                           <Icon
                             icon="healthicons:agriculture-outline"
@@ -241,11 +248,15 @@
                         <button
                           type="button"
                           class="realest_type p-3"
+                          id="type2"
                           :style="{
                             color: color2,
                             width: '100%',
                           }"
-                          @click="changetype(2)"
+                          @click="
+                            changetype(2);
+                            type_id = 'type2';
+                          "
                         >
                           <Icon icon="fa6-solid:shop" width="20" height="20" />
                           Commercial
@@ -257,12 +268,16 @@
                         <button
                           type="button"
                           class="realest_type p-3"
+                          id="type3"
                           :style="{
                             borderRight: 'none',
                             color: color3,
                             width: '100%',
                           }"
-                          @click="changetype(3)"
+                          @click="
+                            changetype(3);
+                            type_id = 'type3';
+                          "
                         >
                           <Icon
                             icon="maki:residential-community"
@@ -293,7 +308,10 @@
                               height: '100%',
                               color: item_type.color,
                             }"
-                            @click="choose_type(index, item_type.name)"
+                            @click="
+                              choose_type(index, item_type.name);
+                              type_id = item_type.name + item_type.id;
+                            "
                           >
                             <div>
                               <div class="card-img-top">
@@ -1153,6 +1171,7 @@ export default {
   name: "HomeView",
   data() {
     return {
+      type_id: "type1",
       icon1: "fe:arrow-down",
       icon2: "fe:arrow-down",
       icon3: "fe:arrow-down",
@@ -2071,18 +2090,33 @@ export default {
     },
     show_hide_dropdown() {
       const element = document.getElementById("type_drop");
-      if (this.flag == 0) {
-        element.removeAttribute("class");
-        element.setAttribute(
-          "class",
-          "dropdown-menu position-absolute d-inline-block"
-        );
-        this.flag = 1;
-      } else {
-        element.removeAttribute("class");
-        element.setAttribute("class", "dropdown-menu position-absolute d-none");
-        this.flag = 0;
-      }
+      const element2 = document.getElementById("dropbtn");
+      // dummy element
+      setTimeout(() => {
+        var dummyEl = document.getElementById(this.type_id);
+        var isFocused = document.activeElement === dummyEl;
+        if (this.flag == 0) {
+          element.removeAttribute("class");
+          element.setAttribute(
+            "class",
+            "dropdown-menu position-absolute d-inline-block"
+          );
+          this.changic1(3);
+          this.flag = 1;
+        } else {
+          if (!isFocused) {
+            element.removeAttribute("class");
+            element.setAttribute(
+              "class",
+              "dropdown-menu position-absolute d-none"
+            );
+            this.changic1(3);
+            this.flag = 0;
+          } else {
+            element2.focus();
+          }
+        }
+      }, 100);
     },
     changic1(x) {
       switch (x) {
