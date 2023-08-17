@@ -9,14 +9,24 @@
         height: 215px;
       "
     >
-      <div class="fav d-flex justify-content-end p-3">
+      <div class="fav d-flex justify-content-end p-3" v-if="fav == '0'">
         <Icon
           :icon="icon"
           class="icon"
           height="24"
           width="24"
           style="pointer-events: all"
-          @click="change_icon()"
+          @click="change_icon(1)"
+        />
+      </div>
+      <div class="fav d-flex justify-content-end p-3" v-if="fav == '1'">
+        <Icon
+          :icon="icon2"
+          class="icon"
+          height="24"
+          width="24"
+          style="pointer-events: all"
+          @click="change_icon(2)"
         />
       </div>
       <div class="logo d-flex justify-content-center">
@@ -124,6 +134,7 @@ export default {
   data() {
     return {
       new_id: 0,
+      icon2: "noto:heart-suit",
       icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
     };
   },
@@ -185,15 +196,27 @@ export default {
         element.style.color = "white";
       }
     },
-    async change_icon() {
-      if (
-        this.icon ==
-        "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
-      ) {
-        this.icon = "noto:heart-suit";
+    async change_icon(num) {
+      if (num == 1) {
+        if (
+          this.icon ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon = "noto:heart-suit";
+        } else {
+          this.icon =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
       } else {
-        this.icon =
-          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        if (
+          this.icon2 ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon2 = "noto:heart-suit";
+        } else {
+          this.icon2 =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
       }
     },
   },
@@ -203,6 +226,7 @@ export default {
     name: String,
     phone: String,
     email: String,
+    fav: String,
   },
   mounted() {
     this.new_id = Math.floor(Math.random() * 100) * 10 + this.id;

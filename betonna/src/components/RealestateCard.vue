@@ -4,7 +4,7 @@
       class="card mb-5 mx-3"
       style="height: 420px; border-radius: 10px; width: 290px"
     >
-      <div class="fav">
+      <div class="fav" v-if="fav == '0'">
         <Icon
           :icon="icon"
           class="icon"
@@ -12,10 +12,21 @@
           width="24"
           color="black"
           style="pointer-events: all"
-          @click="change_icon()"
+          @click="change_icon(1)"
         />
       </div>
-      <div class="new">
+      <div class="fav" v-if="fav == '1'">
+        <Icon
+          :icon="icon2"
+          class="icon"
+          height="24"
+          width="24"
+          color="black"
+          style="pointer-events: all"
+          @click="change_icon(2)"
+        />
+      </div>
+      <div class="new" v-if="state == 'new'">
         <p class="my_new">New</p>
       </div>
       <img
@@ -119,6 +130,7 @@ export default {
   data() {
     return {
       icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+      icon2: "noto:heart-suit",
     };
   },
   components: {
@@ -135,17 +147,31 @@ export default {
     bathrooms: String,
     src: String,
     logo: String,
+    state: String,
+    fav: String,
   },
   methods: {
-    async change_icon() {
-      if (
-        this.icon ==
-        "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
-      ) {
-        this.icon = "noto:heart-suit";
+    async change_icon(num) {
+      if (num == 1) {
+        if (
+          this.icon ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon = "noto:heart-suit";
+        } else {
+          this.icon =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
       } else {
-        this.icon =
-          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        if (
+          this.icon2 ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon2 = "noto:heart-suit";
+        } else {
+          this.icon2 =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
       }
     },
   },

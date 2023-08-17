@@ -518,6 +518,8 @@
                       :bathrooms="latest_offer.bathrooms"
                       :src="latest_offer.src"
                       :logo="latest_offer.logo"
+                      :state="latest_offer.state"
+                      :fav="latest_offer.fav"
                     ></RealestateCard>
                   </div>
                   <div
@@ -831,6 +833,7 @@
                         :name="company.name"
                         :phone="company.phone"
                         :email="company.email"
+                        :fav="company.fav"
                       ></CompaniesCard>
                     </div>
                     <div
@@ -954,6 +957,7 @@
                         :name="agent.name"
                         :phone="agent.phone"
                         :email="agent.email"
+                        :fav="agent.fav"
                       ></CompaniesCard>
                     </div>
                     <div
@@ -1280,6 +1284,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1292,6 +1298,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1304,6 +1312,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1316,6 +1326,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1330,6 +1342,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1342,6 +1356,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1354,6 +1370,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1366,6 +1384,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1380,6 +1400,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1392,6 +1414,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1404,6 +1428,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1416,6 +1442,8 @@ export default {
             type: "sell",
             beedrooms: "4",
             bathrooms: "2",
+            state: "new",
+            fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
           },
@@ -1531,6 +1559,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 1",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           2: {
@@ -1538,6 +1567,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 2",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           3: {
@@ -1545,6 +1575,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 3",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           4: {
@@ -1552,6 +1583,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 4",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
         },
@@ -1561,6 +1593,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 5",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           6: {
@@ -1568,6 +1601,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 6",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           7: {
@@ -1575,6 +1609,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 7",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           8: {
@@ -1582,6 +1617,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 8",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
         },
@@ -1591,6 +1627,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 9",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           10: {
@@ -1598,6 +1635,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 10",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           11: {
@@ -1605,6 +1643,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 11",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           12: {
@@ -1612,6 +1651,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 12",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
         },
@@ -1624,6 +1664,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 1",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           2: {
@@ -1631,6 +1672,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 2",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           3: {
@@ -1638,6 +1680,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 3",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           4: {
@@ -1645,6 +1688,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 4",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
         },
@@ -1654,6 +1698,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 5",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           6: {
@@ -1661,6 +1706,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 6",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           7: {
@@ -1668,6 +1714,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 7",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           8: {
@@ -1675,6 +1722,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 8",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
         },
@@ -1684,6 +1732,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 9",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           10: {
@@ -1691,6 +1740,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 10",
             phone: "+966456789789",
+            fav: "1",
             email: "test@test.com",
           },
           11: {
@@ -1698,6 +1748,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 11",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
           12: {
@@ -1705,6 +1756,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 12",
             phone: "+966456789789",
+            fav: "0",
             email: "test@test.com",
           },
         },
