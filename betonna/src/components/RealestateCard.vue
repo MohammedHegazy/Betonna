@@ -2,19 +2,19 @@
   <div class="realestate-card">
     <div
       class="card mb-5 mx-3"
-      style="height: 480px; border-radius: 10px; width: 268px"
+      style="height: 420px; border-radius: 10px; width: 290px"
     >
       <img
         :src="this.src"
         class="card-top-img"
-        style="border-radius: 10px; width: fit-content; height: 150px"
+        style="border-radius: 10px; width: 290px; height: fit-content"
       />
       <div class="card-title">
-        <div class="row">
-          <div class="col-6 mt-3" style="font-size: 20px; font-weight: 600">
+        <div class="row" style="font-size: 20px; font-weight: 600">
+          <div class="col-6 mt-3">
             {{ this.name }}
           </div>
-          <div class="col-6 mt-3" style="color: #e57c23; font-size: 20px">
+          <div class="col-6 mt-3" style="color: #e57c23">
             {{ this.price }}
           </div>
         </div>
@@ -26,12 +26,15 @@
           width="24"
         />{{ this.location }}
       </div>
-      <div class="card-text text-start ms-3 mt-2" style="color: #585858">
+      <div
+        class="card-text text-start ms-3 mt-2"
+        style="color: #585858; font-size: 11px"
+      >
         <div class="row mt-4">
           <div class="col-9">
             <div class="row">
               <div class="col-6">
-                <p style="font-size: 12px">
+                <p>
                   <Icon
                     icon="ic:sharp-space-dashboard"
                     height="15"
@@ -41,19 +44,19 @@
                 </p>
               </div>
               <div class="col-6">
-                <p style="font-size: 12px">
+                <p>
                   <Icon icon="bx:current-location" height="15" width="15" />
                   {{ this.type }}
                 </p>
               </div>
               <div class="col-6">
-                <p style="font-size: 12px">
+                <p>
                   <Icon icon="mdi:bed" height="15" width="15" />
                   Bedrooms: {{ this.beedrooms }}
                 </p>
               </div>
               <div class="col-6">
-                <p style="font-size: 12px">
+                <p>
                   <Icon icon="fa6-solid:bath" height="15" width="15" />
                   Bathrooms: {{ this.bathrooms }}
                 </p>
@@ -65,7 +68,7 @@
             <img
               :src="this.logo"
               class="card-img"
-              style="height: 40px; width: fit-content"
+              style="height: 45px; width: fit-content"
               alt=""
             />
           </div>

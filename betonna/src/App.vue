@@ -428,6 +428,5 @@ nav {
 .social {
   height: 24px;
   width: 24px;
-  padding: 2px;
 }
 </style>

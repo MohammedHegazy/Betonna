@@ -5,17 +5,18 @@
       style="
         border-radius: 10px;
         border: 1px #e57c23 inset;
-        width: 266.66px;
-        height: 198px;
+        width: 290px;
+        height: 215px;
       "
     >
-      <div class="fav d-flex justify-content-end p-3" @click="change_icon()">
+      <div class="fav d-flex justify-content-end p-3">
         <Icon
           :icon="icon"
           class="icon"
           height="24"
           width="24"
           style="pointer-events: all"
+          @click="change_icon()"
         />
       </div>
       <div class="logo d-flex justify-content-center">
@@ -28,11 +29,11 @@
             border-radius: 50%;
             border: 0.3px #e57c23 inset;
             position: absolute;
-            bottom: 150px;
+            bottom: 170px;
           "
           alt=""
         />
-        <div class="icon">
+        <div>
           <img
             src="../assets/images/مدالية_الذهبية.png"
             alt=""
@@ -42,7 +43,7 @@
               z-index: 2;
               position: absolute;
               right: 100px;
-              bottom: 150px;
+              bottom: 170px;
             "
           />
         </div>
@@ -53,31 +54,33 @@
       <div class="card-link">
         <div class="row">
           <div class="col-6 call" style="padding-left: 45px">
-            <button
-              class="call_email"
-              @click.stop="show_hide('phone', this.new_id)"
-            >
-              <Icon
-                icon="ic:round-call"
-                color="#e57c23"
-                height="24"
-                width="24"
-              />Call
-            </button>
-            <div
-              class="container mt-5"
-              style="display: none"
-              :id="'phone' + this.new_id"
-            >
-              Phone: {{ this.phone }}
+            <div class="d-block">
               <button
                 class="call_email"
-                :id="'ph_btn' + this.new_id"
-                @click.stop="copy('phone')"
-                @blur.stop="show_hide('phone', this.new_id)"
+                @click.stop="show_hide('phone', this.new_id)"
               >
-                Copy
+                <Icon
+                  icon="ic:round-call"
+                  color="#e57c23"
+                  height="24"
+                  width="24"
+                />Call
               </button>
+              <div
+                class="container mt-5"
+                style="display: none"
+                :id="'phone' + this.new_id"
+                @focusout.stop="show_hide('phone', this.new_id)"
+              >
+                Phone: {{ this.phone }}
+                <button
+                  class="call_email"
+                  :id="'ph_btn' + this.new_id"
+                  @click.stop="copy('phone')"
+                >
+                  Copy
+                </button>
+              </div>
             </div>
           </div>
           <div class="col-6 call">
@@ -134,6 +137,8 @@ export default {
       if (type == "phone") {
         if (element.style.display == "none") {
           element.style.display = "block";
+          const element4 = document.getElementById("ph_btn" + id);
+          element4.focus();
           element2.style.display = "none";
           const element3 = document.getElementById("em_btn" + id);
           element3.innerHTML = "Copy";
@@ -146,11 +151,12 @@ export default {
           element4.style.backgroundColor = "White";
           element4.style.color = "black";
         }
-      }
-      if (type == "email") {
+      } else if (type == "email") {
         if (element2.style.display == "none") {
           element2.style.display = "block";
           element.style.display = "none";
+          const element4 = document.getElementById("em_btn" + id);
+          element4.focus();
           const element3 = document.getElementById("ph_btn" + id);
           element3.innerHTML = "Copy";
           element3.style.backgroundColor = "white";
@@ -199,7 +205,7 @@ export default {
     email: String,
   },
   mounted() {
-    this.new_id = Math.floor(Math.random() * 10) * 10 + this.id;
+    this.new_id = Math.floor(Math.random() * 100) * 10 + this.id;
   },
 };
 </script>
@@ -208,7 +214,7 @@ export default {
 .container {
   width: 200px;
   position: absolute;
-  bottom: -60px;
+  bottom: -80px;
   z-index: 3;
   border-radius: 10px;
   background-color: #ffffff;

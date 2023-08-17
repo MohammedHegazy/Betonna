@@ -17,7 +17,7 @@
           :src="src"
           alt=""
           class="card-top-img"
-          style="width: 266.66px; height: 176px; border-radius: 30px"
+          style="width: 290px; height: 191.5px; border-radius: 30px"
         />
         <div class="my-4" style="font-size: 24px; font-weight: medium">
           {{ name }}

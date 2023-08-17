@@ -485,33 +485,12 @@
             <div class="portfolio-details-slider swiper">
               <div
                 class="swiper-wrapper align-items-center"
-                style="width: fit-content"
+                style="width: 1320px"
               >
-                <div
-                  class="parent"
-                  style="
-                    position: absolute;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-                    height: 480px;
-                    right: 20px;
-                  "
-                >
+                <div class="parent arrow" style="height: 480px">
                   <button
                     type="button"
-                    class="d-flex justify-content-center align-items-center"
-                    style="
-                      background-color: rgba(255, 255, 255, 0.86);
-                      height: 50px;
-                      width: 50px;
-                      z-index: 2;
-                      border-radius: 50%;
-                      border: none;
-                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    "
+                    class="d-flex justify-content-center align-items-center arrow-style"
                     @click="swap_btn_back(3)"
                   >
                     <Icon
@@ -542,31 +521,12 @@
                     ></RealestateCard>
                   </div>
                   <div
-                    class="parent"
-                    style="
-                      position: absolute;
-                      display: flex;
-                      justify-content: end;
-                      align-items: center;
-                      height: 480px;
-                      width: 1343px;
-                      left: 40px;
-                    "
+                    class="parent arrow arrow"
+                    style="justify-content: end; height: 480px"
                   >
                     <button
                       type="button"
-                      class="d-flex justify-content-center align-items-center"
-                      style="
-                        background-color: rgba(255, 255, 255, 0.86);
-                        height: 50px;
-                        width: 50px;
-                        z-index: 2;
-                        border-radius: 50%;
-                        border: none;
-                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      "
+                      class="d-flex justify-content-center align-items-center arrow-style"
                       @click="swap_btn_for(3)"
                     >
                       <Icon
@@ -645,33 +605,15 @@
             <div class="portfolio-details-slider swiper">
               <div
                 class="swiper-wrapper align-items-center"
-                style="width: 1343px"
+                style="width: 1320px"
               >
                 <div
-                  class="parent"
-                  style="
-                    position: absolute;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-                    height: 220px;
-                    right: 20px;
-                  "
+                  class="parent arrow"
+                  style="justify-content: start; height: 220px"
                 >
                   <button
                     type="button"
-                    class="d-flex justify-content-center align-items-center"
-                    style="
-                      background-color: rgba(255, 255, 255, 0.86);
-                      height: 50px;
-                      width: 50px;
-                      z-index: 2;
-                      border-radius: 50%;
-                      border: none;
-                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    "
+                    class="d-flex justify-content-center align-items-center arrow-style"
                     @click="swap_btn_back(1)"
                   >
                     <Icon
@@ -695,30 +637,12 @@
                     ></SpecialcitiesCard>
                   </div>
                   <div
-                    style="
-                      position: absolute;
-                      display: flex;
-                      justify-content: end;
-                      align-items: center;
-                      height: 220px;
-                      width: 1343px;
-                      left: 40px;
-                    "
+                    class="parent arrow"
+                    style="justify-content: end; height: 220px"
                   >
                     <button
                       type="button"
-                      class="d-flex justify-content-center align-items-center"
-                      style="
-                        background-color: rgba(255, 255, 255, 0.86);
-                        height: 50px;
-                        width: 50px;
-                        z-index: 2;
-                        border-radius: 50%;
-                        border: none;
-                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      "
+                      class="d-flex justify-content-center align-items-center arrow-style"
                       @click="swap_btn_for(1)"
                     >
                       <Icon
@@ -766,33 +690,15 @@
             <div class="portfolio-details-slider swiper">
               <div
                 class="swiper-wrapper align-items-center"
-                style="width: 1343px"
+                style="width: 1320px"
               >
                 <div
-                  class="parent"
-                  style="
-                    position: absolute;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-                    height: 260px;
-                    right: 20px;
-                  "
+                  class="parent arrow"
+                  style="justify-content: start; height: 260px"
                 >
                   <button
                     type="button"
-                    class="d-flex justify-content-center align-items-center"
-                    style="
-                      background-color: rgba(255, 255, 255, 0.86);
-                      height: 50px;
-                      width: 50px;
-                      z-index: 2;
-                      border-radius: 50%;
-                      border: none;
-                      -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                    "
+                    class="d-flex justify-content-center align-items-center arrow-style"
                     @click="swap_btn_back(2)"
                   >
                     <Icon
@@ -816,31 +722,12 @@
                     ></ServicesCard>
                   </div>
                   <div
-                    class="parent"
-                    style="
-                      position: absolute;
-                      display: flex;
-                      justify-content: end;
-                      align-items: center;
-                      height: 260px;
-                      width: 1343px;
-                      left: 40px;
-                    "
+                    class="parent arrow"
+                    style="justify-content: end; height: 260px"
                   >
                     <button
                       type="button"
-                      class="d-flex justify-content-center align-items-center"
-                      style="
-                        background-color: rgba(255, 255, 255, 0.86);
-                        height: 50px;
-                        width: 50px;
-                        z-index: 2;
-                        border-radius: 50%;
-                        border: none;
-                        -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                      "
+                      class="d-flex justify-content-center align-items-center arrow-style"
                       @click="swap_btn_for(2)"
                     >
                       <Icon
@@ -913,37 +800,18 @@
               <div class="portfolio-details-slider swiper">
                 <div
                   class="swiper-wrapper align-items-center"
-                  style="width: 1343px"
+                  style="width: 1320px"
                 >
                   <div
                     class="swiper-slide d-flex justify-content-center mixed-array-demo"
                   >
                     <div
-                      class="parent"
-                      style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                        height: 198px;
-                        right: 20px;
-                      "
+                      class="parent arrow"
+                      style="justify-content: start; height: 198px"
                     >
                       <button
                         type="button"
-                        class="d-flex justify-content-center align-items-center"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
+                        class="d-flex justify-content-center align-items-center arrow-style"
                         @click="swap_btn_back(4)"
                       >
                         <Icon
@@ -966,32 +834,12 @@
                       ></CompaniesCard>
                     </div>
                     <div
-                      class="parent"
-                      style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: end;
-                        align-items: center;
-                        height: 198px;
-                        width: 1343px;
-                        left: 40px;
-                      "
+                      class="parent arrow"
+                      style="justify-content: end; height: 198px"
                     >
                       <button
                         type="button"
-                        class="d-flex justify-content-center align-items-center"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
+                        class="d-flex justify-content-center align-items-center arrow-style"
                         @click="swap_btn_for(4)"
                       >
                         <Icon
@@ -1075,37 +923,18 @@
               <div class="portfolio-details-slider swiper">
                 <div
                   class="swiper-wrapper align-items-center"
-                  style="width: 1343px"
+                  style="width: 1320px"
                 >
                   <div
                     class="swiper-slide d-flex justify-content-center mixed-array-demo"
                   >
                     <div
-                      class="parent"
-                      style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                        height: 198px;
-                        right: 20px;
-                      "
+                      class="parent arrow"
+                      style="justify-content: start; height: 198px"
                     >
                       <button
                         type="button"
-                        class="d-flex justify-content-center align-items-center"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
+                        class="d-flex justify-content-center align-items-center arrow-style"
                         @click="swap_btn_back(5)"
                       >
                         <Icon
@@ -1128,32 +957,12 @@
                       ></CompaniesCard>
                     </div>
                     <div
-                      class="parent"
-                      style="
-                        position: absolute;
-                        display: flex;
-                        justify-content: end;
-                        align-items: center;
-                        height: 198px;
-                        width: 1343px;
-                        left: 40px;
-                      "
+                      class="parent arrow"
+                      style="justify-content: end; height: 198px"
                     >
                       <button
                         type="button"
-                        class="d-flex justify-content-center align-items-center"
-                        style="
-                          background-color: rgba(255, 255, 255, 0.86);
-                          height: 50px;
-                          width: 50px;
-                          z-index: 2;
-                          border-radius: 50%;
-                          border: none;
-                          -webkit-box-shadow: 0px 5px 4px 0px
-                            rgba(0, 0, 0, 0.25);
-                          -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                          box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
-                        "
+                        class="d-flex justify-content-center align-items-center arrow-style"
                         @click="swap_btn_for(5)"
                       >
                         <Icon
@@ -1268,7 +1077,10 @@
         <div class="col-md-5 d-flex justify-content-center align-items-center">
           <img src="../assets/images/Homepage/p3.png" alt="" />
         </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div
+          class="col-md-6 d-flex justify-content-center align-items-center"
+          style="z-index: 3"
+        >
           <div class="d-block">
             <div
               class="text-center d-flex justify-content-center align-items-center"
@@ -1307,13 +1119,13 @@
             >
               <a
                 href=""
-                class="nav-special nav-btn d-flex justify-content-center align-items-center download"
+                class="nav-special nav-btn d-flex justify-content-center align-items-center"
                 style="width: 192px; text-decoration: none; margin-right: 20px"
                 ><img src="../assets/images/Homepage/p4.png" alt=""
               /></a>
               <a
                 href=""
-                class="nav-special nav-btn d-flex justify-content-center align-items-center download"
+                class="nav-special nav-btn d-flex justify-content-center align-items-center"
                 style="width: 192px; text-decoration: none; margin-left: 20px"
                 ><img src="../assets/images/Homepage/p5.png" alt=""
               /></a>
@@ -2355,35 +2167,7 @@ export default {
       }
     },
   },
-  mounted() {
-    // 1
-    var element = document.getElementById("id222");
-    element.style.marginTop = "30px";
-    // 2
-    element = document.getElementById("id111");
-    element.style.marginTop = "-15px";
-    // 3
-    element = document.getElementById("id333");
-    element.style.marginTop = "-15px";
-    // 4
-    element = document.getElementById("id223");
-    element.style.marginTop = "30px";
-    // 5
-    element = document.getElementById("id112");
-    element.style.marginTop = "-15px";
-    // 6
-    element = document.getElementById("id334");
-    element.style.marginTop = "-15px";
-    // 7
-    element = document.getElementById("id224");
-    element.style.marginTop = "30px";
-    // 8
-    element = document.getElementById("id113");
-    element.style.marginTop = "-15px";
-    // 9
-    element = document.getElementById("id335");
-    element.style.marginTop = "-15px";
-  },
+  mounted() {},
 };
 </script>
 
@@ -2540,23 +2324,37 @@ div .dropdown-item:hover {
 
 .radio-item-swiper input[type="radio"]:checked:after {
   position: relative;
-  top: 5px;
-  left: 5px;
+  top: 3.5px;
+  left: 3px;
   display: inline-block;
   visibility: visible;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: #e57c23;
   content: "";
 }
 
 .parent {
-  width: 1343px;
+  width: 1320px;
+  display: flex;
+  align-items: center;
 }
 
-.child {
-  width: 303px;
+.arrow {
+  position: absolute;
+}
+
+.arrow-style {
+  background-color: rgba(255, 255, 255, 0.86);
+  height: 50px;
+  width: 50px;
+  z-index: 2;
+  border-radius: 50%;
+  border: none;
+  -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 700px) {
@@ -2566,6 +2364,10 @@ div .dropdown-item:hover {
 }
 
 .download {
+  background-image: url(../assets/images/Homepage/p62.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   -webkit-box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.25);

@@ -17,12 +17,7 @@
         <img
           :src="src"
           class="card-top-img card-img"
-          style="
-            border-radius: 30px;
-            width: 266.66px;
-            height: 220px;
-            opacity: 0.3;
-          "
+          style="border-radius: 30px; width: 290px; height: 239px; opacity: 0.3"
         />
       </div>
       <label style="position: absolute; z-index: 2; color: white">
