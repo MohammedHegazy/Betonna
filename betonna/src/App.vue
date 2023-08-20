@@ -146,7 +146,9 @@
             <router-link to="/" class="footer-link"> Home</router-link>
           </div>
           <div class="text-start footer-item">
-            <router-link to="/" class="footer-link"> Real estates</router-link>
+            <router-link to="/real-estates" class="footer-link">
+              Real estates</router-link
+            >
           </div>
           <div class="text-start footer-item">
             <router-link to="/" class="footer-link"> Projects</router-link>
@@ -360,6 +362,15 @@ nav {
   a {
     font-weight: bold;
     color: black;
+
+    &.router-link-exact-active {
+      color: #e57c23;
+      text-decoration: underline;
+      font-weight: 900;
+    }
+  }
+  a:focus {
+    color: #e57c23;
 
     &.router-link-exact-active {
       color: #e57c23;

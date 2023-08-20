@@ -22,7 +22,7 @@
             <router-link class="navbar-brand nav-link" to="/">HOME</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="navbar-brand nav-link" to="/real_estates"
+            <router-link class="navbar-brand nav-link" to="/real-estates"
               >Real estates</router-link
             >
           </li>

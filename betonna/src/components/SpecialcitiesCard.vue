@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card .hidden {
   transition: 0.5s ease-in;
   display: flex;

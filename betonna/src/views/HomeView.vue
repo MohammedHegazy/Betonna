@@ -57,355 +57,21 @@
               </button>
             </div>
             <div class="col-md-6">
-              <div class="dropdown">
-                <button
-                  class="form-home1 form-home2"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  @click="changic1(1)"
-                  @blur="changic1(1)"
-                >
-                  <Icon
-                    icon="zondicons:location"
-                    color="#585858"
-                    width="25"
-                    height="25"
-                  />
-                  {{ city }}
-                  <Icon :icon="icon1" color="#585858" width="25" height="25" />
-                </button>
-                <ul class="dropdown-menu">
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      @click="changecity('Baghdad')"
-                      :style="{ color: city_btn1 }"
-                    >
-                      Baghdad
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      @click="changecity('Arbeel')"
-                      :style="{ color: city_btn2 }"
-                    >
-                      Arbeel
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      @click="changecity('Albosra')"
-                      :style="{ color: city_btn3 }"
-                    >
-                      Albosra
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      @click="changecity('Alsulimanieh')"
-                      :style="{ color: city_btn4 }"
-                    >
-                      Alsulaimanieh
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                </ul>
-              </div>
+              <CitySearch></CitySearch>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3">
               <div class="dropdown">
-                <button
-                  class="form-home1 form-home2"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  @click="changic1(2)"
-                  @blur="changic1(2)"
-                >
-                  <Icon
-                    icon="zondicons:location"
-                    color="#585858"
-                    width="25"
-                    height="25"
-                  />
-                  {{ place }}
-                  <Icon :icon="icon2" color="#585858" width="25" height="25" />
-                </button>
-                <ul class="dropdown-menu">
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      :style="{ color: place_btn1 }"
-                      @click="changeplace('Al-Jomhoria street')"
-                    >
-                      Al-Jomhoria street
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      :style="{ color: place_btn2 }"
-                      @click="changeplace('AL-Kalaa')"
-                    >
-                      AL-Kalaa
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      :style="{ color: place_btn3 }"
-                      @click="changeplace('Kadaa Alhoaijeh')"
-                    >
-                      Kadaa Alhoaijeh
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="d-flex justify-content-center">
-                    <button
-                      type="button"
-                      class="city-btn"
-                      :style="{ color: place_btn4 }"
-                      @click="changeplace('Karmee Ali')"
-                    >
-                      Karmee Ali
-                    </button>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                </ul>
+                <PlaceSearch></PlaceSearch>
               </div>
             </div>
             <div class="col-md-3">
-              <div class="dropdown">
-                <button
-                  class="form-home1 form-home2"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  id="dropbtn"
-                  @click="show_hide_dropdown()"
-                  @focusout="show_hide_dropdown()"
-                >
-                  <Icon
-                    icon="mdi:home-search"
-                    color="#585858"
-                    width="25"
-                    height="25"
-                  />
-                  Type
-                  <Icon :icon="icon3" color="#585858" width="25" height="25" />
-                </button>
-                <ul
-                  class="dropdown-menu position-absolute d-none"
-                  id="type_drop"
-                  style="width: 700px"
-                >
-                  <div class="dropdown-item">
-                    <div class="row row-cols-auto">
-                      <div
-                        class="col-4 d-flex justify-content-center align-items-center"
-                        style="border-right: 5px solid #ffffff"
-                      >
-                        <button
-                          type="button"
-                          class="realest_type p-3"
-                          id="type1"
-                          :style="{ color: color1, width: '100%' }"
-                          @click="
-                            changetype(1);
-                            type_id = 'type1';
-                          "
-                        >
-                          <Icon
-                            icon="healthicons:agriculture-outline"
-                            width="20"
-                            height="20"
-                          />
-                          agricultural
-                        </button>
-                      </div>
-                      <div
-                        class="col-4 d-flex justify-content-center align-items-center"
-                        style=""
-                      >
-                        <button
-                          type="button"
-                          class="realest_type p-3"
-                          id="type2"
-                          :style="{
-                            color: color2,
-                            width: '100%',
-                          }"
-                          @click="
-                            changetype(2);
-                            type_id = 'type2';
-                          "
-                        >
-                          <Icon icon="fa6-solid:shop" width="20" height="20" />
-                          Commercial
-                        </button>
-                      </div>
-                      <div
-                        class="col-4 d-flex justify-content-center align-items-center"
-                      >
-                        <button
-                          type="button"
-                          class="realest_type p-3"
-                          id="type3"
-                          :style="{
-                            borderRight: 'none',
-                            color: color3,
-                            width: '100%',
-                          }"
-                          @click="
-                            changetype(3);
-                            type_id = 'type3';
-                          "
-                        >
-                          <Icon
-                            icon="maki:residential-community"
-                            width="20"
-                            height="20"
-                          />
-                          Residential
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <li><hr class="dropdown-divider" /></li>
-                  <div class="dropdown-item">
-                    <div class="row">
-                      <div
-                        class="col-4 my-3"
-                        v-for="(item_type, index) in types[page]"
-                        v-bind:key="item_type.id"
-                      >
-                        <div class="card" style="height: 90px; width: 90%">
-                          <button
-                            type="button"
-                            :id="item_type.name + item_type.id"
-                            class="realest_type d-flex justify-content-center align-items-center"
-                            :style="{
-                              border: 'none',
-                              borderRadius: '5px',
-                              height: '100%',
-                              color: item_type.color,
-                            }"
-                            @click="
-                              choose_type(index, item_type.name);
-                              type_id = item_type.name + item_type.id;
-                            "
-                          >
-                            <div>
-                              <div class="card-img-top">
-                                <Icon
-                                  :icon="item_type.icon"
-                                  width="24"
-                                  height="24"
-                                />
-                              </div>
-                              <div class="card-text text-center">
-                                {{ item_type.name }}
-                              </div>
-                            </div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ul>
-              </div>
+              <TypesComponent></TypesComponent>
             </div>
             <div class="col-md-3">
               <div class="dropdown">
-                <button
-                  class="form-home1 form-home2"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  @click="changic1(4)"
-                  @blur="changic1(4)"
-                >
-                  <Icon
-                    icon="mdi:dollar"
-                    color="#585858"
-                    width="25"
-                    height="25"
-                  />
-                  Price
-                  <Icon :icon="icon4" color="#585858" width="25" height="25" />
-                </button>
-                <ul class="dropdown-menu price-drop">
-                  <div class="dropdown-item">
-                    <div class="row">
-                      <div class="col-6">Minimum_price</div>
-                      <div class="col-6">Maximum_price</div>
-                    </div>
-                  </div>
-                  <div class="dropdown-item">
-                    <div class="row">
-                      <div class="col-5 number-wrapper2">
-                        <input
-                          type="number"
-                          class="list-inp"
-                          min="0"
-                          v-model="minimum_price"
-                          style="background-color: #dddddd"
-                        /><Icon
-                          icon="mdi:dollar"
-                          color="#585858"
-                          style="
-                            margin-left: -30px;
-                            z-index: 2;
-                            pointer-events: none;
-                          "
-                        />
-                      </div>
-                      <div class="col-1">
-                        <Icon
-                          icon="solar:arrow-right-linear"
-                          color="black"
-                          height="25"
-                          width="25"
-                        ></Icon>
-                      </div>
-                      <div class="col-5 number-wrapper2">
-                        <input
-                          type="number"
-                          class="list-inp"
-                          min="0"
-                          v-model="maximum_price"
-                          style="background-color: #dddddd"
-                        /><Icon
-                          icon="mdi:dollar"
-                          color="#585858"
-                          style="
-                            margin-left: -30px;
-                            z-index: 2;
-                            pointer-events: none;
-                          "
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </ul>
+                <PriceSearch></PriceSearch>
               </div>
             </div>
           </div>
@@ -532,7 +198,7 @@
                       :location="latest_offer.location"
                       :space="latest_offer.space"
                       :type="latest_offer.type"
-                      :bedrooms="latest_offer.beedrooms"
+                      :bedrooms="latest_offer.bedrooms"
                       :bathrooms="latest_offer.bathrooms"
                       :src="latest_offer.src"
                       :logo="latest_offer.logo"
@@ -1166,132 +832,22 @@ import RealestateCard from "@/components/RealestateCard.vue";
 import SpecialcitiesCard from "@/components/SpecialcitiesCard.vue";
 import ServicesCard from "@/components/ServicesCard.vue";
 import CompaniesCard from "@/components/CompaniesCard.vue";
+import TypesComponent from "@/components/TypesComponent.vue";
+import CitySearch from "@/components/CitySearch.vue";
+import PlaceSearch from "@/components/PlaceSearch.vue";
+import PriceSearch from "@/components/PriceSearch.vue";
 
 export default {
   name: "HomeView",
   data() {
     return {
-      type_id: "type1",
-      icon1: "fe:arrow-down",
-      icon2: "fe:arrow-down",
-      icon3: "fe:arrow-down",
-      icon4: "fe:arrow-down",
       icon5: "ph:dots-three-vertical-bold",
-      city_btn1: "black",
-      city_btn2: "black",
-      city_btn3: "black",
-      city_btn4: "black",
-      place_btn1: "black",
-      place_btn2: "black",
-      place_btn3: "black",
-      place_btn4: "black",
-      color1: "#e57c23",
-      color2: "black",
-      color3: "black",
-      city: "City",
-      place: "Place",
       sell_rent: "sell",
-      minimum_price: "",
-      maximum_price: "",
       space: "",
       rooms: "",
       baths: "",
-      choosen_type: [],
-      types: {
-        1: {
-          1: {
-            id: 1,
-            name: "Agricultural Land",
-            icon: "mdi:beach",
-            color: "black",
-          },
-          2: {
-            id: 2,
-            name: "Agricultural House",
-            icon: "simple-icons:homeassistant",
-            color: "black",
-          },
-          3: {
-            id: 3,
-            name: "Farm",
-            icon: "game-icons:ground-sprout",
-            color: "black",
-          },
-        },
-        2: {
-          1: {
-            id: 1,
-            name: "Office",
-            icon: "ph:office-chair-fill",
-          },
-          2: {
-            id: 2,
-            name: "Hotel",
-            icon: "ri:hotel-line",
-          },
-          3: {
-            id: 3,
-            name: "Commercial appartment",
-            icon: "ic:baseline-apartment",
-          },
-          4: {
-            id: 4,
-            name: "Commercial land",
-            icon: "emojione-monotone:umbrella-on-ground",
-          },
-          5: {
-            id: 5,
-            name: "Commercial house",
-            icon: "game-icons:house",
-          },
-          6: {
-            id: 6,
-            name: "Commercial building",
-            icon: "fa6-solid:building",
-          },
-          7: {
-            id: 7,
-            name: "Commercial warehouse",
-            icon: "nimbus:store",
-          },
-          8: {
-            id: 8,
-            name: "Commercial Shop",
-            icon: "solar:shop-2-bold",
-          },
-          9: {
-            id: 9,
-            name: "Commercial Floor",
-            icon: "mdi:floor-plan",
-          },
-        },
-        3: {
-          1: {
-            id: 1,
-            name: "Villa",
-            icon: "material-symbols:villa-rounded",
-          },
-          2: {
-            id: 2,
-            name: "Home",
-            icon: "ic:round-house",
-          },
-          3: {
-            id: 3,
-            name: "Appartment",
-            icon: "fluent-emoji-high-contrast:department-store",
-          },
-          4: {
-            id: 4,
-            name: "Residential land",
-            icon: "maki:residential-community",
-          },
-        },
-      },
-      page: 1,
       Text1:
         "Welcome to Betonna, the ideal destination for selling and renting real estate in Iraq. Explore our wide range of diverse options, and get a chance to get your dream home. We are here to fulfill your real estate desires.",
-      flag: 0,
       latest_offers: {
         1: {
           1: {
@@ -1301,7 +857,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "1",
@@ -1315,7 +871,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1329,7 +885,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1343,7 +899,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "1",
@@ -1359,7 +915,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "1",
@@ -1373,7 +929,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1387,7 +943,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1401,7 +957,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "1",
@@ -1417,7 +973,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1431,7 +987,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1445,7 +1001,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1459,7 +1015,7 @@ export default {
             location: "Arbeel, central park",
             space: "156m2",
             type: "sell",
-            beedrooms: "4",
+            bedrooms: "4",
             bathrooms: "2",
             state: "new",
             fav: "0",
@@ -1794,18 +1350,12 @@ export default {
     SpecialcitiesCard,
     ServicesCard,
     CompaniesCard,
+    TypesComponent,
+    CitySearch,
+    PlaceSearch,
+    PriceSearch,
   },
   methods: {
-    choose_type(id, name) {
-      const index = this.choosen_type.findIndex((med) => med.name === name);
-      if (index > -1) {
-        this.choosen_type.splice(index, 1);
-        this.types[this.page][id].color = "black";
-      } else {
-        this.choosen_type.push({ name });
-        this.types[this.page][id].color = "#e57c23";
-      }
-    },
     swap_btn_for(id) {
       if (id == 1) {
         if (this.current_page_2 == this.special_citys.max_pages) {
@@ -2088,168 +1638,14 @@ export default {
         });
       }
     },
-    show_hide_dropdown() {
-      const element = document.getElementById("type_drop");
-      const element2 = document.getElementById("dropbtn");
-      // dummy element
-      setTimeout(() => {
-        var dummyEl = document.getElementById(this.type_id);
-        var isFocused = document.activeElement === dummyEl;
-        if (this.flag == 0) {
-          element.removeAttribute("class");
-          element.setAttribute(
-            "class",
-            "dropdown-menu position-absolute d-inline-block"
-          );
-          this.changic1(3);
-          this.flag = 1;
-        } else {
-          if (!isFocused) {
-            element.removeAttribute("class");
-            element.setAttribute(
-              "class",
-              "dropdown-menu position-absolute d-none"
-            );
-            this.changic1(3);
-            this.flag = 0;
-          } else {
-            element2.focus();
-          }
-        }
-      }, 100);
-    },
     changic1(x) {
       switch (x) {
-        case 1:
-          if (this.icon1 == "fe:arrow-down") {
-            this.icon1 = "fe:arrow-up";
-          } else {
-            this.icon1 = "fe:arrow-down";
-          }
-          break;
-        case 2:
-          if (this.icon2 == "fe:arrow-down") {
-            this.icon2 = "fe:arrow-up";
-          } else {
-            this.icon2 = "fe:arrow-down";
-          }
-          break;
-        case 3:
-          if (this.icon3 == "fe:arrow-down") {
-            this.icon3 = "fe:arrow-up";
-          } else {
-            this.icon3 = "fe:arrow-down";
-          }
-          break;
-        case 4:
-          if (this.icon4 == "fe:arrow-down") {
-            this.icon4 = "fe:arrow-up";
-          } else {
-            this.icon4 = "fe:arrow-down";
-          }
-          break;
         case 5:
           if (this.icon5 == "ph:dots-three-vertical-bold") {
             this.icon5 = "eos-icons:three-dots-loading";
           } else {
             this.icon5 = "ph:dots-three-vertical-bold";
           }
-      }
-    },
-    changecity(x) {
-      this.city = x;
-      switch (x) {
-        case "Baghdad":
-          if (this.city_btn1 == "black") {
-            this.city_btn1 = "#e57c23";
-            this.city_btn2 = "black";
-            this.city_btn3 = "black";
-            this.city_btn4 = "black";
-          }
-          break;
-        case "Arbeel":
-          if (this.city_btn2 == "black") {
-            this.city_btn2 = "#e57c23";
-            this.city_btn1 = "black";
-            this.city_btn3 = "black";
-            this.city_btn4 = "black";
-          }
-          break;
-        case "Albosra":
-          if (this.city_btn3 == "black") {
-            this.city_btn3 = "#e57c23";
-            this.city_btn1 = "black";
-            this.city_btn2 = "black";
-            this.city_btn4 = "black";
-          }
-          break;
-        case "Alsulimanieh":
-          if (this.city_btn4 == "black") {
-            this.city_btn4 = "#e57c23";
-            this.city_btn1 = "black";
-            this.city_btn2 = "black";
-            this.city_btn3 = "black";
-          }
-          break;
-      }
-    },
-    changeplace(x) {
-      this.place = x;
-      switch (x) {
-        case "Al-Jomhoria street":
-          if (this.place_btn1 == "black") {
-            this.place_btn1 = "#e57c23";
-            this.place_btn2 = "black";
-            this.place_btn3 = "black";
-            this.place_btn4 = "black";
-          }
-          break;
-        case "AL-Kalaa":
-          if (this.place_btn2 == "black") {
-            this.place_btn2 = "#e57c23";
-            this.place_btn1 = "black";
-            this.place_btn3 = "black";
-            this.place_btn4 = "black";
-          }
-          break;
-        case "Kadaa Alhoaijeh":
-          if (this.place_btn3 == "black") {
-            this.place_btn3 = "#e57c23";
-            this.place_btn1 = "black";
-            this.place_btn2 = "black";
-            this.place_btn4 = "black";
-          }
-          break;
-        case "Karmee Ali":
-          if (this.place_btn4 == "black") {
-            this.place_btn4 = "#e57c23";
-            this.place_btn1 = "black";
-            this.place_btn2 = "black";
-            this.place_btn3 = "black";
-          }
-          break;
-      }
-    },
-    changetype(x) {
-      switch (x) {
-        case 1:
-          this.page = x;
-          this.color1 = "#e57c23";
-          this.color2 = "black";
-          this.color3 = "black";
-          break;
-        case 2:
-          this.page = x;
-          this.color1 = "black";
-          this.color2 = "#e57c23";
-          this.color3 = "black";
-          break;
-        case 3:
-          this.page = x;
-          this.color1 = "black";
-          this.color2 = "black";
-          this.color3 = "#e57c23";
-          break;
       }
     },
   },

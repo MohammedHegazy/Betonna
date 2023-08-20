@@ -1,8 +1,12 @@
 <template>
   <div class="realestate-card">
     <div
-      class="card mb-5 mx-3"
-      style="height: 420px; border-radius: 10px; width: 290px"
+      :class="'card mb-5 mx-3'"
+      :style="{
+        height: page_type == 'real-estate' ? '460px' : '420px',
+        borderRadius: '10px',
+        width: page_type == 'real-estate' ? '340px' : '290px',
+      }"
     >
       <div class="fav" v-if="fav == '0'">
         <Icon
@@ -29,15 +33,21 @@
       <div class="new" v-if="state == 'new'">
         <p class="my_new">New</p>
       </div>
+      <div class="sold" v-if="state == 'sold'">
+        <p class="my_sold">sold</p>
+      </div>
+      <div class="rented" v-if="state == 'rented'">
+        <p class="my_sold">rented</p>
+      </div>
       <img
         :src="this.src"
         class="card-top-img"
-        style="
-          border-radius: 10px;
-          width: 290px;
-          height: fit-content;
-          z-index: 0;
-        "
+        :style="{
+          borderRadius: '10px',
+          width: page_type == 'real-estate' ? '340px' : '290px',
+          height: 'fit-content',
+          zIndex: 0,
+        }"
       />
       <div class="card-title">
         <div class="row" style="font-size: 20px; font-weight: 600">
@@ -82,7 +92,7 @@
               <div class="col-6">
                 <p>
                   <Icon icon="mdi:bed" height="15" width="15" />
-                  Bedrooms: {{ this.beedrooms }}
+                  Bedrooms: {{ this.bedrooms }}
                 </p>
               </div>
               <div class="col-6">
@@ -104,7 +114,10 @@
           </div>
         </div>
       </div>
-      <div class="card-text d-flex justify-content-center align-items-center">
+      <div
+        class="card-text d-flex justify-content-center align-items-center"
+        v-if="page_type == NULL"
+      >
         <router-link
           to="/"
           class="btn d-flex justify-content-center align-items-center"
@@ -119,6 +132,82 @@
           >More information</router-link
         >
       </div>
+      <div
+        class="card-text d-flex justify-content-center align-items-center"
+        v-if="page_type == 'real-estate'"
+      >
+        <div class="card-link">
+          <div class="row">
+            <div class="col-12 call">
+              <button
+                class="call_email mx-1"
+                @click.stop="show_hide('phone', this.new_id)"
+              >
+                <Icon icon="ic:round-call" color="#e57c23" />Call
+              </button>
+              <div
+                class="container mt-5"
+                style="display: none"
+                :id="'phone' + this.new_id"
+                @focusout.stop="show_hide('phone', this.new_id)"
+              >
+                Phone: {{ this.phone }}
+                <button
+                  class="call_email2"
+                  :id="'ph_btn' + this.new_id"
+                  @click.stop="copy('phone')"
+                >
+                  Copy
+                </button>
+              </div>
+              <button
+                class="call_email mx-3"
+                @click.stop="show_hide('email', this.new_id)"
+              >
+                <Icon icon="ic:baseline-email" color="#e57c23" />Email
+              </button>
+              <div
+                class="container mt-5"
+                style="display: none"
+                :id="'email' + new_id"
+              >
+                Email: {{ this.email }}
+                <button
+                  class="call_email2"
+                  :id="'em_btn' + this.new_id"
+                  @click.stop="copy('email')"
+                  @blur.stop="show_hide('email', this.new_id)"
+                >
+                  Copy
+                </button>
+              </div>
+              <button
+                class="call_email mx-1"
+                @click.stop="show_hide('whatsapp', this.new_id)"
+              >
+                <Icon icon="logos:whatsapp-icon" color="#e57c23" />Whatsapp
+              </button>
+              <div
+                class="container mt-5"
+                style="display: none"
+                :id="'whatsapp' + this.new_id"
+                @focusout.stop="show_hide('whatsapp', this.new_id)"
+              >
+                Whatsapp: {{ this.phone }}
+                <div class="d-flex justify-content-center align-items-center">
+                  <a
+                    class="call_email2 whats_app mx-1"
+                    :href="'https://wa.me/' + this.phone"
+                    target="_blank"
+                    :id="'wa_btn' + this.new_id"
+                    >Go to Whatsapp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -129,6 +218,7 @@ export default {
   name: "realestate-card",
   data() {
     return {
+      new_id: 0,
       icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
       icon2: "noto:heart-suit",
     };
@@ -143,12 +233,15 @@ export default {
     location: String,
     space: String,
     type: String,
-    beedrooms: String,
+    bedrooms: String,
     bathrooms: String,
     src: String,
     logo: String,
     state: String,
     fav: String,
+    page_type: String,
+    phone: String,
+    email: String,
   },
   methods: {
     async change_icon(num) {
@@ -174,11 +267,99 @@ export default {
         }
       }
     },
+    async show_hide(type, id) {
+      const element = document.getElementById("phone" + id);
+      const element2 = document.getElementById("email" + id);
+      const element3 = document.getElementById("whatsapp" + id);
+      if (type == "phone") {
+        if (element.style.display == "none") {
+          element.style.display = "block";
+          const element4 = document.getElementById("ph_btn" + id);
+          element4.focus();
+          element2.style.display = "none";
+          const element5 = document.getElementById("em_btn" + id);
+          element5.innerHTML = "Copy";
+          element5.style.backgroundColor = "white";
+          element5.style.color = "black";
+          const element6 = document.getElementById("wa_btn" + id);
+          element6.style.backgroundColor = "white";
+          element6.style.color = "black";
+        } else {
+          element.style.display = "none";
+          const element4 = document.getElementById("ph_btn" + id);
+          element4.innerHTML = "Copy";
+          element4.style.backgroundColor = "White";
+          element4.style.color = "black";
+        }
+      } else if (type == "email") {
+        if (element2.style.display == "none") {
+          element2.style.display = "block";
+          element.style.display = "none";
+          const element4 = document.getElementById("em_btn" + id);
+          element4.focus();
+          const element5 = document.getElementById("ph_btn" + id);
+          element5.innerHTML = "Copy";
+          element5.style.backgroundColor = "white";
+          element5.style.color = "black";
+          const element6 = document.getElementById("wa_btn" + id);
+          element6.style.backgroundColor = "white";
+          element6.style.color = "black";
+        } else {
+          element2.style.display = "none";
+          const element4 = document.getElementById("em_btn" + id);
+          element4.innerHTML = "Copy";
+          element4.style.backgroundColor = "White";
+          element4.style.color = "black";
+        }
+      } else if (type == "whatsapp") {
+        if (element3.style.display == "none") {
+          element3.style.display = "block";
+          element.style.display = "none";
+          const element4 = document.getElementById("wa_btn" + id);
+          element4.focus();
+          const element5 = document.getElementById("ph_btn" + id);
+          element5.innerHTML = "Copy";
+          element5.style.backgroundColor = "white";
+          element5.style.color = "black";
+          const element6 = document.getElementById("em_btn" + id);
+          element6.innerHTML = "Copy";
+          element6.style.backgroundColor = "white";
+          element6.style.color = "black";
+        } else {
+          element3.style.display = "none";
+          const element4 = document.getElementById("wa_btn" + id);
+          element4.style.backgroundColor = "White";
+          element4.style.color = "black";
+        }
+      }
+    },
+    async copy(type) {
+      if (type == "phone") {
+        const element = document.getElementById("ph_btn" + this.new_id);
+        navigator.clipboard.writeText(this.phone);
+        element.innerHTML = "Copied";
+        element.style.backgroundColor = "green";
+        element.style.color = "white";
+      } else {
+        const element = document.getElementById("em_btn" + this.new_id);
+        navigator.clipboard.writeText(this.email);
+        element.innerHTML = "Copied";
+        element.style.backgroundColor = "green";
+        element.style.color = "white";
+      }
+    },
+  },
+  mounted() {
+    if (this.page_type == "real-estate") {
+      this.new_id = Math.floor(Math.random() * 100) * 10 + this.id;
+      // const element = document.querySelector("card");
+      // element.style.width = "310px";
+    }
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .fav {
   display: flex;
   justify-content: end;
@@ -208,5 +389,78 @@ export default {
   width: 100px;
   margin: 5px;
   border-radius: 10px;
+}
+.my_sold {
+  position: absolute;
+  z-index: 5;
+  color: white;
+  background-color: #e52323;
+  width: 100px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.call_email {
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: none;
+  width: 95px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  border: #e57c23 solid 1px;
+  transition: 0.5s ease-in;
+}
+.call {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.call_email:hover {
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 200px;
+  position: absolute;
+  bottom: -90px;
+  z-index: 15;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  transition: 0.5s ease-in;
+}
+
+.call_email2 {
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: none;
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.75);
+  transition: 0.5s ease-in;
+}
+
+.call_email2:hover {
+  margin-bottom: 20px;
+}
+
+.whats_app {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  width: fit-content;
 }
 </style>
