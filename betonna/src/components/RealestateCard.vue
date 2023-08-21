@@ -5,7 +5,7 @@
       :style="{
         height: page_type == 'real-estate' ? '460px' : '420px',
         borderRadius: '10px',
-        width: page_type == 'real-estate' ? '340px' : '290px',
+        width: page_type == 'real-estate' ? '300px' : '290px',
       }"
     >
       <div class="fav" v-if="fav == '0'">
@@ -44,7 +44,7 @@
         class="card-top-img"
         :style="{
           borderRadius: '10px',
-          width: page_type == 'real-estate' ? '340px' : '290px',
+          width: page_type == 'real-estate' ? '300px' : '290px',
           height: 'fit-content',
           zIndex: 0,
         }"
@@ -105,12 +105,17 @@
             </div>
           </div>
           <div class="col-2 d-flex justify-content-center">
-            <img
-              :src="this.logo"
-              class="card-img"
-              style="height: 45px; width: fit-content"
-              alt=""
-            />
+            <router-link
+              to="/"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <img
+                :src="this.logo"
+                class="card-img"
+                style="height: 45px; width: fit-content"
+                alt=""
+              />
+            </router-link>
           </div>
         </div>
       </div>
@@ -140,7 +145,7 @@
           <div class="row">
             <div class="col-12 call">
               <button
-                class="call_email mx-1"
+                class="call_email"
                 @click.stop="show_hide('phone', this.new_id)"
               >
                 <Icon icon="ic:round-call" color="#e57c23" />Call
@@ -182,7 +187,7 @@
                 </button>
               </div>
               <button
-                class="call_email mx-1"
+                class="call_email"
                 @click.stop="show_hide('whatsapp', this.new_id)"
               >
                 <Icon icon="logos:whatsapp-icon" color="#e57c23" />Whatsapp
@@ -196,7 +201,7 @@
                 Whatsapp: {{ this.phone }}
                 <div class="d-flex justify-content-center align-items-center">
                   <a
-                    class="call_email2 whats_app mx-1"
+                    class="call_email2 whats_app"
                     :href="'https://wa.me/' + this.phone"
                     target="_blank"
                     :id="'wa_btn' + this.new_id"
@@ -404,9 +409,9 @@ export default {
   border-radius: 10px;
   background-color: #ffffff;
   border: none;
-  width: 95px;
+  width: 85px;
   height: 40px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   border: #e57c23 solid 1px;
   transition: 0.5s ease-in;
@@ -462,5 +467,11 @@ export default {
   align-items: center;
   color: black;
   width: fit-content;
+}
+.card-img {
+  transition: 0.5s ease-in-out;
+}
+.card-img:hover {
+  margin-bottom: 20px;
 }
 </style>

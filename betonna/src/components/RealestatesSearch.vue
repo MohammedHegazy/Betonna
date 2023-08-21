@@ -7,8 +7,6 @@
             <Icon
               icon="material-symbols:location-on-rounded"
               color="black"
-              height="24"
-              width="24"
             />Iraq
           </button>
         </div>
@@ -151,7 +149,7 @@ export default {
   color: black;
   font-size: 24px;
   height: 85px;
-  width: 172px;
+  width: 140px;
 }
 
 .search {
