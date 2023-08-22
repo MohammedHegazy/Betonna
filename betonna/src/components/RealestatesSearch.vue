@@ -1,8 +1,8 @@
 <template>
   <div class="realestates-search">
     <form>
-      <div class="row my-5 d-flex justify-content-center align-items-center">
-        <div class="col-1 ms-4 me-5">
+      <div class="row my-4 d-flex justify-content-center align-items-center">
+        <div class="col-1 ms-4 me-4">
           <button type="button" class="place">
             <Icon
               icon="material-symbols:location-on-rounded"
@@ -14,7 +14,7 @@
           <div
             class="container d-flex justify-content-center align-items-center"
           >
-            <div class="dropdown mx-2" style="width: 120px">
+            <div class="dropdown mx-2 font-size" style="width: 120px">
               <button
                 class="form-home1 form-home2"
                 type="button"
@@ -24,7 +24,7 @@
                 @blur="changic1(2)"
               >
                 {{ search_type }}
-                <Icon :icon="icon2" color="#585858" width="25" height="25" />
+                <Icon :icon="icon2" color="#585858" />
               </button>
               <ul class="dropdown-menu">
                 <li class="d-flex justify-content-center">
@@ -57,16 +57,16 @@
                 <li><hr class="dropdown-divider" /></li>
               </ul>
             </div>
-            <div class="dropdown mx-2">
+            <div class="dropdown mx-2 font-size">
               <CitySearch></CitySearch>
             </div>
-            <div class="dropdown mx-2">
+            <div class="dropdown mx-2 font-size">
               <PlaceSearch></PlaceSearch>
             </div>
-            <div class="dropdown mx-2" style="width: 160px">
+            <div class="dropdown mx-2 font-size" style="width: 160px">
               <TypesComponent></TypesComponent>
             </div>
-            <div class="dropdown mx-2" style="width: 160px">
+            <div class="dropdown mx-2 font-size" style="width: 160px">
               <PriceSearch></PriceSearch>
             </div>
             <div class="d-flex justify-content-center align-items-center mx-2">
@@ -159,14 +159,14 @@ export default {
   border-radius: 25px;
   background-color: #e57c23;
   color: white;
-  font-size: 24px;
+  font-size: 17px;
 }
 .dropdown {
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 210px;
   height: 56px;
   font-size: 15px;
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.75);
@@ -180,5 +180,9 @@ export default {
   height: 100px;
   border: 1px solid rgba(229, 124, 35, 0.3);
   border-radius: 15px;
+}
+
+.font-size {
+  font-size: 17px;
 }
 </style>

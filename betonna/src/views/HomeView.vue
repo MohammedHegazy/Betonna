@@ -57,21 +57,21 @@
               </button>
             </div>
             <div class="col-md-6">
-              <CitySearch></CitySearch>
+              <CitySearch page_type="home"></CitySearch>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3">
               <div class="dropdown">
-                <PlaceSearch></PlaceSearch>
+                <PlaceSearch page_type="home"></PlaceSearch>
               </div>
             </div>
             <div class="col-md-3">
-              <TypesComponent></TypesComponent>
+              <TypesComponent page_type="home"></TypesComponent>
             </div>
             <div class="col-md-3">
               <div class="dropdown">
-                <PriceSearch></PriceSearch>
+                <PriceSearch page_type="home"></PriceSearch>
               </div>
             </div>
           </div>

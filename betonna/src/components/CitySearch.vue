@@ -12,11 +12,16 @@
         <Icon
           icon="zondicons:location"
           color="#585858"
-          width="25"
-          height="25"
+          :height="page_type == 'home' ? '25px' : ''"
+          :width="page_type == 'home' ? '25px' : ''"
         />
         {{ city }}
-        <Icon :icon="icon1" color="#585858" width="25" height="25" />
+        <Icon
+          :icon="icon1"
+          color="#585858"
+          :height="page_type == 'home' ? '25px' : ''"
+          :width="page_type == 'home' ? '25px' : ''"
+        />
       </button>
       <ul class="dropdown-menu">
         <div v-for="city in citys" v-bind:key="city.id">
@@ -59,6 +64,9 @@ export default {
   },
   components: {
     Icon,
+  },
+  props: {
+    page_type: String,
   },
   methods: {
     changecity(x, id) {

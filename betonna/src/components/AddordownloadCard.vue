@@ -32,7 +32,7 @@
           </div>
           <div style="font-size: 18px; font-weight: 700" class="my-4">
             Discover the world of real estates by using the application
-            <span style="color: white">Betonna</span>
+            <span style="color: #e57c23">Betonna</span>
           </div>
           <div
             class="d-flex justify-content-center align-items-center"

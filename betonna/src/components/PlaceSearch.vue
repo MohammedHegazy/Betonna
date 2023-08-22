@@ -8,9 +8,19 @@
       @click="changic1(3)"
       @blur="changic1(3)"
     >
-      <Icon icon="zondicons:location" color="#585858" width="25" height="25" />
+      <Icon
+        icon="zondicons:location"
+        color="#585858"
+        :height="page_type == 'home' ? '25px' : ''"
+        :width="page_type == 'home' ? '25px' : ''"
+      />
       {{ place }}
-      <Icon :icon="icon3" color="#585858" width="25" height="25" />
+      <Icon
+        :icon="icon3"
+        color="#585858"
+        :height="page_type == 'home' ? '25px' : ''"
+        :width="page_type == 'home' ? '25px' : ''"
+      />
     </button>
     <ul class="dropdown-menu">
       <div v-for="place in places" v-bind:key="place.id">
@@ -50,6 +60,9 @@ export default {
         4: { id: 4, name: "Karmee Ali" },
       },
     };
+  },
+  props: {
+    page_type: String,
   },
   components: {
     Icon,

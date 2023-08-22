@@ -1,7 +1,7 @@
 <template>
   <div class="realestates-view">
     <RealestateSearch></RealestateSearch>
-    <div class="row my-5">
+    <div class="row my-4">
       <div class="col-12">
         <div class="container d-flex justify-content-center align-items-center">
           <div class="row" style="width: 1140px">
@@ -103,7 +103,7 @@
     <div class="row">
       <div class="col-12">
         <div
-          class="container pagi d-flex justify-contnet-center align-items-center my-5"
+          class="container pagi d-flex justify-contnet-center align-items-center mb-5"
         >
           <div class="mx-3">
             <button
@@ -602,8 +602,8 @@ export default {
 .mybtn {
   width: 173px;
   height: 56px;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 300;
   border-radius: 10px;
   background-color: white;
   transition: 0.3s ease-in;
@@ -618,7 +618,7 @@ export default {
   width: 160px;
   text-decoration: none;
   color: black;
-  font-size: 24px;
+  font-size: 19px;
   display: flex;
   justify-content: center;
   align-items: center;

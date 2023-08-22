@@ -8,9 +8,19 @@
       @click="changic1(4)"
       @blur="changic1(4)"
     >
-      <Icon icon="mdi:dollar" color="#585858" width="25" height="25" />
+      <Icon
+        icon="mdi:dollar"
+        color="#585858"
+        :height="page_type == 'home' ? '25px' : ''"
+        :width="page_type == 'home' ? '25px' : ''"
+      />
       Price
-      <Icon :icon="icon4" color="#585858" width="25" height="25" />
+      <Icon
+        :icon="icon4"
+        color="#585858"
+        :height="page_type == 'home' ? '25px' : ''"
+        :width="page_type == 'home' ? '25px' : ''"
+      />
     </button>
     <ul class="dropdown-menu price-drop">
       <div class="dropdown-item">
@@ -74,6 +84,9 @@ export default {
   },
   components: {
     Icon,
+  },
+  props: {
+    page_type: String,
   },
   methods: {
     changic1(x) {

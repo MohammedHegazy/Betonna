@@ -1,11 +1,11 @@
 <template>
   <div class="realestate-card">
     <div
-      :class="'card mb-5 mx-3'"
+      :class="'card mb-5 mx-1'"
       :style="{
-        height: page_type == 'real-estate' ? '460px' : '420px',
+        height: '420px',
         borderRadius: '10px',
-        width: page_type == 'real-estate' ? '300px' : '290px',
+        width: '290px',
       }"
     >
       <div class="fav" v-if="fav == '0'">
@@ -44,7 +44,7 @@
         class="card-top-img"
         :style="{
           borderRadius: '10px',
-          width: page_type == 'real-estate' ? '300px' : '290px',
+          width: '290px',
           height: 'fit-content',
           zIndex: 0,
         }"
@@ -166,7 +166,7 @@
                 </button>
               </div>
               <button
-                class="call_email mx-3"
+                class="call_email mx-1"
                 @click.stop="show_hide('email', this.new_id)"
               >
                 <Icon icon="ic:baseline-email" color="#e57c23" />Email
