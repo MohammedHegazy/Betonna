@@ -1534,6 +1534,7 @@ textarea:focus {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 20;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
   transition: opacity 500ms;
