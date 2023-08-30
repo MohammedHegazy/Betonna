@@ -1,6 +1,7 @@
 <template>
   <span
     style="width: 100%; height: max-content; font-size: 25px; font-weight: 800"
+    ref="target"
   >
     <div
       class="d-flex justify-content-center align-items-center"
@@ -323,6 +324,17 @@ export default {
       r.style.setProperty("--font", "expoenglish");
       r.style.setProperty("--dir", "'ltr'");
       // b.style.direction = "ltr";
+    },
+    scrollToElement() {
+      this.$refs.target.scrollIntoView({
+        behavior: "smooth",
+      });
+    },
+  },
+  watch: {
+    $route(to, from) {
+      this.scrollToElement();
+      console.log(to, from);
     },
   },
 };

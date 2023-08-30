@@ -39,20 +39,45 @@
       <div class="rented" v-if="state == 'rented'">
         <p class="my_sold">rented</p>
       </div>
-      <img
-        :src="this.src"
-        class="card-top-img"
-        :style="{
-          borderRadius: '10px',
-          width: '290px',
-          height: 'fit-content',
-          zIndex: 0,
-        }"
-      />
+      <router-link
+        to="/real-estate-info"
+        v-if="page_type == 'real-estate'"
+        class="myrout"
+      >
+        <img
+          :src="this.src"
+          class="card-top-img"
+          :style="{
+            borderRadius: '10px',
+            width: '290px',
+            height: 'fit-content',
+            zIndex: 0,
+          }"
+        />
+      </router-link>
+      <span v-else>
+        <img
+          :src="this.src"
+          class="card-top-img"
+          :style="{
+            borderRadius: '10px',
+            width: '290px',
+            height: 'fit-content',
+            zIndex: 0,
+          }"
+        />
+      </span>
       <div class="card-title">
         <div class="row" style="font-size: 20px; font-weight: 600">
           <div class="col-6 mt-3">
-            {{ this.name }}
+            <router-link
+              to="/real-estate-info"
+              class="myrouter"
+              v-if="page_type == 'real-estate'"
+            >
+              {{ this.name }}
+            </router-link>
+            <span v-else>{{ this.name }}</span>
           </div>
           <div class="col-6 mt-3" style="color: #e57c23">
             {{ this.price }}
@@ -124,7 +149,7 @@
         v-if="page_type == NULL"
       >
         <router-link
-          to="/"
+          to="/real-estate-info"
           class="btn d-flex justify-content-center align-items-center"
           style="
             width: 180px;
@@ -365,6 +390,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.myrouter {
+  text-decoration: none;
+  color: #000000;
+  transition: 0.5s ease-in-out;
+}
+.myrouter:hover {
+  color: #e57c23;
+}
+
 .fav {
   display: flex;
   justify-content: end;

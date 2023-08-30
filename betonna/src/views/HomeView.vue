@@ -229,7 +229,7 @@
                 <div class="row">
                   <div class="col-2">
                     <router-link
-                      to="/"
+                      to="/real-estates"
                       style="color: black; text-decoration: underline #e57c23"
                       ><Icon
                         icon="material-symbols:arrow-back-rounded"
@@ -1649,7 +1649,6 @@ export default {
       }
     },
   },
-  mounted() {},
 };
 </script>
 
