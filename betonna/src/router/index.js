@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RealestatesViewVue from "@/views/RealestatesView.vue";
 import RealestateInfoVue from "@/views/RealestateInfo.vue";
+import FavouriteRealestatesVue from "@/views/FavouriteRealestates.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/real-estate-info",
     name: "Real Estate Info",
     component: RealestateInfoVue,
+  },
+  {
+    path: "/favourite-list",
+    name: "favoutire Real Estates",
+    component: FavouriteRealestatesVue,
   },
 ];
 
