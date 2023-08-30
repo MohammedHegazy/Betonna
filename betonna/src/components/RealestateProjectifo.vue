@@ -341,7 +341,10 @@
                     type="button"
                     class="shadow btn-des-line"
                     :style="{ color: info == 'details' ? '#e57c23' : 'black' }"
-                    @click="info = 'details'"
+                    @click="
+                      info = 'details';
+                      scroller();
+                    "
                   >
                     <Icon icon="ooui:view-details-ltr" /> Details
                   </button>
@@ -353,7 +356,10 @@
                     :style="{
                       color: info == 'advantages' ? '#e57c23' : 'black',
                     }"
-                    @click="info = 'advantages'"
+                    @click="
+                      info = 'advantages';
+                      scroller();
+                    "
                   >
                     <Icon icon="mdi:feature-highlight" />Advantages
                   </button>
@@ -363,7 +369,10 @@
                     type="button"
                     class="shadow btn-des-line"
                     :style="{ color: info == 'services' ? '#e57c23' : 'black' }"
-                    @click="info = 'services'"
+                    @click="
+                      info = 'services';
+                      scroller();
+                    "
                   >
                     <Icon icon="ic:twotone-miscellaneous-services" />Services
                   </button>
@@ -375,7 +384,10 @@
                     :style="{
                       color: info == 'description' ? '#e57c23' : 'black',
                     }"
-                    @click="info = 'description'"
+                    @click="
+                      info = 'description';
+                      scroller();
+                    "
                   >
                     <Icon icon="ic:round-real-estate-agent" />Description
                   </button>
@@ -385,9 +397,12 @@
                     type="button"
                     class="shadow btn-des-line"
                     :style="{
-                      color: info == 'show on map' ? '#e57c23' : 'black',
+                      color: info == 'show_on_map' ? '#e57c23' : 'black',
                     }"
-                    @click="info = 'show on map'"
+                    @click="
+                      info = 'show_on_map'
+                      // scroller();
+                    "
                   >
                     <Icon icon="material-symbols:location-on-rounded" />Show on
                     map
@@ -398,13 +413,16 @@
                     type="button"
                     class="shadow btn-des-line"
                     :style="{ color: info == 'planning' ? '#e57c23' : 'black' }"
-                    @click="info = 'planning'"
+                    @click="
+                      info = 'planning';
+                      scroller();
+                    "
                   >
                     Engineering planning
                   </button>
                 </div>
               </div>
-              <div class="card my-4">
+              <div class="card my-4" id="details">
                 <div
                   class="card-title text-start ps-3 pt-3 name-info"
                   style="padding-bottom: 0; margin-bottom: 0"
@@ -440,7 +458,7 @@
                     <div class="col-4 info info2 mt-3">
                       <p>
                         <Icon icon="fluent:number-symbol-square-20-filled" />
-                        Property Number:{{ this.real_num }}
+                        Property Number:{{ this.prop_number }}
                       </p>
                     </div>
 
@@ -483,7 +501,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card my-4">
+              <div class="card my-4" id="advantages">
                 <div
                   class="card-title text-start ps-3 pt-3 name-info"
                   style="padding-bottom: 0; margin-bottom: 0"
@@ -543,7 +561,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card my-4">
+              <div class="card my-4" id="services">
                 <div
                   class="card-title text-start ps-3 pt-3 name-info"
                   style="padding-bottom: 0; margin-bottom: 0"
@@ -579,12 +597,12 @@
                   </div>
                 </div>
               </div>
-              <div class="card my-4">
+              <div class="card my-4" id="description">
                 <div
                   class="card-title text-start ps-3 pt-3 name-info"
                   style="padding-bottom: 0; margin-bottom: 0"
                 >
-                  Services
+                  Description
                 </div>
                 <div class="d-flex justify-content-center w-100">
                   <hr
@@ -603,8 +621,7 @@
                   Consisting of: {{ describtion }}
                 </div>
               </div>
-
-              <div class="card my-4">
+              <div class="card my-4" id="planning">
                 <div
                   class="card-title text-start ps-3 pt-3 name-info"
                   style="padding-bottom: 0; margin-bottom: 0"
@@ -989,7 +1006,6 @@ export default {
       real_type: "Apartment",
       space: "156",
       type: "Sell",
-      real_num: "1001/BNL",
       real_built: "2010",
       rel_state: "established",
       real_furn: "NO",
@@ -1239,6 +1255,10 @@ export default {
           easing: "easeInOutQuad",
         });
       }
+    },
+    scroller() {
+      const element = document.getElementById(this.info);
+      element.scrollIntoView({ behavior: "smooth" });
     },
   },
   mounted() {

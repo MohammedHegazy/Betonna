@@ -320,6 +320,7 @@
                       :id="special_city.id"
                       :name="special_city.name"
                       :src="special_city.src"
+                      :real_estates="special_city.real_estates"
                     ></SpecialcitiesCard>
                   </div>
                   <div
