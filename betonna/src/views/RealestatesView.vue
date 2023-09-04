@@ -1,7 +1,7 @@
 <template>
   <div class="realestates-view">
     <RealestateSearch></RealestateSearch>
-    <div class="row my-4">
+    <div class="row my-4" ref="target2">
       <div class="col-12">
         <div class="container d-flex justify-content-center align-items-center">
           <div class="row" style="width: 1140px">
@@ -115,6 +115,7 @@
                 } else {
                   current_page--;
                 }
+                scrollToElement();
               "
             >
               <Icon icon="material-symbols:arrow-forward-ios-rounded" />
@@ -132,7 +133,10 @@
               :style="{
                 backgroundColor: current_page == index ? '#e57c23' : 'white',
               }"
-              @click="current_page = index"
+              @click="
+                current_page = index;
+                scrollToElement();
+              "
             >
               {{ index }}
             </button>
@@ -147,6 +151,7 @@
                 } else {
                   current_page++;
                 }
+                scrollToElement();
               "
             >
               <Icon icon="material-symbols:arrow-forward-ios-rounded" />
@@ -577,6 +582,11 @@ export default {
   methods: {
     changeid(x) {
       this.global_id = x;
+    },
+    scrollToElement() {
+      this.$refs.target2.scrollIntoView({
+        behavior: "smooth",
+      });
     },
   },
 };

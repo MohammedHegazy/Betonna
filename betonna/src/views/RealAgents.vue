@@ -9,22 +9,6 @@
                 type="button"
                 class="mybtn"
                 :style="{
-                  color: id1 == global_id ? '#E57C23' : 'black',
-                  border:
-                    id1 == global_id
-                      ? '1px solid #E57C23'
-                      : '0.5px solid rgba(229, 124, 35, 0.49)',
-                }"
-                @click="changeid(id1)"
-              >
-                Real estates
-              </button>
-            </div>
-            <div class="col-2 d-flex justify-content-center align-items-center">
-              <button
-                type="button"
-                class="mybtn"
-                :style="{
                   color: id2 == global_id ? '#E57C23' : 'black',
                   border:
                     id2 == global_id
@@ -52,16 +36,11 @@
                 Real estates Agents
               </button>
             </div>
-            <div class="col-6 d-flex justify-content-end align-items-center">
-              <router-link
-                :to="
-                  $store.state.prevroute != null ? $store.state.prevroute : '/'
-                "
-                class="myfav"
-              >
+            <div class="col-8 d-flex justify-content-end align-items-center">
+              <router-link to="/favourite-list" class="myfav">
                 <Icon
                   class="mx-2"
-                  icon="noto:heart-suit"
+                  icon="streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
                   color="#FF0000"
                   height="24"
                   width="24"
@@ -81,24 +60,6 @@
             v-for="offer in offers[current_page]"
             v-bind:key="offer.id"
           >
-            <RealestateCard
-              v-if="global_id == 'btn1'"
-              :id="offer.id"
-              :name="offer.name"
-              :price="offer.price"
-              :location="offer.location"
-              :space="offer.space"
-              :type="offer.type"
-              :bedrooms="offer.bedrooms"
-              :bathrooms="offer.bathrooms"
-              :src="offer.src"
-              :logo="offer.logo"
-              :state="offer.state"
-              :fav="offer.fav"
-              :phone="offer.phone"
-              :email="offer.email"
-              page_type="real-estate"
-            ></RealestateCard>
             <CompaniesCard
               class="my-5"
               v-if="global_id == 'btn2' || global_id == 'btn3'"
@@ -184,7 +145,6 @@
 <script>
 import { Icon } from "@iconify/vue";
 import AddordownloadCard from "@/components/AddordownloadCard.vue";
-import RealestateCard from "@/components/RealestateCard.vue";
 import CompaniesCard from "@/components/CompaniesCard.vue";
 
 export default {
@@ -192,411 +152,16 @@ export default {
   components: {
     Icon,
     AddordownloadCard,
-    RealestateCard,
     CompaniesCard,
   },
   data() {
     return {
-      id1: "btn1",
       id2: "btn2",
       id3: "btn3",
-      global_id: "btn1",
+      global_id: "btn2",
       type: "agent",
       offers: {},
       current_page: 1,
-      real_estates: {
-        1: {
-          1: {
-            id: 1,
-            name: "Exterior flat1",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "new",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          2: {
-            id: 2,
-            name: "Exterior flat2",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "new",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          3: {
-            id: 3,
-            name: "Exterior flat3",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          4: {
-            id: 4,
-            name: "Exterior flat4",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "rent",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          5: {
-            id: 5,
-            name: "Exterior flat5",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "rent",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "new",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          6: {
-            id: 6,
-            name: "Exterior flat6",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "rent",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "rented",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          7: {
-            id: 7,
-            name: "Exterior flat7",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "sold",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          8: {
-            id: 8,
-            name: "Exterior flat8",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "sold",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-
-          9: {
-            id: 9,
-            name: "Exterior flat9",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "rent",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "new",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          10: {
-            id: 10,
-            name: "Exterior flat10",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "sold",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          11: {
-            id: 11,
-            name: "Exterior flat11",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "rent",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "rented",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          12: {
-            id: 12,
-            name: "Exterior flat12",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "new",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-        },
-        2: {
-          13: {
-            id: 13,
-            name: "Exterior flat13",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          14: {
-            id: 14,
-            name: "Exterior flat14",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          15: {
-            id: 15,
-            name: "Exterior flat15",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          16: {
-            id: 16,
-            name: "Exterior flat16",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          17: {
-            id: 17,
-            name: "Exterior flat17",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          18: {
-            id: 18,
-            name: "Exterior flat18",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          19: {
-            id: 19,
-            name: "Exterior flat19",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          20: {
-            id: 20,
-            name: "Exterior flat20",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-
-          21: {
-            id: 21,
-            name: "Exterior flat21",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          22: {
-            id: 22,
-            name: "Exterior flat22",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          23: {
-            id: 23,
-            name: "Exterior flat23",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-          24: {
-            id: 24,
-            name: "Exterior flat24",
-            price: "60,000$",
-            phone: "+963933097404",
-            email: "test@test.com",
-            location: "Arbeel, central park",
-            space: "156m2",
-            type: "sell",
-            bedrooms: "4",
-            bathrooms: "2",
-            state: "old",
-            fav: "1",
-            src: require("../assets/images/Exterior flat/Exterior.jpg"),
-            logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
-          },
-        },
-        max_pages: 2,
-      },
       Agents: {
         1: {
           1: {
@@ -604,7 +169,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 1",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           2: {
@@ -612,7 +177,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 2",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           3: {
@@ -660,7 +225,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 8",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           9: {
@@ -668,7 +233,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 9",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           10: {
@@ -676,7 +241,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 10",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           11: {
@@ -684,7 +249,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 11",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           12: {
@@ -692,7 +257,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 12",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
         },
@@ -702,7 +267,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 13",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           14: {
@@ -710,7 +275,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 14",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           15: {
@@ -718,7 +283,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 15",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           16: {
@@ -726,7 +291,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 16",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           17: {
@@ -734,7 +299,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 17",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           18: {
@@ -742,7 +307,7 @@ export default {
             img1: require("../assets/images/profile.png"),
             name: "Mohammed Ahmed 18",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           19: {
@@ -803,7 +368,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 1",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           2: {
@@ -811,7 +376,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 2",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           3: {
@@ -819,7 +384,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 3",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           4: {
@@ -827,7 +392,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 4",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           5: {
@@ -835,7 +400,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 5",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           6: {
@@ -843,7 +408,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 6",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           7: {
@@ -909,7 +474,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 14",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           15: {
@@ -917,7 +482,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 15",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           16: {
@@ -925,7 +490,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 16",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           17: {
@@ -933,7 +498,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 17",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           18: {
@@ -941,7 +506,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 18",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           19: {
@@ -949,7 +514,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 19",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           20: {
@@ -957,7 +522,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 20",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           21: {
@@ -965,7 +530,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 21",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           22: {
@@ -973,7 +538,7 @@ export default {
             img1: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
             name: "Tamim General Contracting Company 22",
             phone: "+966456789789",
-            fav: "1",
+            fav: "0",
             email: "test@test.com",
           },
           23: {
@@ -1004,9 +569,7 @@ export default {
     },
     changedata() {
       this.current_page = 1;
-      if (this.global_id == "btn1") {
-        this.offers = this.real_estates;
-      } else if (this.global_id == "btn2") {
+      if (this.global_id == "btn2") {
         this.offers = this.Agents;
         this.type = "agent";
       } else {
@@ -1051,7 +614,7 @@ export default {
   height: 60px;
   width: 160px;
   text-decoration: none;
-  color: #ff0000;
+  color: #000000;
   font-size: 19px;
   font-weight: 700;
   display: flex;
@@ -1061,6 +624,9 @@ export default {
   -moz-box-shadow: 0px 0.1px 4px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 0.1px 4px 0px rgba(0, 0, 0, 0.25);
   transition: 0.5s ease-in;
+}
+.myfav:hover {
+  color: #ff0000;
 }
 .left-arrow {
   display: flex;

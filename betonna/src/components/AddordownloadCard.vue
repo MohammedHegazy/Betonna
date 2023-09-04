@@ -41,20 +41,20 @@
             <a
               href=""
               class="nav-special nav-btn d-flex justify-content-center align-items-center me-2"
-              style="width: 130px; text-decoration: none"
+              style="width: 130px; height: fit-content; text-decoration: none"
               ><img
-                src="../assets/images/Homepage/p4.png"
+                src="../assets/images/Homepage/get_from_appstore.png"
                 alt=""
-                style="width: 120px"
+                style="width: 130px"
             /></a>
             <a
               href=""
               class="nav-special nav-btn d-flex justify-content-center align-items-center ms-2"
-              style="width: 130px; text-decoration: none"
+              style="width: 130px; height: fit-content; text-decoration: none"
               ><img
-                src="../assets/images/Homepage/p5.png"
+                src="../assets/images/Homepage/get_from_google.png"
                 alt=""
-                style="width: 120px"
+                style="width: 130px"
             /></a>
           </div>
         </div>

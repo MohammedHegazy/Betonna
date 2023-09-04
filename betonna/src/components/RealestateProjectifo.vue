@@ -3,7 +3,7 @@
     <div class="d-block">
       <div class="row row-cols-auto my-5 ms-3">
         <div class="col-4 ms-5 my-3">
-          <div class="card">
+          <div class="card sticky-top" style="z-index: 0">
             <div class="card-title">
               <div class="row" style="font-size: 20px; font-weight: 600">
                 <div class="col-8 mt-3 text-start ms-3">
@@ -113,7 +113,7 @@
                   </div>
                 </div>
               </router-link>
-              <router-link to="/" class="Agents_router">
+              <router-link to="/agent" class="Agents_router">
                 <div
                   class="w-100 d-flex justify-content-center align-items-center my-3"
                 >
@@ -211,7 +211,7 @@
                         </div>
                       </div>
                       <button
-                        class="call_email mx-1"
+                        class="call_email"
                         id="msg_btn"
                         @click="show_hide('email')"
                       >
@@ -272,7 +272,7 @@
                     type="button"
                     class="mybtn-photo-type"
                     :style="{ color: type_ph == '360' ? '#e57c23' : 'black' }"
-                    @click="type_ph = '360'"
+                    @click="$router.push('/360-photos')"
                   >
                     <Icon icon="tabler:view-360" height="23" width="23" />
                   </button>
@@ -286,6 +286,42 @@
                 class="photo-slider-selected"
                 v-if="type_ph == 'photo'"
               />
+              <div class="fav" v-if="fav == '0' && type_ph == 'photo'">
+                <Icon
+                  :icon="icon"
+                  class="icon"
+                  height="24"
+                  width="24"
+                  color="black"
+                  @click="change_icon(1)"
+                />
+              </div>
+              <div class="fav" v-if="fav == '1' && type_ph == 'photo'">
+                <Icon
+                  :icon="icon2"
+                  class="icon"
+                  height="24"
+                  width="24"
+                  color="black"
+                  @click="change_icon(1)"
+                />
+              </div>
+              <div class="" v-if="type_ph == 'photo'">
+                <button
+                  type="button"
+                  class="fav"
+                  style="border: none; margin-left: 70px"
+                  @click="show_photo()"
+                >
+                  <Icon
+                    icon="material-symbols:display-external-input-rounded"
+                    class="icon"
+                    height="24"
+                    width="24"
+                    color="black"
+                  />
+                </button>
+              </div>
               <iframe
                 v-else-if="type_ph == 'video'"
                 class="mybtn-video-type"
@@ -627,6 +663,47 @@
                   style="padding-bottom: 0; margin-bottom: 0"
                 >
                   Engineering planning
+                  <div
+                    class="container-icon-photo container-icon-photo2 shadow"
+                  >
+                    <div
+                      class="row d-flex justify-content-center align-items-center"
+                    >
+                      <div
+                        class="col d-flex justify-content-center align-items-center"
+                        style="border-right: 1px solid #d0d0d0"
+                      >
+                        <button
+                          type="button"
+                          class="mybtn-photo-type"
+                          :style="{
+                            color: '#ffffff',
+                            backgroundColor:
+                              planning_type == '2d' ? '#e57c23' : 'black',
+                          }"
+                          @click="planning_type = '2d'"
+                        >
+                          <Icon icon="mdi:video-2d" height="23" width="23" />
+                        </button>
+                      </div>
+                      <div
+                        class="col d-flex justify-content-center align-items-center"
+                      >
+                        <button
+                          type="button"
+                          class="mybtn-photo-type"
+                          :style="{
+                            color: '#ffffff',
+                            backgroundColor:
+                              planning_type == '3d' ? '#e57c23' : 'black',
+                          }"
+                          @click="planning_type = '3d'"
+                        >
+                          <Icon icon="mdi:video-3d" height="23" width="23" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="d-flex justify-content-center w-100">
                   <hr
@@ -799,6 +876,23 @@
         </div>
       </div>
     </div>
+    <div id="popup2" class="overlay" style="visibility: hidden; opacity: 0">
+      <div class="popup">
+        <button type="button" class="close" @click="show_photo()">
+          <Icon
+            icon="fluent-emoji-high-contrast:cross-mark"
+            height="20"
+            width="20"
+          />
+        </button>
+        <div class="content">
+          <div class="text-start my-3">Click on the photo to zoom</div>
+          <button type="button" class="imgbtn" @click="enlargeImg()">
+            <img :src="src" id="popimg" alt="" class="popup_photo" />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -818,6 +912,9 @@ export default {
       rest: 0,
       info: "details",
       plan_src: require("@/assets/images/Property Photo/apartment_plan.jpg"),
+      icon: "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love",
+      icon2: "noto:heart-suit",
+      planning_type: "2d",
       //
       latest_offers: {
         1: {
@@ -1026,6 +1123,7 @@ export default {
       phone: "+963933097404",
       email: "test@test.com",
       message: "",
+      fav: 0,
       images: {
         1: { id: 1, src: require("@/assets/images/Property Photo/p1.jpg") },
         2: { id: 2, src: require("@/assets/images/Property Photo/p2.jpg") },
@@ -1052,6 +1150,8 @@ export default {
         11: { id: 11, src: "https://www.youtube.com/embed/ec_fXMrD7Ow" },
         12: { id: 12, src: "https://www.youtube.com/embed/0Sp1-NokEkY" },
       },
+
+      flag: 0,
     };
   },
   components: {
@@ -1068,11 +1168,6 @@ export default {
           element.style.display = "block";
           const element4 = document.getElementById("ph_btn");
           element4.focus();
-          element2.style.display = "none";
-          const element5 = document.getElementById("em_btn");
-          element5.innerHTML = "Copy";
-          element5.style.backgroundColor = "white";
-          element5.style.color = "black";
           const element6 = document.getElementById("wa_btn");
           element6.style.backgroundColor = "white";
           element6.style.color = "black";
@@ -1109,10 +1204,6 @@ export default {
           element5.innerHTML = "Copy";
           element5.style.backgroundColor = "white";
           element5.style.color = "black";
-          const element6 = document.getElementById("em_btn");
-          element6.innerHTML = "Copy";
-          element6.style.backgroundColor = "white";
-          element6.style.color = "black";
         } else {
           element3.style.display = "none";
           const element4 = document.getElementById("wa_btn");
@@ -1260,6 +1351,54 @@ export default {
       const element = document.getElementById(this.info);
       element.scrollIntoView({ behavior: "smooth" });
     },
+    async change_icon(num) {
+      if (num == 1) {
+        if (
+          this.icon ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon = "noto:heart-suit";
+        } else {
+          this.icon =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
+      } else {
+        if (
+          this.icon2 ==
+          "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love"
+        ) {
+          this.icon2 = "noto:heart-suit";
+        } else {
+          this.icon2 =
+            "streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love";
+        }
+      }
+    },
+    show_photo() {
+      const element2 = document.getElementById("popup2");
+      if (element2.style.visibility == "hidden") {
+        element2.style.visibility = "visible";
+        element2.style.opacity = 1;
+      } else {
+        element2.style.visibility = "hidden";
+        element2.style.opacity = 0;
+      }
+    },
+    enlargeImg() {
+      // Set image size to 1.5 times original
+      const element = document.getElementById("popimg");
+      if (this.flag == 0) {
+        this.flag = 1;
+        element.style.transform = "scale(2.5)";
+        // Animation effect
+        element.style.transition = "transform 0.25s ease";
+      } else {
+        // Set image size to original
+        this.flag = 0;
+        element.style.transform = "scale(1)";
+        element.style.transition = "transform 0.25s ease";
+      }
+    },
   },
   mounted() {
     this.clear_arr();
@@ -1268,6 +1407,31 @@ export default {
 </script>
 
 <style scoped>
+.imgbtn {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+.popup_photo {
+  height: 500px;
+}
+.fav {
+  position: absolute;
+  top: 240px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: end;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 4px;
+  border-radius: 5px;
+  pointer-events: auto inherit;
+}
 .name-info {
   font-size: 22px;
   font-weight: 600;
@@ -1357,7 +1521,7 @@ export default {
 .mybtn-photo-type {
   background-color: #ffffff;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 100%;
   width: 100%;
   display: flex;
@@ -1398,9 +1562,12 @@ export default {
   right: 375px;
   top: 180px;
 }
+.container-icon-photo2 {
+  right: 10px;
+  top: 20px;
+}
 
 .info {
-  text-decoration: underline #e4e4e4 2px;
   color: #585858;
   font-size: 13px;
   display: flex;
@@ -1457,11 +1624,11 @@ export default {
   border-radius: 10px;
   background-color: #ffffff;
   border: none;
-  width: 130px;
+  width: 100px;
   margin: 10px;
   padding: 13px;
   height: fit-content;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   border: #e57c23 solid 1px;
   transition: 0.5s ease-in;
@@ -1482,6 +1649,8 @@ export default {
   border: none;
   width: 90px;
   height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
   font-weight: 600;
   transition: 0.5s ease-in;
@@ -1489,6 +1658,7 @@ export default {
 
 .call_email2:hover {
   margin-bottom: 20px;
+  background-color: #25d366;
 }
 
 .whats_app {
@@ -1503,7 +1673,7 @@ export default {
 .container-3 {
   width: 200px;
   position: absolute;
-  bottom: -100px;
+  bottom: 80px;
   z-index: 15;
   border-radius: 10px;
   background-color: #ffffff;
@@ -1550,11 +1720,6 @@ textarea:focus {
   transition: all 5s ease-in-out;
 }
 
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
 .popup .close {
   position: absolute;
   top: 20px;

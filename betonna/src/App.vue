@@ -3,121 +3,122 @@
     style="width: 100%; height: max-content; font-size: 25px; font-weight: 800"
     ref="target"
   >
-    <div
-      class="d-flex justify-content-center align-items-center"
-      style="background-color: black; height: 100px"
-    >
-      <div class="d-flex justify-content-center align-items-center me-5">
-        <router-link
-          to="/"
-          class="d-flex justify-content-center align-items-center mb-1"
-        >
-          <img src="@/assets/Png.png" alt="LOGO" class="nav-logo" />
-        </router-link>
-      </div>
-      <div
-        class="d-flex justify-content-center align-items-center text-light me-5"
+  </span>
+  <div
+    v-if="$route.path != '/360-photos'"
+    class="d-flex justify-content-center align-items-center"
+    style="background-color: black; height: 100px"
+  >
+    <div class="d-flex justify-content-center align-items-center me-5">
+      <router-link
+        to="/"
+        class="d-flex justify-content-center align-items-center mb-1"
       >
-        Explore the world of real estate in Iraq
-      </div>
-      <div class="d-flex justify-content-center align-items-center ms-5">
-        <Icon class="mx-2" icon="mdi:bell" color="white" />
-        <Icon class="mx-2" icon="material-symbols:mail" color="white" />
-      </div>
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <div class="dropdown">
-          <button
-            class="nav-special nav-list dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style="background-color: white"
+        <img src="@/assets/Png.png" alt="LOGO" class="nav-logo" />
+      </router-link>
+    </div>
+    <div
+      class="d-flex justify-content-center align-items-center text-light me-5"
+    >
+      Explore the world of real estate in Iraq
+    </div>
+    <div class="d-flex justify-content-center align-items-center ms-5">
+      <Icon class="mx-2" icon="mdi:bell" color="white" />
+      <Icon class="mx-2" icon="material-symbols:mail" color="white" />
+    </div>
+    <div class="d-flex justify-content-center align-items-center mx-2">
+      <div class="dropdown">
+        <button
+          class="nav-special nav-list dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="background-color: white"
+        >
+          <img id="dropimg" class="dropimg" :src="imgsrc" alt="" />
+          {{ lan }}
+        </button>
+        <ul class="dropdown-menu">
+          <li
+            @click="
+              lan = 'Arabic';
+              imgsrc = require('@/assets/images/flags/iraq.png');
+              change_font_ar();
+            "
           >
-            <img id="dropimg" class="dropimg" :src="imgsrc" alt="" />
-            {{ lan }}
-          </button>
-          <ul class="dropdown-menu">
-            <li
-              @click="
-                lan = 'Arabic';
-                imgsrc = require('@/assets/images/flags/iraq.png');
-                change_font_ar();
-              "
+            <a class="dropdown-item" href="#">
+              <img
+                src="@/assets/images/flags/iraq.png"
+                height="20"
+                width="30"
+                alt=""
+                style="margin-right: 10px"
+              />Arabic</a
             >
-              <a class="dropdown-item" href="#">
-                <img
-                  src="@/assets/images/flags/iraq.png"
-                  height="20"
-                  width="30"
-                  alt=""
-                  style="margin-right: 10px"
-                />Arabic</a
-              >
-            </li>
-            <li
-              @click="
-                lan = 'English';
-                imgsrc = require('@/assets/images/flags/USA.png');
-                change_font_en();
-              "
-            >
-              <a class="dropdown-item" href="#"
-                ><img
-                  src="@/assets/images/flags/USA.png"
-                  height="20"
-                  width="30"
-                  alt=""
-                  style="margin-right: 10px"
-                />English</a
-              >
-            </li>
-            <li
-              @click="
-                lan = 'Kurdish';
-                imgsrc = require('@/assets/images/flags/kurdish.png');
-                change_font_ar();
-              "
-            >
-              <a class="dropdown-item" href="#"
-                ><img
-                  src="@/assets/images/flags/kurdish.png"
-                  height="20"
-                  width="30"
-                  alt=""
-                  style="margin-right: 10px"
-                />Kurdish</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <div class="dropdown">
-          <button
-            class="nav-special nav-list dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style="background-color: white"
+          </li>
+          <li
+            @click="
+              lan = 'English';
+              imgsrc = require('@/assets/images/flags/USA.png');
+              change_font_en();
+            "
           >
-            {{ currency }}
-          </button>
-          <ul class="dropdown-menu">
-            <li @click="currency = '$USD'">
-              <a class="dropdown-item" href="#">$USD</a>
-            </li>
-            <li @click="currency = 'IQD'">
-              <a class="dropdown-item" href="#">IQD</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <button class="nav-special nav-btn">LOG IN</button>
+            <a class="dropdown-item" href="#"
+              ><img
+                src="@/assets/images/flags/USA.png"
+                height="20"
+                width="30"
+                alt=""
+                style="margin-right: 10px"
+              />English</a
+            >
+          </li>
+          <li
+            @click="
+              lan = 'Kurdish';
+              imgsrc = require('@/assets/images/flags/kurdish.png');
+              change_font_ar();
+            "
+          >
+            <a class="dropdown-item" href="#"
+              ><img
+                src="@/assets/images/flags/kurdish.png"
+                height="20"
+                width="30"
+                alt=""
+                style="margin-right: 10px"
+              />Kurdish</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
-  </span>
-  <navbar></navbar>
+    <div class="d-flex justify-content-center align-items-center mx-2">
+      <div class="dropdown">
+        <button
+          class="nav-special nav-list dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="background-color: white"
+        >
+          {{ currency }}
+        </button>
+        <ul class="dropdown-menu">
+          <li @click="currency = '$USD'">
+            <a class="dropdown-item" href="#">$USD</a>
+          </li>
+          <li @click="currency = 'IQD'">
+            <a class="dropdown-item" href="#">IQD</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center mx-2">
+      <button class="nav-special nav-btn">LOG IN</button>
+    </div>
+  </div>
+  <navbar v-if="$route.path != '/360-photos'"></navbar>
   <router-view />
   <div class="footer" style="background-color: #000000; color: white">
     <div class="row d-flex justify-content-center align-items-start">
@@ -293,6 +294,7 @@
 <script>
 import Navbar from "./components/Navbar.vue";
 import { Icon } from "@iconify/vue";
+import store from "./store";
 
 export default {
   name: "MyApp",
@@ -309,6 +311,7 @@ export default {
       snap: require("@/assets/images/Social media/Snapchat.png"),
       Tiktok: require("@/assets/images/Social media/TikTok.png"),
       twitter: require("@/assets/images/Social media/twitter.png"),
+      prevroute: "",
     };
   },
   methods: {
@@ -335,6 +338,10 @@ export default {
     $route(to, from) {
       this.scrollToElement();
       console.log(to, from);
+      store.state.prevroute = from.href;
+      if (from.href == "/360-photos" && to.href != "/360-photos") {
+        location.reload();
+      }
     },
   },
 };
@@ -356,6 +363,7 @@ export default {
 
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #app {

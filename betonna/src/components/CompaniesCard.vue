@@ -59,7 +59,10 @@
         </div>
       </div>
       <div class="card-title" style="font-size: 20px; font-weight: 700">
-        {{ this.name }}
+        <router-link to="/agent" class="routehover" v-if="type == 'agent'">
+          {{ this.name }}</router-link
+        >
+        <span v-else>{{ name }}</span>
       </div>
       <div class="card-link">
         <div class="row">
@@ -227,6 +230,7 @@ export default {
     phone: String,
     email: String,
     fav: String,
+    type: String,
   },
   mounted() {
     this.new_id = Math.floor(Math.random() * 100) * 10 + this.id;
@@ -235,6 +239,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.routehover {
+  color: black;
+  transition: 0.5s ease-in-out;
+  text-decoration: none;
+}
+.routehover:hover {
+  color: #e57c23;
+}
 .container {
   width: 200px;
   position: absolute;

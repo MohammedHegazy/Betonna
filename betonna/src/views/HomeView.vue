@@ -230,7 +230,11 @@
                   <div class="col-2">
                     <router-link
                       to="/real-estates"
-                      style="color: black; text-decoration: underline #e57c23"
+                      style="
+                        color: black;
+                        text-decoration: underline #e57c23;
+                        padding: 30px;
+                      "
                       ><Icon
                         icon="material-symbols:arrow-back-rounded"
                         class="mx-2"
@@ -519,6 +523,7 @@
                         :phone="company.phone"
                         :email="company.email"
                         :fav="company.fav"
+                        type="company"
                       ></CompaniesCard>
                     </div>
                     <div
@@ -643,6 +648,7 @@
                         :phone="agent.phone"
                         :email="agent.email"
                         :fav="agent.fav"
+                        type="agent"
                       ></CompaniesCard>
                     </div>
                     <div
@@ -810,13 +816,19 @@
                 href=""
                 class="nav-special nav-btn d-flex justify-content-center align-items-center"
                 style="width: 192px; text-decoration: none; margin-right: 20px"
-                ><img src="../assets/images/Homepage/p4.png" alt=""
+                ><img
+                  class="download-from"
+                  src="../assets/images/Homepage/get_from_appstore.png"
+                  alt=""
               /></a>
               <a
                 href=""
                 class="nav-special nav-btn d-flex justify-content-center align-items-center"
                 style="width: 192px; text-decoration: none; margin-left: 20px"
-                ><img src="../assets/images/Homepage/p5.png" alt=""
+                ><img
+                  class="download-from"
+                  src="../assets/images/Homepage/get_from_google.png"
+                  alt=""
               /></a>
             </div>
           </div>
@@ -1654,6 +1666,11 @@ export default {
 </script>
 
 <style lang="scss">
+.download-from {
+  height: 100%;
+  width: 100%;
+}
+
 .home-page {
   height: 100%;
   width: 100%;
