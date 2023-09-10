@@ -40,7 +40,7 @@
         <p class="my_sold">rented</p>
       </div>
       <router-link
-        to="/real-estate-info"
+        :to="'/real-estate-info?real_id=' + id"
         v-if="page_type == 'real-estate'"
         class="myrout"
       >
@@ -71,7 +71,7 @@
         <div class="row" style="font-size: 20px; font-weight: 600">
           <div class="col-6 mt-3">
             <router-link
-              to="/real-estate-info"
+              :to="'/real-estate-info?real_id=' + id"
               class="myrouter"
               v-if="page_type == 'real-estate'"
             >
@@ -149,7 +149,7 @@
         v-if="page_type == NULL"
       >
         <router-link
-          to="/real-estate-info"
+          :to="'/real-estate-info?real_id=' + id"
           class="btn d-flex justify-content-center align-items-center"
           style="
             width: 180px;

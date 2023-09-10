@@ -569,7 +569,7 @@ export default {
     },
     changedata() {
       this.current_page = 1;
-      if (this.global_id == "btn2") {
+      if (this.global_id == "btn3") {
         this.offers = this.Agents;
         this.type = "agent";
       } else {

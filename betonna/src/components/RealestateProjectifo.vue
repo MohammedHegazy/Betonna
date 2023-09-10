@@ -1,8 +1,8 @@
 <template>
   <div class="realestate-projectinfo">
     <div class="d-block">
-      <div class="row row-cols-auto my-5 ms-3">
-        <div class="col-4 ms-5 my-3">
+      <div class="row row-cols-auto mt-5 ms-3">
+        <div class="col-4 ms-5">
           <div class="card sticky-top" style="z-index: 0">
             <div class="card-title">
               <div class="row" style="font-size: 20px; font-weight: 600">
@@ -20,7 +20,7 @@
                 </div>
               </div>
               <div
-                class="card-text text-start ms-3 mt-2"
+                class="card-text text-start ms-3 mt-1"
                 style="color: #585858"
               >
                 <Icon
@@ -29,8 +29,8 @@
                   width="24"
                 />{{ this.location }}
               </div>
-              <div class="card-text text-start ms-4 mt-2">
-                <div class="row mt-4 info-box w-100 d-flex">
+              <div class="card-text text-start ms-4 mt-1">
+                <div class="row mt-2 info-box w-100 d-flex">
                   <div class="col-6 info mt-3">
                     <p>
                       <Icon icon="material-symbols:calendar-month-rounded" />
@@ -70,14 +70,14 @@
                 </div>
               </div>
               <div
-                class="card-text text-start ms-3 my-4"
+                class="card-text text-start ms-3 mt-2"
                 style="font-size: 20px; font-weight: 600"
               >
                 Real Estate Agent
               </div>
               <router-link to="/" class="Agents_router">
                 <div
-                  class="w-100 d-flex justify-content-center align-items-center my-3"
+                  class="w-100 d-flex justify-content-center align-items-center mt-2"
                 >
                   <div class="card card-shadow shadow">
                     <div class="row">
@@ -115,7 +115,7 @@
               </router-link>
               <router-link to="/agent" class="Agents_router">
                 <div
-                  class="w-100 d-flex justify-content-center align-items-center my-3"
+                  class="w-100 d-flex justify-content-center align-items-center mt-2"
                 >
                   <div class="card card-shadow shadow">
                     <div class="row">
@@ -149,7 +149,7 @@
                 </div>
               </router-link>
               <div
-                class="card-text text-start ms-3 my-4"
+                class="card-text text-start ms-3 mt-3"
                 style="font-size: 20px; font-weight: 600"
               >
                 Contact
@@ -1419,7 +1419,7 @@ export default {
   margin-top: 40px;
 }
 .popup_photo {
-  height: 500px;
+  height: 450px;
 }
 .fav {
   position: absolute;
@@ -1624,11 +1624,11 @@ export default {
   border-radius: 10px;
   background-color: #ffffff;
   border: none;
-  width: 100px;
+  width: 115px;
   margin: 10px;
   padding: 13px;
   height: fit-content;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   border: #e57c23 solid 1px;
   transition: 0.5s ease-in;
@@ -1673,7 +1673,7 @@ export default {
 .container-3 {
   width: 200px;
   position: absolute;
-  bottom: 80px;
+  bottom: -80px;
   z-index: 15;
   border-radius: 10px;
   background-color: #ffffff;

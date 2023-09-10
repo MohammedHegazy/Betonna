@@ -59,7 +59,11 @@
         </div>
       </div>
       <div class="card-title" style="font-size: 20px; font-weight: 700">
-        <router-link to="/agent" class="routehover" v-if="type == 'agent'">
+        <router-link
+          :to="'/agent?agent_id=' + id"
+          class="routehover"
+          v-if="type == 'agent'"
+        >
           {{ this.name }}</router-link
         >
         <span v-else>{{ name }}</span>

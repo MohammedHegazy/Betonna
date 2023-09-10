@@ -8,7 +8,7 @@
           style="
             background-color: white;
             z-index: 2;
-            margin-bottom: 100px;
+            margin-bottom: 70px;
             direction: ltr;
           "
         >
@@ -211,7 +211,7 @@
           </div>
         </nav>
       </div>
-      <div class="container">
+      <div>
         <My360Photo :myphoto="src"></My360Photo>
       </div>
     </div>

@@ -15,6 +15,7 @@
                   </div>
                   <div class="card-text text-start mt-2" style="color: #585858">
                     <Icon
+                      class="me-2"
                       icon="material-symbols:location-on-rounded"
                       height="24"
                       width="24"
@@ -29,7 +30,12 @@
                 class="card-text text-start ms-3 mt-2"
                 style="color: #585858"
               >
-                <Icon icon="ion:language" height="24" width="24" />Languages:
+                <Icon
+                  icon="ion:language"
+                  height="24"
+                  width="24"
+                  class="me-2"
+                />Languages:
                 <span v-for="(ele, index) in langs" :key="index"
                   >{{ ele
                   }}<span v-if="index != Object.keys(langs).length"
@@ -45,25 +51,24 @@
                   icon="fluent:building-home-24-filled"
                   height="24"
                   width="24"
+                  class="me-2"
                 />Added real estates: {{ this.real_estates_added }}
               </div>
               <div
-                class="card-text text-start ms-3 my-4"
+                class="card-text text-start ms-3 my-2"
                 style="font-size: 20px; font-weight: 600"
               >
                 Social media
               </div>
-              <div
-                class="card-text d-flex justify-content-center align-items-center"
-              >
+              <div class="row card-text ms-3">
                 <div
-                  class="mx-1"
+                  class="col-6 d-flex justify-content-start align-items-center my-2"
                   v-for="(social, index) in contact"
                   :key="index"
                 >
                   <a :href="social">
                     <Icon
-                      class="mx-1"
+                      class="mx-2"
                       :icon="
                         index == 'facebook'
                           ? 'logos:facebook'
@@ -89,7 +94,7 @@
                 </div>
               </div>
               <div
-                class="card-text text-start ms-3 my-4"
+                class="card-text text-start ms-3 my-2"
                 style="font-size: 20px; font-weight: 600"
               >
                 Contact
@@ -216,32 +221,55 @@
               <div class="photo-container">
                 <img :src="src" alt="" class="profile-photo" />
                 <div class="fav" v-if="fav == '0'">
-                  <Icon
-                    :icon="icon"
-                    class="icon"
-                    height="24"
-                    width="24"
-                    color="black"
-                    @click="change_icon(1)"
-                  />
-                </div>
-                <div class="fav" v-if="fav == '1'">
-                  <Icon
-                    :icon="icon2"
-                    class="icon"
-                    height="24"
-                    width="24"
-                    color="black"
-                    @click="change_icon(1)"
-                  />
-                </div>
-                <div class="">
                   <button
                     type="button"
-                    class="fav"
-                    style="border: none; margin-left: 70px"
-                    @click="show_photo()"
+                    class="btn-show"
+                    @click="change_icon(1)"
                   >
+                    <Icon
+                      :icon="icon"
+                      class="icon"
+                      height="24"
+                      width="24"
+                      color="black"
+                    />
+                  </button>
+                  <button type="button" class="btn-show" @click="show_share()">
+                    <Icon
+                      icon="ph:share-fat-fill"
+                      class="icon"
+                      height="24"
+                      width="24"
+                      color="black"
+                    />
+                  </button>
+                </div>
+                <div class="fav" v-if="fav == '1'">
+                  <button
+                    type="button"
+                    class="btn-show"
+                    @click="change_icon(1)"
+                  >
+                    <Icon
+                      :icon="icon2"
+                      class="icon"
+                      height="24"
+                      width="24"
+                      color="black"
+                    />
+                  </button>
+                  <button type="button" class="btn-show" @click="show_share()">
+                    <Icon
+                      icon="ph:share-fat-fill"
+                      class="icon"
+                      height="24"
+                      width="24"
+                      color="black"
+                    />
+                  </button>
+                </div>
+                <div class="fav" style="margin-left: 100px">
+                  <button type="button" class="btn-show" @click="show_photo()">
                     <Icon
                       icon="material-symbols:display-external-input-rounded"
                       class="icon"
@@ -267,8 +295,7 @@
           />
         </button>
         <div class="content">
-          <div class="text-start my-3">Click on the photo to zoom</div>
-          <button type="button" class="imgbtn" @click="enlargeImg()">
+          <button type="button" class="imgbtn" style="pointer-events: none">
             <img :src="src" id="popimg" alt="" class="popup_photo" />
           </button>
         </div>
@@ -276,9 +303,9 @@
     </div>
     <div class="row d-flex justify-content-center align-items-center mb-5">
       <div class="col-11">
-        <div class="card">
+        <div class="card p-4">
           <div
-            class="card-title heading-1 text-start d-flex align-items-center ms-5 mt-4"
+            class="card-title heading-1 text-start d-flex align-items-center ms-5"
           >
             Offers ({{ real_estates_added }})
           </div>
@@ -293,8 +320,12 @@
               "
             />
           </div>
-          <div class="row">
-            <div class="col-3" v-for="real in real_estates" :key="real.id">
+          <div class="row p-4">
+            <div
+              class="col-3 d-flex align-items-center justify-content-center"
+              v-for="real in real_estates"
+              :key="real.id"
+            >
               <RealestateCard
                 :id="real.id"
                 :name="real.name"
@@ -317,12 +348,14 @@
         </div>
       </div>
     </div>
+    <ShareSocial></ShareSocial>
   </div>
 </template>
 
 <script>
 import { Icon } from "@iconify/vue";
 import RealestateCard from "@/components/RealestateCard.vue";
+import ShareSocial from "@/components/ShareSocial.vue";
 export default {
   name: "real-agent",
   data() {
@@ -449,6 +482,7 @@ export default {
   components: {
     Icon,
     RealestateCard,
+    ShareSocial,
   },
   methods: {
     async change_icon(num) {
@@ -565,19 +599,29 @@ export default {
         element2.style.opacity = 0;
       }
     },
-    enlargeImg() {
-      // Set image size to 1.5 times original
-      const element = document.getElementById("popimg");
-      if (this.flag == 0) {
-        this.flag = 1;
-        element.style.transform = "scale(2.5)";
-        // Animation effect
-        element.style.transition = "transform 0.25s ease";
+    show_share() {
+      const title = window.document.title;
+      const url = window.document.location.href;
+
+      if (navigator.share && window.innerWidth < 500) {
+        navigator
+          .share({
+            title: `${title}`,
+            url: `${url}`,
+          })
+          .then(() => {
+            console.log("Thanks for sharing!");
+          })
+          .catch(console.error);
       } else {
-        // Set image size to original
-        this.flag = 0;
-        element.style.transform = "scale(1)";
-        element.style.transition = "transform 0.25s ease";
+        const element2 = document.getElementById("popup3");
+        if (element2.style.visibility == "hidden") {
+          element2.style.visibility = "visible";
+          element2.style.opacity = 1;
+        } else {
+          element2.style.visibility = "hidden";
+          element2.style.opacity = 0;
+        }
       }
     },
   },
@@ -585,6 +629,10 @@ export default {
 </script>
 
 <style scoped>
+.btn-show {
+  background-color: unset;
+  border: none;
+}
 .heading-1 {
   font-size: 22px;
   font-weight: 600;
@@ -656,6 +704,7 @@ export default {
 }
 .card {
   border-radius: 10px;
+  height: 100%;
 }
 .fav {
   position: absolute;
@@ -743,9 +792,9 @@ a:visited {
   border-radius: 10px;
   background-color: #ffffff;
   border: none;
-  width: 85px;
+  width: 115px;
   height: 40px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   border: #e57c23 solid 1px;
   transition: 0.5s ease-in;
