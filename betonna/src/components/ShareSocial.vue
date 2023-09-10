@@ -9,7 +9,7 @@
             width="20"
           />
         </button>
-        <div class="content mt-3">
+        <div class="content">
           <div class="sharethis-inline-share-buttons"></div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default {
 }
 .popup .content {
   text-align: start;
-  margin-top: 30px;
+  margin-top: 60px;
   overflow: auto;
 }
 .popup .close {
