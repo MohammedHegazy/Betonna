@@ -9,7 +9,7 @@
             width="20"
           />
         </button>
-        <div class="content">
+        <div class="content mt-3">
           <div class="sharethis-inline-share-buttons"></div>
         </div>
       </div>
