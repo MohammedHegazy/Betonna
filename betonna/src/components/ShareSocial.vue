@@ -71,6 +71,7 @@ export default {
 .popup .content {
   text-align: start;
   margin-top: 60px;
+  height: max-content;
   overflow: auto;
 }
 .popup .close {
