@@ -280,57 +280,83 @@
               </div>
             </div>
             <div class="photo-container">
-              <img
-                :src="src"
-                alt=""
-                class="photo-slider-selected"
-                v-if="type_ph == 'photo'"
-              />
-              <div class="fav" v-if="fav == '0' && type_ph == 'photo'">
-                <Icon
-                  :icon="icon"
-                  class="icon"
-                  height="24"
-                  width="24"
-                  color="black"
-                  @click="change_icon(1)"
+              <div class="card" style="background-color: unset; border: none">
+                <img
+                  :src="src"
+                  alt=""
+                  class="photo-slider-selected"
+                  v-if="type_ph == 'photo'"
                 />
+                <div v-if="fav == '0' && type_ph == 'photo'">
+                  <div class="fav">
+                    <button
+                      type="button"
+                      class="btn-show"
+                      @click="change_icon(1)"
+                      v-if="fav == '0'"
+                    >
+                      <Icon
+                        :icon="icon"
+                        class="icon"
+                        height="24"
+                        width="24"
+                        color="black"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-show"
+                      @click="change_icon(1)"
+                      v-if="fav == '1'"
+                    >
+                      <Icon
+                        :icon="icon2"
+                        class="icon"
+                        height="24"
+                        width="24"
+                        color="black"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-show"
+                      @click="show_share()"
+                    >
+                      <Icon
+                        icon="ph:share-fat-fill"
+                        class="icon"
+                        height="24"
+                        width="24"
+                        color="black"
+                      />
+                    </button>
+                  </div>
+                  <div class="fav" style="margin-left: 100px">
+                    <button
+                      type="button"
+                      class="btn-show"
+                      @click="show_photo()"
+                    >
+                      <Icon
+                        icon="material-symbols:display-external-input-rounded"
+                        class="icon"
+                        height="24"
+                        width="24"
+                        color="black"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <iframe
+                  v-else-if="type_ph == 'video'"
+                  class="mybtn-video-type"
+                  :src="src"
+                  title="Vue.js IFrame Embed Component For Youtube,Dailymotion,Vimeo Videos Using v-video-embed Library"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
               </div>
-              <div class="fav" v-if="fav == '1' && type_ph == 'photo'">
-                <Icon
-                  :icon="icon2"
-                  class="icon"
-                  height="24"
-                  width="24"
-                  color="black"
-                  @click="change_icon(1)"
-                />
-              </div>
-              <div class="" v-if="type_ph == 'photo'">
-                <button
-                  type="button"
-                  class="fav"
-                  style="border: none; margin-left: 70px"
-                  @click="show_photo()"
-                >
-                  <Icon
-                    icon="material-symbols:display-external-input-rounded"
-                    class="icon"
-                    height="24"
-                    width="24"
-                    color="black"
-                  />
-                </button>
-              </div>
-              <iframe
-                v-else-if="type_ph == 'video'"
-                class="mybtn-video-type"
-                :src="src"
-                title="Vue.js IFrame Embed Component For Youtube,Dailymotion,Vimeo Videos Using v-video-embed Library"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
               <div
                 class="my-3 d-flex justify-content-center align-items-center"
               >
@@ -893,6 +919,7 @@
         </div>
       </div>
     </div>
+    <ShareSocial></ShareSocial>
   </div>
 </template>
 
@@ -900,6 +927,7 @@
 import { Icon } from "@iconify/vue";
 import anime from "animejs";
 import RealestateCard from "@/components/RealestateCard.vue";
+import ShareSocial from "./ShareSocial.vue";
 
 export default {
   name: "realestate-projectinfo",
@@ -1157,6 +1185,7 @@ export default {
   components: {
     Icon,
     RealestateCard,
+    ShareSocial,
   },
   methods: {
     async show_hide(type) {
@@ -1399,6 +1428,31 @@ export default {
         element.style.transition = "transform 0.25s ease";
       }
     },
+    show_share() {
+      const title = window.document.title;
+      const url = window.document.location.href;
+
+      if (navigator.share && window.innerWidth < 500) {
+        navigator
+          .share({
+            title: `${title}`,
+            url: `${url}`,
+          })
+          .then(() => {
+            console.log("Thanks for sharing!");
+          })
+          .catch(console.error);
+      } else {
+        const element2 = document.getElementById("popup3");
+        if (element2.style.visibility == "hidden") {
+          element2.style.visibility = "visible";
+          element2.style.opacity = 1;
+        } else {
+          element2.style.visibility = "hidden";
+          element2.style.opacity = 0;
+        }
+      }
+    },
   },
   mounted() {
     this.clear_arr();
@@ -1407,6 +1461,10 @@ export default {
 </script>
 
 <style scoped>
+.btn-show {
+  background-color: unset;
+  border: none;
+}
 .imgbtn {
   padding: 0;
   border: 0;
@@ -1423,8 +1481,8 @@ export default {
 }
 .fav {
   position: absolute;
-  top: 240px;
-  margin-left: 20px;
+  top: 10px;
+  left: 10px;
   display: flex;
   justify-content: end;
   background-color: rgba(255, 255, 255, 0.6);

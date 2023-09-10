@@ -220,11 +220,12 @@
             <div class="card" style="background: unset">
               <div class="photo-container">
                 <img :src="src" alt="" class="profile-photo" />
-                <div class="fav" v-if="fav == '0'">
+                <div class="fav">
                   <button
                     type="button"
                     class="btn-show"
                     @click="change_icon(1)"
+                    v-if="fav == '0'"
                   >
                     <Icon
                       :icon="icon"
@@ -234,21 +235,11 @@
                       color="black"
                     />
                   </button>
-                  <button type="button" class="btn-show" @click="show_share()">
-                    <Icon
-                      icon="ph:share-fat-fill"
-                      class="icon"
-                      height="24"
-                      width="24"
-                      color="black"
-                    />
-                  </button>
-                </div>
-                <div class="fav" v-if="fav == '1'">
                   <button
                     type="button"
                     class="btn-show"
                     @click="change_icon(1)"
+                    v-if="fav == '1'"
                   >
                     <Icon
                       :icon="icon2"
