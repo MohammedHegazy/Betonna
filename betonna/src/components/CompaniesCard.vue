@@ -66,7 +66,14 @@
         >
           {{ this.name }}</router-link
         >
-        <span v-else>{{ name }}</span>
+
+        <router-link
+          :to="'/company?company_id=' + id"
+          class="routehover"
+          v-else
+        >
+          {{ this.name }}</router-link
+        >
       </div>
       <div class="card-link">
         <div class="row">

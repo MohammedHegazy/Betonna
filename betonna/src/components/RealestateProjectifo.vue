@@ -75,7 +75,10 @@
               >
                 Real Estate Agent
               </div>
-              <router-link to="/" class="Agents_router">
+              <router-link
+                :to="'/company?company_id=' + company_id"
+                class="Agents_router"
+              >
                 <div
                   class="w-100 d-flex justify-content-center align-items-center mt-2"
                 >
@@ -113,7 +116,10 @@
                   </div>
                 </div>
               </router-link>
-              <router-link to="/agent" class="Agents_router">
+              <router-link
+                :to="'/agent?agent_id=' + Agent_id"
+                class="Agents_router"
+              >
                 <div
                   class="w-100 d-flex justify-content-center align-items-center mt-2"
                 >
@@ -1144,8 +1150,10 @@ export default {
       describtion: "3 sitting rooms, 2 bathrooms and 1 kitchen",
       img: require("@/assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
       company_name: "Tamim General Contracting Company",
+      company_id: 1,
       company_location: "Arbeel,Central Park",
       Agent_name: "Mohammed Alsabah",
+      Agent_id: 1,
       real_estates_added: 12,
       img_agent: require("@/assets/images/profile.png"),
       phone: "+963933097404",

@@ -10,7 +10,19 @@
           />
         </button>
         <div class="content">
-          <div class="sharethis-inline-share-buttons"></div>
+          <div class="row">
+            <div class="col-2 mx-1" v-for="(ele, index) in social" :key="index">
+              <a :class="ele.name + 1" href="" target="_blank">
+                <Icon
+                  :icon="ele.icon"
+                  :color="ele.color"
+                  :class="ele.name + ' share_icons'"
+                  height="40"
+                  width="40"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -22,7 +34,36 @@ import { Icon } from "@iconify/vue";
 export default {
   name: "share-social",
   data() {
-    return {};
+    return {
+      link: "",
+      social: {
+        1: {
+          name: "facebook",
+          icon: "ri:facebook-circle-fill",
+          color: "#3B5998",
+        },
+        2: {
+          name: "twitter",
+          icon: "ant-design:twitter-circle-filled",
+          color: "#00ACEE",
+        },
+        3: {
+          name: "whatsapp",
+          icon: "logos:whatsapp-icon",
+          color: "#1FAF38",
+        },
+        4: {
+          name: "snapchat",
+          icon: "uil:snapchat-square",
+          color: "#FFFC00",
+        },
+        5: {
+          name: "gmail",
+          icon: "cib:gmail",
+          color: "#DB4437",
+        },
+      },
+    };
   },
   components: {
     Icon,
@@ -39,11 +80,40 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    this.link = window.location.href;
+    const gmail = document.querySelector(".gmail1");
+    gmail.href =
+      "https://mail.google.com/mail/u/0/?to&su=Betonna&body=" +
+      this.link +
+      "&bcc&cc&fs=1&tf=cm";
+
+    const facebook = document.querySelector(".facebook1");
+    facebook.href =
+      "https://www.facebook.com/sharer.php?t=Betonna&u=" + this.link;
+    const twitter = document.querySelector(".twitter1");
+    twitter.href =
+      "https://twitter.com/i/flow/login?redirect_after_login=%2Fintent%2Ftweet%3Ftext%3DBetonna%26url%3D" +
+      this.link;
+    const whatsapp = document.querySelector(".whatsapp1");
+    whatsapp.href = "https://api.whatsapp.com/send?text=" + this.link;
+    const snapchat = document.querySelector(".snapchat1");
+    snapchat.href =
+      "https://www.snapchat.com/scan?attachmentUrl=" +
+      this.link +
+      "&utm_source=sharethis";
+  },
 };
 </script>
 
 <style scoped>
+.share_icons {
+  transition: 0.5s ease-in-out;
+}
+.share_icons:hover {
+  margin-left: 10px;
+  margin-top: 10px;
+}
 .gmail {
   padding: 0;
   background: linear-gradient(
@@ -64,15 +134,15 @@ export default {
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: max-content;
+  width: 380px;
+  height: 200px;
+  padding: 30px;
   position: relative;
   transition: all 5s ease-in-out;
 }
 .popup .content {
-  text-align: start;
   margin-top: 60px;
   height: max-content;
-  overflow: auto;
 }
 .popup .close {
   position: absolute;

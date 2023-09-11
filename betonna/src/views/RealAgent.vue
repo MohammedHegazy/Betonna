@@ -238,7 +238,7 @@
                   <button
                     type="button"
                     class="btn-show"
-                    @click="change_icon(1)"
+                    @click="change_icon(2)"
                     v-if="fav == '1'"
                   >
                     <Icon

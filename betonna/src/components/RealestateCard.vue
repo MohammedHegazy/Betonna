@@ -131,7 +131,7 @@
           </div>
           <div class="col-2 d-flex justify-content-center">
             <router-link
-              to="/"
+              :to="'/company?company_id=' + company_id"
               class="d-flex justify-content-center align-items-center"
             >
               <img
@@ -272,6 +272,7 @@ export default {
     page_type: String,
     phone: String,
     email: String,
+    company_id: Number,
   },
   methods: {
     async change_icon(num) {

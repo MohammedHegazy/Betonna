@@ -346,6 +346,8 @@ export default {
         store.state.real_id = to.query.real_id;
       } else if ("agent_id" in to.query) {
         store.state.agent_id = to.query.agent_id;
+      } else if ("company_id" in to.query) {
+        store.state.company_id = to.query.company_id;
       }
     },
   },

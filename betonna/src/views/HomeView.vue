@@ -204,6 +204,7 @@
                       :logo="latest_offer.logo"
                       :state="latest_offer.state"
                       :fav="latest_offer.fav"
+                      :company_id="latest_offer.company_id"
                     ></RealestateCard>
                   </div>
                   <div
@@ -876,6 +877,7 @@ export default {
             fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           2: {
             id: 2,
@@ -890,6 +892,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           3: {
             id: 3,
@@ -904,6 +907,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           4: {
             id: 4,
@@ -918,6 +922,7 @@ export default {
             fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
         },
         2: {
@@ -934,6 +939,7 @@ export default {
             fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           6: {
             id: 6,
@@ -948,6 +954,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           7: {
             id: 7,
@@ -962,6 +969,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           8: {
             id: 8,
@@ -976,6 +984,7 @@ export default {
             fav: "1",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
         },
         3: {
@@ -992,6 +1001,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           10: {
             id: 10,
@@ -1006,6 +1016,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           11: {
             id: 11,
@@ -1020,6 +1031,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
           12: {
             id: 12,
@@ -1034,6 +1046,7 @@ export default {
             fav: "0",
             src: require("../assets/images/Exterior flat/Exterior.jpg"),
             logo: require("../assets/images/3aa11431-e9c0-4417-b1b2-c51fdf1b8084.jpg"),
+            company_id: 1,
           },
         },
         max_pages: 3,
