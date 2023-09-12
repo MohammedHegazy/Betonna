@@ -7,6 +7,8 @@ import Full360PhotosVue from "@/views/Full360Photo.vue";
 import RealAgentsVue from "@/views/RealAgents.vue";
 import RealAgentVue from "@/views/RealAgent.vue";
 import CompanyViewVue from "@/views/CompanyView.vue";
+import ServicesViewVue from "@/views/ServicesView.vue";
+import ServiceCompaniesVue from "@/views/ServiceCompanies.vue";
 
 const routes = [
   {
@@ -48,6 +50,16 @@ const routes = [
     path: "/company",
     name: "Real Estate Company",
     component: CompanyViewVue,
+  },
+  {
+    path: "/services",
+    name: "Services View",
+    component: ServicesViewVue,
+  },
+  {
+    path: "/service-companies",
+    name: "Service Companies View",
+    component: ServiceCompaniesVue,
   },
 ];
 

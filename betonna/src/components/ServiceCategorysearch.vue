@@ -1,5 +1,5 @@
 <template>
-  <div class="city-search">
+  <div class="service-categorysearch">
     <div class="dropdown" style="border-radius: 5px">
       <button
         class="form-home1 form-home2"
@@ -10,12 +10,12 @@
         @blur="changic1(1)"
       >
         <Icon
-          icon="zondicons:location"
+          icon="bxs:category"
           color="#585858"
           :height="page_type == 'home' ? '25px' : ''"
           :width="page_type == 'home' ? '25px' : ''"
         />
-        {{ city }}
+        {{ category }}
         <Icon
           :icon="icon1"
           color="#585858"
@@ -24,18 +24,18 @@
         />
       </button>
       <ul class="dropdown-menu">
-        <div v-for="city in citys" v-bind:key="city.id">
+        <div v-for="category in categorys" v-bind:key="category.id">
           <li class="d-flex justify-content-center">
             <button
               type="button"
               class="city-btn"
-              :id="city.id"
+              :id="category.id"
               :style="{
-                color: city.id === city_id ? '#e57c23' : 'black',
+                color: category.id === category_id ? '#e57c23' : 'black',
               }"
-              @click="changecity(city.name, city.id)"
+              @click="changecity(category.name, category.id)"
             >
-              {{ city.name }}
+              {{ category.name }}
             </button>
           </li>
           <li><hr class="dropdown-divider" /></li>
@@ -48,17 +48,31 @@
 <script>
 import { Icon } from "@iconify/vue";
 export default {
-  name: "city-search",
+  name: "service-categorysearch",
   data() {
     return {
       icon1: "fe:arrow-down",
-      city: "City",
-      city_id: null,
-      citys: {
-        1: { id: 1, name: "Baghdad" },
-        2: { id: 2, name: "Arbeel" },
-        3: { id: 3, name: "Albosra" },
-        4: { id: 4, name: "Alsulaimanieh" },
+      category: "Category",
+      category_id: null,
+      categorys: {
+        1: { id: 1, name: "Waste removal" },
+        2: { id: 2, name: "Transportation services" },
+        3: { id: 3, name: "Security services" },
+        4: { id: 4, name: "plumbing" },
+        5: { id: 5, name: "Painters" },
+        6: { id: 6, name: "Blacksmith" },
+        7: { id: 7, name: "Lawyers" },
+        8: { id: 8, name: "Kitchen design" },
+        9: { id: 9, name: "Internet services" },
+        10: { id: 10, name: "Interior designs" },
+        11: { id: 11, name: "Garden cleaning" },
+        12: { id: 12, name: "Exterior designs" },
+        13: { id: 13, name: "Contracting" },
+        14: { id: 14, name: "Construction workers" },
+        15: { id: 15, name: "Cleaning services" },
+        16: { id: 16, name: "Carpentry" },
+        17: { id: 17, name: "Building engineers" },
+        18: { id: 18, name: "Air conditioning system" },
       },
     };
   },
@@ -70,8 +84,8 @@ export default {
   },
   methods: {
     changecity(x, id) {
-      this.city = x;
-      this.city_id = id;
+      this.category = x;
+      this.category_id = id;
     },
     changic1(x) {
       switch (x) {
@@ -88,7 +102,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.dropdown-menu {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 200px;
+}
 .form-home1 {
   border-radius: 10px;
   width: 100%;

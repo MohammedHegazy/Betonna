@@ -12,7 +12,10 @@
         width: fit-content;
       "
     >
-      <router-link to="/" class="service-link">
+      <router-link
+        :to="'/service-companies?service_id=' + id"
+        class="service-link"
+      >
         <img
           :src="src"
           alt=""

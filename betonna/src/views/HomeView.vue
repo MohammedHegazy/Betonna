@@ -440,7 +440,7 @@
         <div class="row">
           <div class="col-2">
             <router-link
-              to="/"
+              to="/services"
               style="color: black; text-decoration: underline #e57c23"
               ><Icon
                 icon="material-symbols:arrow-back-rounded"
@@ -554,7 +554,7 @@
           <div class="row">
             <div class="col-2">
               <router-link
-                to="/"
+                to="/agents"
                 style="color: black; text-decoration: underline #e57c23"
                 ><Icon
                   icon="material-symbols:arrow-back-rounded"
@@ -679,7 +679,7 @@
           <div class="row">
             <div class="col-2">
               <router-link
-                to="/"
+                to="/agents"
                 style="color: black; text-decoration: underline #e57c23"
                 ><Icon
                   icon="material-symbols:arrow-back-rounded"
