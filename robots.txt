@@ -1,0 +1,3 @@
+Sitemap: https://betonna.com/sitemap.xml
+User-agent: *
+Disallow:
